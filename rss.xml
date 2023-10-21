@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 21 Oct 2023 14:51:53 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CSR 이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;CSR(Client-Side-Rendering)은 클라이언트에서 자바스크립트에 의해 동적으로 페이지가 렌더링 되는 방식이다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;클라이언트가 페이지에 접속한다.&lt;/li&gt;
+&lt;li&gt;서버로부터 빈 HTML을 다운받고 JavaScript를 다운로드 받는다.&lt;/li&gt;
+&lt;li&gt;JavaScript가 다운로드 완료되면 동적으로 빈 HTML에 UI를 렌더링 한다.&lt;/li&gt;
+&lt;li&gt;사용자는 페이지를 볼 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;위 과정이 CSR(Client-Side-Rendering)방식으로 동작하는 과정이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;br/&gt;
+JavaScript에 의해서 UI를 렌더링 하기 때문에 서버로부터 HTML을 다운받지 않아 페이지가 빠르다.
+클라이언트에서 모든 렌더링이 이루어 지기 때문에 서버의 부담이 적다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점&lt;br/&gt;
+처음에 JavaScript를 다운 받아야 하기 때문에 첫 페이지를 보는데 시간이 걸릴 수 있다.
+빈 HTML을 다운 받기 때문에 SEO(검색 엔진 최적화)가 어렵다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SEO(검색 엔진 최적화)란? 구글, 네이버 등등 검색 봇이 HTML 태그들을 분석해 해당 페이지를 노출 시킨다.&lt;/p&gt;
+&lt;p&gt;대표적으로 CSR(Client-Side-Rendering)방식으로 리액트, 뷰 같은 라이브러리들이 있다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SSR 이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;SSR(Server-Side-Rendering)은 서버에서 HTML을 미리 렌더링 하는 방식이다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;클라이언트가 페이지에 접속한다.&lt;/li&gt;
+&lt;li&gt;서버에서 HTML을 만들어 클라이언트에게 응답한다.&lt;/li&gt;
+&lt;li&gt;클라이언트는 바로 페이지를 볼 수 있다.&lt;/li&gt;
+&lt;li&gt;그 이후 JavaScript를 다운로드 받는다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;위 과정이 SSR(Server-Side-Rendering)방식으로 동작하는 과정이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;br/&gt;
+서버에서 HTML을 다운 받기 때문에 첫 페이지 속도가 빠르다.
+빈 HTML이 아니기 때문에 SEO(검색 엔진 최적화)에 효과 적이다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점&lt;br/&gt;
+첫 페이지 이후에 페이지 속도가 느리다. (페이지 이동 시 HTML을 서버에서 다시 다운로드 받아야 하기 때문에)
+서버에서 HTML을 만들어야 하므로 서버에 부담이 크다.
+페이지를 보여준 후 JavaScript를 다운로드 받기 때문에 사용자 인터랙션에 반응하지 않을 수 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;대표적으로 SSR(Server-Side-Rendering)방식으로 Next.js, php 같은 프레임 워크들이 있다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SSG 란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;SSG(Static-Site-Generator)은 SSR 방식에 캐시 기능을 포함한 것이다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;클라이언트가 페이지에 접속한다.&lt;/li&gt;
+&lt;li&gt;서버에서는 미리 만들어둔 HTML 파일을 응답한다.&lt;/li&gt;
+&lt;li&gt;클라이언트는 바로 페이지를 볼 수 있다.&lt;/li&gt;
+&lt;li&gt;그 이후 JavaScript를 다운로드 받는다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;위 과정이 SSG(Static-Site-Generator)방식으로 동작하는 과정이다.&lt;/p&gt;
+&lt;p&gt;SSR(Server-Side-Rendering)과 별 큰 차이는 없으나 서버에서 HTML을 미리 만들어서 캐싱 해둔다.&lt;/p&gt;
+&lt;p&gt;유저가 페이지에 접속하면 미리 만들어둔 캐싱된 HTML을 보내준다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;br/&gt;
+서버에서 미리 만들어둔 HTML을 응답하므로 페이지 이동 속도가 빠르다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점점&lt;br/&gt;
+정적 HTML이기 때문에 데이터가 빠르게 변화하는 페이지에는 어울리지 않는다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;요즘 개발 트렌드는 이 3가지 렌더링 방식을 모두 지원하는 리액트 기반의 Next.js 프레임 워크를 많이 이용하는 것 같다.
+개발자가 페이지를 구현 할 때 어떠한 방식이 더 효율적인지 장단점을 분석 한 후 개발을 할 수 있다.
+보통 실시간 데이터 변화와 SEO(검색 엔진 최적화)를 위해 SSR 또는 SSG 방식을 많이 활용하는 것 같다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[전략 패턴 (Strategy Pattern)]]></title><description><![CDATA[전략 패턴(strategy pattern)은 객체의 행위를 바꾸고 싶은 경우 '직접' 수정하지 않고 전략이라고 부르는 '캡슐화한 알고리즘'을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/strategy</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/strategy</guid><pubDate>Mon, 21 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;전략 패턴이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;전략 패턴(strategy pattern)은 객체의 행위를 바꾸고 싶은 경우 ‘직접’ 수정하지 않고
+전략이라고 부르는 ‘캡슐화한 알고리즘’을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴입니다.&lt;/p&gt;
+&lt;p&gt;우리가 인터넷 쇼핑을 한다고 가정 했을 때 네이버 페이, 카카오 페이 등 다양한 방법으로 결재 할 수 있습니다.
+이런 경우 결제 방식의 ‘전략’만 바꿔서 구현 해보도록 하겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;class Pay {
+  constructor(name, price, method) {
+    this.name = name;
+    this.price = price;
+    this.method = method;
+  }
+
+  getPrice() {
+    if (this.method === &amp;quot;kakaoPay&amp;quot;) {
+      console.log(
+        `카카오 페이로 결재하여 30% 할인된 가격은 ${
+          this.price * 0.3
+        }원 입니다!`,
+      );
+    } else if (this.method === &amp;quot;naverPay&amp;quot;) {
+      console.log(
+        `네이버 페이로 결재하여 10% 할인된 가격은 ${
+          this.price * 0.1
+        }원 입니다!`,
+      );
+    }
+  }
+}
+
+const item = new Pay(&amp;quot;신발&amp;quot;, 100000, &amp;quot;kakaoPay&amp;quot;);
+const item2 = new Pay(&amp;quot;티셔츠&amp;quot;, 100000, &amp;quot;naverPay&amp;quot;);
+item.getPrice();
+// 카카오 페이로 결재하여 30% 할인된 가격은 30000원 입니다!
+item2.getPrice();
+// 네이버 페이로 결재하여 10% 할인된 가격은 10000원 입니다!&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드에서 처럼 어떤 방식으로 결재를 할 것 인지에 따라서 상품의 가격은 달라집니다.
+카카오 페이, 네이버 페이 2개의 전략 패턴을 사용 했습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[팩토리 패턴 (Factory Pattern)]]></title><description><![CDATA[객체를 사용하는 코드에서 객체 생성 부분을 떼어내 추상화한 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 중요한 뼈대를 결정하고, 하위 클래스에서 객체 생성에 관한 구체적인 내용을 결정하는 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/factory</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/factory</guid><pubDate>Mon, 14 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;팩토리 패턴이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;객체를 사용하는 코드에서 객체 생성 부분을 떼어내 추상화한 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 중요한
+뼈대를 결정하고, 하위 클래스에서 객체 생성에 관한 구체적인 내용을 결정하는 패턴입니다.&lt;/p&gt;
+&lt;p&gt;쉽게 말해서 비슷한 객체를 반복적으로 생성해야 할 경우 사용하는 패턴입니다.
+객체를 생산하는 공장(Factory)을 구현하는 방법이라고 생각하시면 됩니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const iceCream1 = {
+    name = &amp;#39;쿠앤크&amp;#39;,
+    price = &amp;#39;3$&amp;#39;,
+    getInfo(){
+       console.log(`아이스크림의 이름은 ${this.name}이고 가격은 ${this.price} 입니다.`)
+    }
+}
+const iceCream2 = {
+    name = &amp;#39;보석바&amp;#39;,
+    price = &amp;#39;2$&amp;#39;,
+    getInfo(){
+       console.log(`아이스크림의 이름은 ${this.name}이고 가격은 ${this.price} 입니다.`)
+    }
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드의 단점은 같은 로직이 계속 반복된다는 것 입니다.&lt;br/&gt;
+getInfo 함수의 로직이 바뀐다면 모든 아이스크림의 객체를 수정 해야하며 유지보수성이 떨어집니다.
+위 코드를 팩토리 패턴으로 구현해 보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function IceCreamFactory(name, price) {
+  this.name = name;
+  this.price = price;
+}
+IceCreamFactory.prototype.getInfo = function () {
+  console.log(`아이스크림의 이름은 ${name}이고 가격은 ${price} 입니다.`);
+};
+
+const iceCream1 = new IceCreamFactory(&amp;quot;쿠앤크&amp;quot;, &amp;quot;3$&amp;quot;);
+const iceCream2 = new IceCreamFactory(&amp;quot;보석바&amp;quot;, &amp;quot;2$&amp;quot;);&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;아이스크림 만드는 공장(함수)에 이름과 가격을 재료(함수인자)로 넣으면 아이스크림이 만들어 집니다.
+이제 생성 로직이 바뀌면 아이스크림 공장(함수)만 바꾸면 됩니다.&lt;/p&gt;
+&lt;p&gt;코드가 좀 더 깔끔해지고 유지보수성도 높아졌습니다.&lt;/p&gt;
+&lt;p&gt;메모리의 효율성을 위해서 getInfo 함수는 프로토타입으로 지정해 줍니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프록시 패턴 (Proxy Pattern)]]></title><description><![CDATA[프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/proxy</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/proxy</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;프록시 패턴이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의
+인터페이스 역할을 하는 디자인 패턴입니다.&lt;/p&gt;
+&lt;p&gt;이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
+프록시 서버로도 활용되며 예시를 보여드리겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CORS와 프론트엔드 프록시 서버&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 가져오려 할때
+오리진이 서로 다르다면 데이터를 가져가지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 782px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAAwAPtFYpEuoJSOhsAgBABoJZ2M+ADc1aXEFAAD+8gp7uu05TCkYtKxsVah9CpaBC1bYB2Scguegy2aPSNJl0EEfdmrCcy2gKIAA&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; alt=&quot;proxy prev&quot; title=&quot;proxy prev&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;개발을 하다 보면 프론트엔드 서버와 백엔드 서버가 서로 통신할 때 주로 CORS 에러를 마주칩니다.
+이를 해결하기 위해 서버 쪽에서 모든 오리진을 허용하는 방법도 있지만
+보안상 문제가 될 수 있으므로 프론트 서버 쪽에서 프록시 서버를 두기도 합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;오리진이란?
+&lt;ul&gt;
+&lt;li&gt;프로토콜과 호스트 이름, 포트의 조합을 말합니다.&lt;/li&gt;
+&lt;li&gt;ex) &lt;a href=&quot;https://www.naver.com:80/cafe&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80/cafe&lt;/a&gt; 에서 &lt;a href=&quot;https://www.naver.com:80&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80&lt;/a&gt; 부분을 말합니다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예를 들어서 오리진이 localhost:3000 서버에서 localhost:8000 서버로 통신을 하면
+포트번호가 다르기 때문에 CORS 에러가 나타납니다.&lt;/p&gt;
+&lt;p&gt;이때 프록시 서버를 중간에 둬서 localhost:3000에서 오는 요청의 오리진을 localhost:8000으로 바꾸는 것 입니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoUAA0APtFYpEuoJSOhsAgBABoJZQAAYf+RndOfwEN1gAD+9PgZ0DBk9JMO+Z37mlid5pc2DyaDBOfM20QD7RBI3pHh/9efhvr77BusgPSD8ixqfV5oawAAAAA=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
+/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
+/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
+/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
+/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; alt=&quot;proxy next&quot; title=&quot;proxy next&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;위 그림처럼 프론트엔드 서버 앞단에 프록시 서버를 두어서 요청에 대한 처리를 할 수 있으며
+자연스레 CORS 에러도 해결 할 수 있고 통신도 매끄럽게 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[HTTP란 무엇인가]]></title><description><![CDATA[HTTP는 Hyper Text Transfer Protocol 의 약자이다. 직역을 하자면 하이퍼텍스트(웹 문서)를 주고 받는 통신 규약이라는 의미이다.]]></description><link>https://lumen.alxshelepenok.com/posts/http란</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/http란</guid><pubDate>Mon, 07 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 294px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/29b934bc777bc378c09a9c5b4fb0b9c6/04a86/mixed-error.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAAB5UlEQVQoz22S2Y6bQBBF+f8vivKYZTxmsxsw4IDHMIaw2ECDPY49EX0iTEbKQx6u6pZUpVKf29rw+RNDkYNYgetAHIPnwNqBwIe6gM0GdjuwDAhCeHtDJgnNPmHIck77PWUUQd+jqUMKvs/tZU+2FhRBiNztOG0jCs+jjGNyP6DyfX4aOo23od69ELseiefxwzCI7DVby+ZSVGjj6UgZhAxlhbQMOuHQC5f+y3e6p2c6z6MzTGQQ0C4WyOWCLt7RL3Uu0Y7heGQoS4Ys4/3UoI11RWuYvNsrsEwQAtzN/MzJmzpYFmy3c6/roFuw+Aa6Aa4AP4ROwjCgUVdgWvD1CQwDfmzh8gbXK1wuILvHIOfzrMlPy72EtoW2geHMeP3FvWnQ1OlIE4TUrscpDBnSlPv9zu9x5B1mKfV//6Fx5Ha7ca1rtPuxJhQOoRB4K0EkXLJgS3/IkLaNFB7SD2mXOp2uI/0N0rSQQUhv2Y+ZLsuQh8NfhkVJu1ojLfPBcgJ+dTx4TSH0YWmAWIPrwvNiRjKxjGKw7ZlvXsw4pm9DWc2gnWlhCU8L8DaoskRlB1SSotJ07pMEleeoLEMVxexfX1F5gZLyIY2uQx0yVH1EVdXsy/mimjQFM2kKY6r/hvPhzwPIOeU/cw/leJcxGw4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/29b934bc777bc378c09a9c5b4fb0b9c6/8ac56/mixed-error.webp 240w,
+/static/29b934bc777bc378c09a9c5b4fb0b9c6/456a1/mixed-error.webp 294w&quot; sizes=&quot;(max-width: 294px) 100vw, 294px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/29b934bc777bc378c09a9c5b4fb0b9c6/8ff5a/mixed-error.png 240w,
+/static/29b934bc777bc378c09a9c5b4fb0b9c6/04a86/mixed-error.png 294w&quot; sizes=&quot;(max-width: 294px) 100vw, 294px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/29b934bc777bc378c09a9c5b4fb0b9c6/04a86/mixed-error.png&quot; alt=&quot;mixed error&quot; title=&quot;mixed error&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;프로젝트를 하다가 클라이언트 배포 완료 후 저 에러 문구와 함께 서버에서 데이터를 받아오지 못한다.
+구글링 한 결과 HTTPS에서 HTTP로 통신을 할 때 발생되는 문제였다.
+암호화 된 HTTPS에서 암호화 되지 않는 HTTP로 요청을 보냈으므로 안전하지 않다고 판단되어 브라우저에서 막은 것이다.&lt;/p&gt;
+&lt;p&gt;그럼 HTTP와 HTTPS의 차이점은 무엇일까? 알아보자.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;HTTP란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;HTTP는 Hyper Text Transfer Protocol 의 약자이다.&lt;br/&gt;
+직역을 하자면 하이퍼텍스트(웹 문서)를 주고 받는 통신 규약이라는 의미이다.
+인터넷 주소 창을 자세히 보면 볼 수 있다. ex) &lt;a href=&quot;https://www.naver.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com/&lt;/a&gt; 이렇게 주소 맨 앞에 http라는 녀석이 붙는다.
+그럼 HTTP가 왜 필요할까?&lt;/p&gt;
+&lt;p&gt;예를 들어서 우리가 택배를 보내야 한다고 가정한다면 무작정 보내는 것이 아니라
+보내는 사람과 받는 사람의 주소지와 이름 등등 절차를 갖춰서 보내야 받는 사람에게 정확히 택배가 도착한다.
+이렇게 택배를 보내야 할 때 절차가 있는 것처럼 인터넷에서도 웹 문서를 주고 받기 위해서는 절차가 존재한다.
+그 절차를 갖춘 규약이 바로 HTTP 라고 할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 580px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/ab8e5b6c2688d4e9b9520432cdea910f/78d0c/http.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 80%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAQABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAHZKQ2Mj//EABkQAQEBAAMAAAAAAAAAAAAAAAERIRIjMf/aAAgBAQABBQKdtoebz1Ah/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Bp//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABsQAAIBBQAAAAAAAAAAAAAAAAAQEQEhMUFh/9oACAEBAAY/ApnSvU4YX//EABoQAAIDAQEAAAAAAAAAAAAAAAERACExQZH/2gAIAQEAAT8hbWqJ15CR0SC1dRwIYZyWNcDDIX2IBs//2gAMAwEAAgADAAAAEDAv/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQARIf/aAAgBAwEBPxAwjLvb/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAExEf/aAAgBAgEBPxBx4KH/xAAeEAEAAgICAwEAAAAAAAAAAAABABEhUTFhcYGR0f/aAAgBAQABPxBxg/ufbuDxR0GQOzi9yroTLuNqCfc8VAOlYBcg4fcuVsFXP//Z&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/ab8e5b6c2688d4e9b9520432cdea910f/8ac56/http.webp 240w,
+/static/ab8e5b6c2688d4e9b9520432cdea910f/d3be9/http.webp 480w,
+/static/ab8e5b6c2688d4e9b9520432cdea910f/4fac6/http.webp 580w&quot; sizes=&quot;(max-width: 580px) 100vw, 580px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/ab8e5b6c2688d4e9b9520432cdea910f/09b79/http.jpg 240w,
+/static/ab8e5b6c2688d4e9b9520432cdea910f/7cc5e/http.jpg 480w,
+/static/ab8e5b6c2688d4e9b9520432cdea910f/78d0c/http.jpg 580w&quot; sizes=&quot;(max-width: 580px) 100vw, 580px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/ab8e5b6c2688d4e9b9520432cdea910f/78d0c/http.jpg&quot; alt=&quot;http&quot; title=&quot;http&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;하지만 택배를 주고 받는 과정에서 보내는 이와 받는 이의 개인정보가 유출 된다면?&lt;br/&gt;
+웹 문서를 서로 주고 받는 과정에서 누군가가 네트워크 신호를 가로채서 본다면?&lt;br/&gt;
+인터넷 뱅킹과 같이 개인정보를 서버와 주고 받는 경우 유출된다면 큰 문제가 발생한다.
+이 문제를 해결하고자 나온 것이 HTTPS 이다. Secure(안전한)의 앞 글자를 붙였다.&lt;/p&gt;
+&lt;p&gt;옛날에 비해 요즘 거의 모든 웹 사이트는 HTTPS 인걸 볼 수 있다.&lt;br/&gt;
+구글에서는 HTTPS를 사용하라고 권고하고 있다.
+그래서 HTTPS에서 HTTP로 통신을 할 때 구글 크롬 브라우저는 경고를 띄운다. 그 에러가 바로 위 첫번째 사진이다.
+HTTPS로 통신 할 경우 데이터는 암호화가 되어진다.&lt;/p&gt;
+&lt;p&gt;클라이언트와 서버는 HTTPS를 사용하는 것이 안전한 것 같다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[MVC 패턴과 Flux 패턴]]></title><description><![CDATA[MVC는 Model, View, Controller의 약자 입니다. 프로젝트의 구성과 기능들을 3가지의 역할로 나누어서 개발하는 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/mvc와flux</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/mvc와flux</guid><pubDate>Sun, 06 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;MVC 패턴이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;MVC는 Model, View, Controller의 약자 입니다. &lt;br/&gt;
+프로젝트의 구성과 기능들을 3가지의 역할로 나누어서 개발하는 패턴입니다.&lt;/p&gt;
+&lt;p&gt;애플리케이션의 구성 요소를 3가지 역할로 구분하여 각각의 구성 요소에만 집중하여 개발할 수 있습니다.
+재사용성과 확장성이 용이하다는 장점이 있고, 애플리케이션이 복잡해질수록 모델과 뷰의 관계가 복잡해지는 단점이 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/da94c90faa9fb4689e3de1fc396b1bbf/33a7b/mvc.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 51.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABEUlEQVQoz4WSiYqAMAxE+/8fqIKIivd930eWCVRqcXcDpRWnk5ekgrS47/vZ27aluq6p73tqmobP53m+dHqI3wzHcaSiKGieZ3Jdl/eyLGkYhv8N8VMlQ8Agz3PeTdNkQhgikV6Jai6+6GQsy0Ke51EYhmTbNrfgL/0n4TRN3DOYyf4hjuOgLMtoXVfquu5FqtIKPROMYAIyaXZd12MK2jRNWfc1SPHVC5CAVBcjMGX0FqRqMvmfCfd9pyAIKI5jiqKI6ZIk4dJUCkwYyaBxHIfPoFUnL+REYeD7PjcfC2IYI5FlWUyFHYPB2TAMBkDpeF4vQ1lGVVW8MAx8o2coDU8GpeECLuP5QAMtEm/b9hj+AFLCCHR/J2SLAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/da94c90faa9fb4689e3de1fc396b1bbf/8ac56/mvc.webp 240w,
+/static/da94c90faa9fb4689e3de1fc396b1bbf/d3be9/mvc.webp 480w,
+/static/da94c90faa9fb4689e3de1fc396b1bbf/e46b2/mvc.webp 960w,
+/static/da94c90faa9fb4689e3de1fc396b1bbf/03b0b/mvc.webp 1119w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/da94c90faa9fb4689e3de1fc396b1bbf/8ff5a/mvc.png 240w,
+/static/da94c90faa9fb4689e3de1fc396b1bbf/e85cb/mvc.png 480w,
+/static/da94c90faa9fb4689e3de1fc396b1bbf/d9199/mvc.png 960w,
+/static/da94c90faa9fb4689e3de1fc396b1bbf/33a7b/mvc.png 1119w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/da94c90faa9fb4689e3de1fc396b1bbf/d9199/mvc.png&quot; alt=&quot;mvc&quot; title=&quot;mvc&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;모델(Model)은 애플리케이션의 데이터인 데이터베이스, 상수, 변수 등을 뜻합니다.&lt;/li&gt;
+&lt;li&gt;뷰(View)는 button, input, div 등 사용자 인터페이스 요소를 나타냅니다.&lt;/li&gt;
+&lt;li&gt;컨트롤러(Controller)는 이벤트나 함수, 메인 로직을 담당하며 모델과 뷰를 잇는 다리 역할을 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예를 들어서 어떠한 유저가 글 작성 버튼을 눌렀을 때 Controller(글 생성)가 실행되며 Model(DB)가 변경되게 됩니다.
+그리고 View(글 목록)가 변경되어 유저에게 글이 생성된 것을 보여줍니다.
+하지만 웹 사이트의 규모가 점점 커지는 만큼 MVC 패턴으로 개발을 하면서 단점들이 나오기 시작합니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/f22d65c9986588fb507c932d09df5501/e8814/complex_mvc.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 54.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3ElEQVQoz22SyU7bUBSG81CV2ILahDj2PXey72A7jq+HBIfYccggMIuKR0Dqouq0QhWCRReV2qSD+mqVm5YFRfqW59fROf/XwUAegzCnvIVxRjkgAkAAEYY5BcYxJ0D3k51HSUDY5Z4to4E2ljbUHymGXUBxLIvX8+JtXXyozXkOFmD8Xxg5oJXuqhhnVX80JVGW+TTE1mwW1LvL859Xi1+Xp9cL6P8LA8IP2DaOA+qZ5ACHR9Ic8qCI3IgeX0zU7G5x8nk53a6zNzOOXADcAYSFJ6WQwhNSKF+JNHR0Mn6u817QMjWykL3C56vbTbVrqu15ebMSXADC7ebAD8FBWioMZFUKE+DQxM8cZQ0nB2Q4jjwj7JTZZ+/mJ9t1+WUzua9VoJENHUBESf1nrRSeMkORD50wzw9lehyOu342GckhGxiPLW9W811T75ry41q4EiH4+zDO3BbuIodGCrsmPZKpPSq6yhQjkfLeWaKqu2W1bRbfm+L93N3f/NDQHmRDoNUgSGxz+iIYO0Ga+Fwia1EGy6/N6tvL6sfF9FWNLfJ0VcKTfRn3dNLVGQvjyAMBtkn92e26vF+Xnzb5VYHaqmjnCcOAMMopafWilDuIoFYyyrnLOOfcpZTtDfsNGkjr7IiZGAIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/f22d65c9986588fb507c932d09df5501/8ac56/complex_mvc.webp 240w,
+/static/f22d65c9986588fb507c932d09df5501/d3be9/complex_mvc.webp 480w,
+/static/f22d65c9986588fb507c932d09df5501/e46b2/complex_mvc.webp 960w,
+/static/f22d65c9986588fb507c932d09df5501/f3c7c/complex_mvc.webp 1392w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/f22d65c9986588fb507c932d09df5501/8ff5a/complex_mvc.png 240w,
+/static/f22d65c9986588fb507c932d09df5501/e85cb/complex_mvc.png 480w,
+/static/f22d65c9986588fb507c932d09df5501/d9199/complex_mvc.png 960w,
+/static/f22d65c9986588fb507c932d09df5501/e8814/complex_mvc.png 1392w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/f22d65c9986588fb507c932d09df5501/d9199/complex_mvc.png&quot; alt=&quot;complex mvc&quot; title=&quot;complex mvc&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;위 그림과 같이 Client에서는 Model(상태)와 View(화면)사이에서의 양방향 데이터 흐름으로 웹 어플리케이션의 규모가
+점점 커진다면 어떠한 기능을 추가할 때마다 시스템의 복잡도는 기하급수적으로 증가하게 되며, 개발자 입장에서는
+데이터의 예측과 파악이 어려워져 에러와 버그들을 쏟아내게 됩니다.&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;이러한 문제점들로 인해서 실제로 페이스북에서는 알림 기능이 제대로 작동하지 않아 개발자들이 어려움을 겪었습니다.
+페이스북에서는 에러와 버그들의 대부분은 양방향 데이터의 흐름으로 인한 문제점이라고 결론을 내렸습니다.&lt;/p&gt;
+&lt;p&gt;그래서 2014년 페이스북은 F8 컨퍼런스에서 MVC 패턴을 기반으로 한 Flux 패턴이라는 새로운 아키텍처를 발표합니다.
+점점 거대해져 가는 웹 서비스의 데이터 흐름을 일관성 있게 관리하며 개발자가 예측 가능하도록 하는 아키텍처 입니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Flux 패턴&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5276b6b56fd67ba26431bea2f2838a84/00d43/flux.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 32.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABiElEQVQoz1WRzWoUURCF+7FEl1k4k75/3bfv7dt3enrSHWQmOMaEaBIVTMjCZxBcCUbF6EoFyQQRdCcB3Yhv80kPMsbF4SvqVBUFJ9HKcFVK9tRLSmGQ0iCExvlArCdU9YRQjZBCL71+5upOonXGSuqfkRlNcIrSa5y+yf6zFxx//sHR4pKD1x9pRgXeCoLX2FyvHkrSwRAxXKenEmp5UKSaIld4K9HaYNIB958+5+TikpPz7xy+fE/wBVoKdCop8xQxkCipSbr5Ls3WNt2dXawLy++8q6hjQR09hS1J1xUhNlSTTULTEZsWmRqs84y3NmjnI5rZBnluSY6+/uLJl588/vab6cEhYy+oYyB4jy8sMXjGQZJWY65lDdezhhsmMCkLZsct3WKb+ad9Zos9wq1I8ujtOQ9efeDhuwva+V1cphnFiCscvnDEqsIaRT7uWCs71nzLsGrxmaXda5me7TA93eH2m3uUbUWSmxyjM3pqaf4Gkq/Ue32ifZ1ndkUp+yCy/3p9KH8Asools5rS47AAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/5276b6b56fd67ba26431bea2f2838a84/8ac56/flux.webp 240w,
+/static/5276b6b56fd67ba26431bea2f2838a84/d3be9/flux.webp 480w,
+/static/5276b6b56fd67ba26431bea2f2838a84/e46b2/flux.webp 960w,
+/static/5276b6b56fd67ba26431bea2f2838a84/a5d4d/flux.webp 1000w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/5276b6b56fd67ba26431bea2f2838a84/8ff5a/flux.png 240w,
+/static/5276b6b56fd67ba26431bea2f2838a84/e85cb/flux.png 480w,
+/static/5276b6b56fd67ba26431bea2f2838a84/d9199/flux.png 960w,
+/static/5276b6b56fd67ba26431bea2f2838a84/00d43/flux.png 1000w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/5276b6b56fd67ba26431bea2f2838a84/d9199/flux.png&quot; alt=&quot;flux&quot; title=&quot;flux&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;예를 들어서 위 그림과 같이 View(화면)에서 Action(글 생성 클릭)이 발생하여 Dispatcher(함수)가 Store(DB)을
+변경한 후 View(화면)가 렌더링 되게 됩니다.
+이렇게 MVC패턴과 달리 View가 직접 Model을 바꾸는 것이 아니라 Action과 Dispatcher에 의해서
+Store을 거쳐 변경 되게 됩니다. 양방향 데이터의 흐름에서 단방향 데이터의 흐름으로 바뀐 Flux 패턴의 모습입니다.&lt;/p&gt;
+&lt;p&gt;리액트는 이러한 단방향 데이터의 흐름을 지향하며 상태 관리 라이브러리들은 이런 Flux 패턴을 사용하였습니다.&lt;/p&gt;
+&lt;p&gt;이제 모든 데이터들은 Store을 거쳐가게 되며 개발자들은 Store만 보게 된다면 데이터의 흐름을 한눈에 파악하기 쉽습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;결론&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Flux 패턴은 MVC 패턴의 단점을 보완하여 나온 아키텍처이며, 단방향 데이터의 흐름이다.&lt;/li&gt;
+&lt;li&gt;단방향 데이터의 흐름은 개발자가 예측 가능할 수 있게 하며 데이터를 일관성 있게 관리 할 수 있다.&lt;/li&gt;
+&lt;li&gt;Flux 패턴은 데이터의 복잡성을 줄여주며 개발자가 전체적인 코드를 파악하는 것에 도움이 된다.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[싱글톤 패턴 (Singleton Pattern)]]></title><description><![CDATA[싱글톤 패턴(Singleton pattern)은 하나의 클래스에 오직 하나의 인스턴스만 가지는 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/singleton</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/singleton</guid><pubDate>Tue, 01 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;싱글톤 패턴이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;싱글톤 패턴(Singleton pattern)은 하나의 클래스에 오직 하나의 인스턴스만 가지는 패턴입니다.
+하나의 인스턴스를 만들어 놓고 해당 인스턴스를 다른 모듈들이 공유하며 사용하기에 인스턴스를 생성할 때
+드는 비용이 줄어드는 장점은 있으나 의존성이 높아 진다는 단점도 있습니다.&lt;/p&gt;
+&lt;p&gt;이해가 잘 되지 않으실텐데 코드로 보여드리겠습니다.!&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const obj = { a: 1, b: 2 };
+const obj2 = { a: 1, b: 2 };
+console.log(ojb === ojb2); // false&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;자바스크립트 코드인데요. 이 코드에서 obj와 obj2는 왜 같지 않을까요??&lt;br/&gt;
+자바스크립트에서는 객체를 생성하면 다른 메모리 주소 값을 갖으며 다른 어떤 객체와도 같지 않습니다.
+그러면 obj 와 obj2가 같은 인스턴스를 갖으려면 어떻게 해야 할까요?&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;이럴 때 필요한 것이 싱글톤 패턴입니다!&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;let instance;
+
+class SingleTon {
+  constructor() {
+    if (instance) return instance;
+    this.a = 1;
+    this.b = 2;
+    instance = this;
+  }
+}
+
+const obj = new SingleTon();
+const obj2 = new SingleTon();
+console.log(obj === obj2); // true&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;앞의 코드는 class 생성자 함수를 이용하여 싱글톤 패턴을 구현한 코드입니다.&lt;br/&gt;
+이제 obj와 obj2는 하나의 인스턴스를 갖습니다.
+주로 특정 객체를 여러 곳에 공유해야 할 때 사용합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;결론&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;싱글톤 패턴은 메모리 낭비가 되지 않고 인스턴스가 하나라는 유일성을 보장하며 의존성이 높아 질 수 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[선언형과 함수형 프로그래밍]]></title><description><![CDATA[선언형 프로그래밍은 '무엇을' 풀어내는가에 집중하는 패러다임이며 '프로그램은 함수로 이루어진 것이다.' 라는 명제가 담겨 있는 패러다임이기도 합니다. 함수형 프로그래밍도 선언형 패러다임의 일종입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/function-programing</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/function-programing</guid><pubDate>Mon, 10 Jul 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;선언형 프로그래밍과 함수형 프로그래밍이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;선언형 프로그래밍은 ‘무엇을’ 풀어내는가에 집중하는 패러다임이며&lt;br/&gt;
+‘프로그램은 함수로 이루어진 것이다.’ 라는 명제가 담겨 있는 패러다임이기도 합니다.&lt;br/&gt;
+함수형 프로그래밍도 선언형 패러다임의 일종입니다.&lt;/p&gt;
+&lt;p&gt;함수형 프로그래밍을 이용해서 숫자 1~100까지의 숫자를 다 더한 값을 출력하라는 로직을 짜보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const numbers = Array.from({ length: 100 }, (_, idx) =&amp;gt; idx + 1);
+const result = numbers.reduce((acc, cur) =&amp;gt; (acc += cur), 0);
+console.log(result); // 5050&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드는 from 함수를 이용하여 1~100까지의 숫자를 생성 한 후 reduce 함수를 사용하여
+숫자들을 순회하며 하나하나 더하는 누적값을 반환합니다. 그 결과 5050이라는 값이 나왔습니다.&lt;/p&gt;
+&lt;p&gt;함수형 프로그래밍은 이와 같이 순수 함수들을 블록처럼 쌓아 로직을 구현하고 ‘고차 함수’를 통해
+재사용성을 높인 프로그래밍 패러다임입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;순수 함수
+&lt;ul&gt;
+&lt;li&gt;출력이 입력에만 의존하는 것을 의미합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const foo = (bar, baz) =&amp;gt; {
+  return bar + baz;
+};&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;foo 함수는 매개변수 bar, baz에만 영향을 받습니다.
+만약 bar, baz 말고 다른 전역 변수 x 등이 결과 값에 영향을 주면 순수 함수가 아닙니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;고차 함수
+&lt;ul&gt;
+&lt;li&gt;함수가 함수를 값처럼 매개변수로 받아 로직을 생성할 수 있는 것을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[옵저버 패턴(Observer Pattern)]]></title><description><![CDATA[옵저버 패턴(Observer Pattern)은 주체가 어떠한 객체의 상태를 관찰하다가 상태 변화가 일어나면 옵저버들에게 변화를 알려주는 디자인 패턴입니다. 스타크래프트의 옵저버를 떠올리시면 좋습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/observer</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/observer</guid><pubDate>Thu, 06 Jul 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;옵저버 패턴이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;옵저버 패턴(Observer Pattern)은 주체가 어떠한 객체의 상태를 관찰하다가 상태 변화가 일어나면 옵저버들에게 변화를 알려주는 디자인 패턴입니다. 스타크래프트의 옵저버를 떠올리시면 좋습니다.&lt;/p&gt;
+&lt;p&gt;옵저버 패턴 예시를 트위터로 설명해 보겠습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/1c693465cc660251600b57e29a9b1c87/40267/twitter.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 50.83333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdybBiD/xAAYEAADAQEAAAAAAAAAAAAAAAAAARExQv/aAAgBAQABBQIpTpIWf//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABYQAQEBAAAAAAAAAAAAAAAAAAEQAP/aAAgBAQAGPwKmJ//EABkQAQADAQEAAAAAAAAAAAAAAAEAESExQf/aAAgBAQABPyFd8g76IwEQsragVgyEMFT/2gAMAwEAAgADAAAAEMTP/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Qh//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABkQAQADAQEAAAAAAAAAAAAAAAEAESExQf/aAAgBAQABPxAhABC9m00gAeRRdxzBRA1vkDQWqzkJgC3Ar2f/2Q==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/1c693465cc660251600b57e29a9b1c87/8ac56/twitter.webp 240w,
+/static/1c693465cc660251600b57e29a9b1c87/d3be9/twitter.webp 480w,
+/static/1c693465cc660251600b57e29a9b1c87/e46b2/twitter.webp 960w,
+/static/1c693465cc660251600b57e29a9b1c87/55b8e/twitter.webp 1068w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/1c693465cc660251600b57e29a9b1c87/09b79/twitter.jpg 240w,
+/static/1c693465cc660251600b57e29a9b1c87/7cc5e/twitter.jpg 480w,
+/static/1c693465cc660251600b57e29a9b1c87/6a068/twitter.jpg 960w,
+/static/1c693465cc660251600b57e29a9b1c87/40267/twitter.jpg 1068w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/1c693465cc660251600b57e29a9b1c87/6a068/twitter.jpg&quot; alt=&quot;twitter&quot; title=&quot;twitter&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;이 그림처럼 내가 어떤 유저를 팔로우 했다면 그 유저가 올리는 게시물들은 옵저버들이 볼 수 있습니다.
+여기서 옵저버들은 팔로우 한 사람들에 해당하게 됩니다.&lt;/p&gt;
+&lt;p&gt;이처럼 어떠한 주체를 구독(팔로우)함으로써 주체의 상태 변화에 따라서 옵저버들(팔로우 한 사람들)은 변화하게 됩니다.
+또한 옵저버 패턴은 이벤트 기반의 시스템에 사용되며 MVC (Model - View - Controller) 패턴에도 사용됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 581px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/d8b8c7c0ae4387e8c46c5e37fad2a122/92d15/mvc-obs.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 32.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA90lEQVQY002P626DMAyFef+HWzutG92FqmpKIJD7pbHTJEyUadsnyz46/nHsxrhA+oGyeZx4znV5UPO9plQRa8K1l7yaS00Zh5H2Qy8UxxwbboAJN3KrHEgTAaDWCko6Sh2lpr+GgQYplmXBBCYqYTlTg4u+m9tGOXx7/3p6fh0mOUlHCLHW+mk+t213eGn3e3JsyeeHVFoq4dCOfNwddsrqkzg22icPRTnwUAKW7ezsfTGmaF2MvgueQ1jNkh1aB/bCzh7dRXbN+kytxmiAeLuFEMLtwa+I/4AHV3LdMpptTNPMGPtZAkD8k4hbYUpJa00IiTFukd+CNFS4s8t6iQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/d8b8c7c0ae4387e8c46c5e37fad2a122/8ac56/mvc-obs.webp 240w,
+/static/d8b8c7c0ae4387e8c46c5e37fad2a122/d3be9/mvc-obs.webp 480w,
+/static/d8b8c7c0ae4387e8c46c5e37fad2a122/39daa/mvc-obs.webp 581w&quot; sizes=&quot;(max-width: 581px) 100vw, 581px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/d8b8c7c0ae4387e8c46c5e37fad2a122/8ff5a/mvc-obs.png 240w,
+/static/d8b8c7c0ae4387e8c46c5e37fad2a122/e85cb/mvc-obs.png 480w,
+/static/d8b8c7c0ae4387e8c46c5e37fad2a122/92d15/mvc-obs.png 581w&quot; sizes=&quot;(max-width: 581px) 100vw, 581px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/d8b8c7c0ae4387e8c46c5e37fad2a122/92d15/mvc-obs.png&quot; alt=&quot;mvc obs&quot; title=&quot;mvc obs&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;예를 들어서 Model (데이터베이스)에 변경 사항이 생겨 update() 메서드로 View (UI)에게 알려주고
+유저의 인터랙션에 따라서 Controller가 작동하게 됩니다. 그리고 Controller는 Model (데이터베이스)을 변경 시킵니다.&lt;/p&gt;
+&lt;p&gt;리액트에서도 상태 관리를 할 때 옵저버 패턴이 쓰입니다. &lt;br/&gt;
+ex) 다크 모드(주체)를 클릭 시 구독한 모든 UI 컴포넌트(옵저버)들은 다크 모드로 스타일이 바뀐다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;class TodoList {
+  constructor() {
+    this.todos = [];
+  }
+  render() {
+    const div = document.querySelector(&amp;quot;#root&amp;quot;);
+    div.innerHTML = `오늘 할일은 ${this.todos} 입니다.`;
+  }
+  create(todo) {
+    this.todos.push(todo);
+    this.render();
+  }
+  delete(todo) {
+    this.todos = this.todos.filter((item) =&amp;gt; item !== todo);
+    this.render();
+  }
+}
+
+const todo = new TodoList();
+todo.create(&amp;quot;산책하기&amp;quot;);
+todo.create(&amp;quot;노래듣기&amp;quot;);
+todo.delete(&amp;quot;산책하기&amp;quot;);&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;옵저버 패턴으로 간단한 할일 리스트를 만들어 봤습니다.&lt;/p&gt;
+&lt;p&gt;할일(주체)가 변경되거나 삭제 될 때마다 div(옵저버)가 리렌더링이 일어나게 됩니다. div는 할일의 상태를 구독하고 있습니다.
+이건 마치 리액트의 useState()훅과 매우 흡사합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[쿠키는 왜 필요한가?]]></title><description><![CDATA[쿠키란? 서버가 유저에 대한 정보나 기타 여러가지 정보들을 저장 할 수 있는 브라우저 저장소 입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/cookie</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/cookie</guid><pubDate>Thu, 01 Jun 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;쿠키란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;서버가 유저에 대한 정보나 기타 여러가지 정보들을 저장 할 수 있는 브라우저 저장소 입니다.&lt;/p&gt;
+&lt;p&gt;클라이언트와 서버가 서로 데이터를 주고 받기 위해서 HTTP프로토콜을 이용하는데요.
+이 HTTP프로토콜은 비연결성과 비상태성을 갖는 특징이 있습니다.
+와이파이 처럼 연결 상태가 계속 유지 되지 않고 데이터를 교환 후 연결을 끊습니다. 상태 정보도 저장이 안되죠.
+이런 특징들이 있기 때문에 서버의 자원을 절약할 수 있으며 서버의 부담이 적어지게 됩니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/29429b3eb718ba7f4b2fd1ec39d93907/aa629/network_connection.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 42.083333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHZkSwX/8QAFxABAQEBAAAAAAAAAAAAAAAAAQIRAP/aAAgBAQABBQIhLzoMj//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABgQAQEAAwAAAAAAAAAAAAAAAAEAERJR/9oACAEBAAY/Al2ycmC//8QAGRAAAgMBAAAAAAAAAAAAAAAAAAEhMVFh/9oACAEBAAE/IXTZlYKQcnID/9oADAMBAAIAAwAAABB8D//EABURAQEAAAAAAAAAAAAAAAAAABAx/9oACAEDAQE/EIf/xAAVEQEBAAAAAAAAAAAAAAAAAAAQMf/aAAgBAgEBPxCn/8QAGxABAQABBQAAAAAAAAAAAAAAAREAITFBUWH/2gAIAQEAAT8Q3BYl5XvLmoB8ylCI1HP/2Q==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/29429b3eb718ba7f4b2fd1ec39d93907/8ac56/network_connection.webp 240w,
+/static/29429b3eb718ba7f4b2fd1ec39d93907/d3be9/network_connection.webp 480w,
+/static/29429b3eb718ba7f4b2fd1ec39d93907/e46b2/network_connection.webp 960w,
+/static/29429b3eb718ba7f4b2fd1ec39d93907/47d61/network_connection.webp 1415w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/29429b3eb718ba7f4b2fd1ec39d93907/09b79/network_connection.jpg 240w,
+/static/29429b3eb718ba7f4b2fd1ec39d93907/7cc5e/network_connection.jpg 480w,
+/static/29429b3eb718ba7f4b2fd1ec39d93907/6a068/network_connection.jpg 960w,
+/static/29429b3eb718ba7f4b2fd1ec39d93907/aa629/network_connection.jpg 1415w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/29429b3eb718ba7f4b2fd1ec39d93907/6a068/network_connection.jpg&quot; alt=&quot;network connection&quot; title=&quot;network connection&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;하지만 사용자를 식별 할 수 없다는 것이 큰 단점입니다.
+연결이 끊기고 상태 정보도 저장이 안되기 때문에 클라이언트가 매번 서버에 요청 할 때마다
+클라이언트가 누구인지 서버는 기억하지 못합니다.&lt;/p&gt;
+&lt;p&gt;예를 들어서 사용자가 로그인을 했음에도 불구하고 URI가 바뀔 때마다 로그인이 풀리게 되며 로그인 유지가 되지 않습니다. 사용자는 홈페이지를 이용하려면 계속 해서 로그인을 해야 하므로 매우 불편합니다.&lt;/p&gt;
+&lt;p&gt;하지만 우리가 사용하고 있는 웹사이트를 생각해보면 한번 로그인 하고 URI가 바뀌어도 계속 로그인 상태가 유지 되며
+자유롭게 홈페이지를 이용 할 수 있습니다. 심지어 홈페이지를 종료했다가 다시 접속해도 로그인 상태가 유지 됩니다.
+이렇게 HTTP의 비연결성과 비상태성을 보완하며 서버가 클라이언트를 식별할 수 있도록 해주는 것이 쿠키의 역할입니다.&lt;/p&gt;
+&lt;p&gt;대표적으로 쿠키를 이용한 기능들 입니다.&lt;br/&gt;
+ex) ID저장, 로그인 유지, 일주일 동안 보지않기, 비로그인 장바구니 등등..&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GET과 POST의 차이]]></title><description><![CDATA[클라이언트와 서버는 데이터를 서로 주고 받기 위해서 REST API를 통해 통신합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/GET과POST</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/GET과POST</guid><pubDate>Fri, 07 Apr 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;클라이언트와 서버는 데이터를 서로 주고 받기 위해서 REST API를 통해 통신합니다.
+여기서 REST 란? REpresentational State Transfer의 약자인데요
+직역을 하자면 “상태를 묘사한 것을 주고 받는다” 라는 뜻이 됩니다.&lt;/p&gt;
+&lt;p&gt;REST의 기본 원칙을 잘 지킨 것을 RESTfull이라고 합니다.
+즉, REST는 HTTP를 기반으로 클라이언트가 서버의 자원에 접근하기 위한 아키텍처이고,
+REST API는 REST를 기반으로 서비스 API를 구현한 것 이며 자원과 행위로 구분되어 집니다.&lt;/p&gt;
+&lt;p&gt;가장 기본적인 원칙은 두 가지 인데요. URI는 자원에 대한 정보를 표현하는 데 집중하고 행위에 대한 정보는 HTTP 메서드를 통해 하는 것이 RESTfull API를 설계하는 중심 규칙입니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// 좋은 설계
+
+ex) 1. GET /user/1
+    2. GET /article/3
+
+// 나쁜 설계
+ex) 1. GET /user/get/1
+    2. GET /getArticle/3
+&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;앞서 말씀 드린 것 처럼 URI에는 행위(동사)가 표현되면 안됩니다.&lt;br/&gt;
+HTTP 메서드는 클라이언트가 서버에게 자원에 대한 어떠한 행위를 할 것인지 표현 합니다
+대표적으로 GET, POST, PUT, PATCH, DELETE 메서드가 있습니다.
+아래 메서드를 사용하여 CRUD를 구현 합니다.&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/939d93ce20ff97e4adc2fe899181705d/36eca/http_method.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 52.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABb0lEQVQoz5WS607DMAyF+/6vCHSigq3dekmT3pLYPshJOwYaP7BkNYrS48/HLrCHiKTUYOb7+TGICI/vn0VxCD2KresK5xyqqkJZlnh9eUXf9/DeY9u2HwC//y9+V2CRJKjZNA3qusb5coYxBj4EhBD+JNS7QtvQqhQjJAQIc6LUTAWIwZQJiCKE91QqChDy+bu/L8ZxxFtZYmhbyOcHeJ5+VO2bEbbf74RBYQZtJony3IHdFWxrSFizoLUW71UFo4LtDbxtOJoJPiZBc3NgVkoGhwXkLSSuYNdk0fEM2WwWVPNVcDQG0nXgZTkcSW0PNwfTulREhMBxBXmXCZch59x9Ex7TNMMAuWrF+XAYwoJpXDDbNXvGlAk3m8+LyZTacnxo+XQ6Yeg6SH0BO3cnVO/ai0F7NpiMkjPIT4mQVwMeP3PLtgZPtzxlbSvGmJeZ6D4tJVTfKFKatPC+b2nKlPy8n2Oe9NM9/F5a/DuU8AuTi13iimL6kAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/939d93ce20ff97e4adc2fe899181705d/8ac56/http_method.webp 240w,
+/static/939d93ce20ff97e4adc2fe899181705d/d3be9/http_method.webp 480w,
+/static/939d93ce20ff97e4adc2fe899181705d/e46b2/http_method.webp 960w,
+/static/939d93ce20ff97e4adc2fe899181705d/f992d/http_method.webp 1440w,
+/static/939d93ce20ff97e4adc2fe899181705d/d3be1/http_method.webp 1526w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/939d93ce20ff97e4adc2fe899181705d/8ff5a/http_method.png 240w,
+/static/939d93ce20ff97e4adc2fe899181705d/e85cb/http_method.png 480w,
+/static/939d93ce20ff97e4adc2fe899181705d/d9199/http_method.png 960w,
+/static/939d93ce20ff97e4adc2fe899181705d/07a9c/http_method.png 1440w,
+/static/939d93ce20ff97e4adc2fe899181705d/36eca/http_method.png 1526w&quot; sizes=&quot;(max-width: 960px) 100vw, 960px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/939d93ce20ff97e4adc2fe899181705d/d9199/http_method.png&quot; alt=&quot;http method&quot; title=&quot;http method&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;GET - 모든/특정 자원 가져오기, POST - 자원 생성, PUT - 자원 전체 수정, PATCH - 자원 일부 수정, DELETE - 자원 삭제
+회원 가입은 유저를 생성하므로 POST 메서드를 사용합니다.&lt;/p&gt;
+&lt;p&gt;하지만 로그인은 어떤 메서드를 사용해야 할까요?&lt;br/&gt;
+REST 방식을 적용하면 로그인은 GET요청이라고 생각했습니다.
+왜냐하면 사용자가 로그인하면 서버에서 세션이나 토큰 값을 가져오기 때문입니다.
+하지만 제 예상과는 달리 로그인은 POST 메서드 입니다. 왜 POST이지? POST는 어떠한 리소스를 생성하는 의미인데?&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;GET요청은 브라우저 히스토리에 남으며 캐싱이 가능합니다.
+반면에 POST요청은 캐싱이 불가능하며 브라우저 히스토리에 남지 않습니다.
+사용자의 개인정보를 다루는 상황에서는 보안상 POST요청이 더 나아 보입니다.&lt;/p&gt;</content:encoded></item></channel></rss>
