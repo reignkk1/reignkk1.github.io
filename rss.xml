@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 21 Oct 2023 15:28:41 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 Oct 2023 09:31:05 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;CSR 이란?&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -210,7 +210,37 @@ const iceCream2 = new IceCreamFactory(&amp;quot;보석바&amp;quot;, &amp;quot;2
   &lt;/a&gt;
     &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;p&gt;위 그림처럼 프론트엔드 서버 앞단에 프록시 서버를 두어서 요청에 대한 처리를 할 수 있으며
-자연스레 CORS 에러도 해결 할 수 있고 통신도 매끄럽게 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[HTTP란 무엇인가]]></title><description><![CDATA[HTTP는 Hyper Text Transfer Protocol 의 약자이다. 직역을 하자면 하이퍼텍스트(웹 문서)를 주고 받는 통신 규약이라는 의미이다.]]></description><link>https://lumen.alxshelepenok.com/posts/http란</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/http란</guid><pubDate>Mon, 07 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 294px; &quot;&gt;
+자연스레 CORS 에러도 해결 할 수 있고 통신도 매끄럽게 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크의 기초]]></title><description><![CDATA[네트워크란 노드(Node)와 링크(Link)가 서로 연결되어 있거나 연결되어 있지 않은 집합체를 의미합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network</guid><pubDate>Wed, 09 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;네트워크란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;네트워크는 노드(Node)와 링크(Link)가 서로 연결되어 있거나 연결되어 있지 않은 집합체를 의미합니다.
+여기서 노드란 서버, 라우터, 스위치 등 네트워크 장치를 의미하고 링크는 유선 또는 무선을 의미합니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/1dabc6ecdbaf334aaaaa8c706b5f9898/6aca1/node_link.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 83.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe0kUwYCgf/EABkQAAEFAAAAAAAAAAAAAAAAAAEQESAxQf/aAAgBAQABBQJoaKX/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAcEAEAAgMAAwAAAAAAAAAAAAABABEhMVEQYXH/2gAIAQEAAT8hOoF/ICGW4FjVXfIZp6mrwahP/9oADAMBAAIAAwAAABCwCAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAdEAEBAAICAwEAAAAAAAAAAAABEQAxIVFBcYGx/9oACAEBAAE/EORUKtJxDrKqptxJze8AAI2hLitUGFUJgOlTAbtN6xVqN8gl+OPj1n65s+8//9k=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/1dabc6ecdbaf334aaaaa8c706b5f9898/8ac56/node_link.webp 240w,
+/static/1dabc6ecdbaf334aaaaa8c706b5f9898/d3be9/node_link.webp 480w,
+/static/1dabc6ecdbaf334aaaaa8c706b5f9898/c1dc5/node_link.webp 650w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/1dabc6ecdbaf334aaaaa8c706b5f9898/09b79/node_link.jpg 240w,
+/static/1dabc6ecdbaf334aaaaa8c706b5f9898/7cc5e/node_link.jpg 480w,
+/static/1dabc6ecdbaf334aaaaa8c706b5f9898/6aca1/node_link.jpg 650w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/1dabc6ecdbaf334aaaaa8c706b5f9898/6aca1/node_link.jpg&quot; alt=&quot;node link&quot; title=&quot;node link&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;처리량과 지연 시간&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;네트워크를 구축할 때는 ‘좋은’ 네트워크로 만드는 것이 중요합니다. 좋은 네트워크란 많은 처리량을 처리할 수 있으며 지연 시간이 짧고
+장애 빈도가 적으며 좋은 보안을 갖춘 네트워크를 말합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;처리량
+&lt;ul&gt;
+&lt;li&gt;링크를 통해 전달되는 단위 시간당 데이터양을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[HTTP란 무엇인가]]></title><description><![CDATA[HTTP는 Hyper Text Transfer Protocol 의 약자이다. 직역을 하자면 하이퍼텍스트(웹 문서)를 주고 받는 통신 규약이라는 의미이다.]]></description><link>https://lumen.alxshelepenok.com/posts/http란</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/http란</guid><pubDate>Mon, 07 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 294px; &quot;&gt;
       &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/29b934bc777bc378c09a9c5b4fb0b9c6/04a86/mixed-error.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
     &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAAB5UlEQVQoz22S2Y6bQBBF+f8vivKYZTxmsxsw4IDHMIaw2ECDPY49EX0iTEbKQx6u6pZUpVKf29rw+RNDkYNYgetAHIPnwNqBwIe6gM0GdjuwDAhCeHtDJgnNPmHIck77PWUUQd+jqUMKvs/tZU+2FhRBiNztOG0jCs+jjGNyP6DyfX4aOo23od69ELseiefxwzCI7DVby+ZSVGjj6UgZhAxlhbQMOuHQC5f+y3e6p2c6z6MzTGQQ0C4WyOWCLt7RL3Uu0Y7heGQoS4Ys4/3UoI11RWuYvNsrsEwQAtzN/MzJmzpYFmy3c6/roFuw+Aa6Aa4AP4ROwjCgUVdgWvD1CQwDfmzh8gbXK1wuILvHIOfzrMlPy72EtoW2geHMeP3FvWnQ1OlIE4TUrscpDBnSlPv9zu9x5B1mKfV//6Fx5Ha7ca1rtPuxJhQOoRB4K0EkXLJgS3/IkLaNFB7SD2mXOp2uI/0N0rSQQUhv2Y+ZLsuQh8NfhkVJu1ojLfPBcgJ+dTx4TSH0YWmAWIPrwvNiRjKxjGKw7ZlvXsw4pm9DWc2gnWlhCU8L8DaoskRlB1SSotJ07pMEleeoLEMVxexfX1F5gZLyIY2uQx0yVH1EVdXsy/mimjQFM2kKY6r/hvPhzwPIOeU/cw/leJcxGw4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
   &lt;picture&gt;
@@ -383,7 +413,164 @@ console.log(obj === obj2); // true&lt;/code&gt;
 &lt;blockquote&gt;
 &lt;p&gt;결론&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;싱글톤 패턴은 메모리 낭비가 되지 않고 인스턴스가 하나라는 유일성을 보장하며 의존성이 높아 질 수 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[선언형과 함수형 프로그래밍]]></title><description><![CDATA[선언형 프로그래밍은 '무엇을' 풀어내는가에 집중하는 패러다임이며 '프로그램은 함수로 이루어진 것이다.' 라는 명제가 담겨 있는 패러다임이기도 합니다. 함수형 프로그래밍도 선언형 패러다임의 일종입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/function-programing</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/function-programing</guid><pubDate>Mon, 10 Jul 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;싱글톤 패턴은 메모리 낭비가 되지 않고 인스턴스가 하나라는 유일성을 보장하며 의존성이 높아 질 수 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[절차형 프로그래밍]]></title><description><![CDATA[절차형 프로그래밍은 로직이 수행되어야 할 연속적인 계산 과정으로 이루어져 있습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/procedural-programing</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/procedural-programing</guid><pubDate>Wed, 12 Jul 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;절차형 프로그래밍이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;절차형 프로그래밍은 로직이 수행되어야 할 연속적인 계산 과정으로 이루어져 있습니다. 일이 진행되는 방식으로 그저 코드를 구현하기만 하면
+되기 때문에 코드의 가독성이 좋으며 실행 속도가 빠릅니다. 그렇기 때문에 계산이 많은 작업 등에 쓰입니다.
+단점으로는 모듈화하기가 어렵고 유지 보수성이 떨어진다는 점이 있습니다.&lt;/p&gt;
+&lt;p&gt;하나의 예시로 절차형 프로그래밍으로 1~10 까지의 숫자를 모두 더하는 로직을 짜보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let result = 0;
+for (let i = 0; i &amp;lt; numbers.length; i++) {
+  result += numbers[i];
+}
+console.log(result); // 55&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;</content:encoded></item><item><title><![CDATA[객체지향 프로그래밍]]></title><description><![CDATA[객체지향 프로그래밍은 객체들의 집합으로 프로그램의 상호 작용을 표현하며 데이터를 객체로 취급하여 객체 내부에 선언된 메서드를 활용하는 방식을 말합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/object-oriented-programing</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/object-oriented-programing</guid><pubDate>Tue, 11 Jul 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;객체지향 프로그래밍이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;객체들의 집합으로 프로그램의 상호 작용을 표현하며 데이터를 객체로 취급하여 객체 내부에 선언된 메서드를
+활용하는 방식을 말합니다.&lt;/p&gt;
+&lt;p&gt;예를 들어서 숫자들이 배열로 주어진다면 모든 수의 평균값과 합을 구하는 로직을 만들어 보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const numbers = [1, 2, 3];
+class Calculator {
+  constructor(numbers) {
+    this.numbers = numbers;
+  }
+  getAverage() {
+    return (
+      this.numbers.reduce((acc, cur) =&amp;gt; (acc += cur)) / this.numbers.length
+    );
+  }
+  getAdd() {
+    return this.numbers.reduce((acc, cur) =&amp;gt; (acc += cur));
+  }
+}
+
+const foo = new Calculator(numbers);
+foo.getAverage(); // 2
+foo.getAdd(); // 6&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;Calculator라는 평균값과 합을 계산해주는 클래스를 만들어 foo 라는 객체를 생성한 뒤 각각 메서드를 호출했습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;객체지향 프로그래밍의 특징&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;객체지향 프로그래밍은 추상화, 캡슐화, 상속성, 다형성이라는 특징이 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;추상화&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;추상화란 복잡한 시스템으로부터 핵심적인 개념 또는 기능을 간추려내는 것을 의미합니다.&lt;/li&gt;
+&lt;li&gt;예를 들어서 지하철 노선도를 보면 우리나라의 모든 지하철 노선을 한눈에 볼 수 있게 추상화 한 것이라고 볼 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;캡슐화&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;캡슐화는 객체의 속성과 메서드를 하나로 묶고 일부를 외부에 감추어 은닉하는 것을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;상속성&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;상속성은 상위 클래스의 특성을 하위 클래스가 이어받아서 재사용하거나 추가, 확장하는 것을 말합니다.&lt;/li&gt;
+&lt;li&gt;코드의 재사용성, 유지보수성 측면에서 중요합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;다형성&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;다형성은 하나의 메서드나 클래스가 다양한 방법으로 동작하는 것을 말합니다.&lt;/li&gt;
+&lt;li&gt;대표적으로 오버로딩, 오버라이딩이 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;오버로딩&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;오버로딩은 같은 이름을 가진 메서드를 여러 개 두는 것을 말합니다.&lt;/li&gt;
+&lt;li&gt;메서드의 타입, 매개변수의 유형, 개수등으로 여러 개를 둘 수 있으며 컴파일 중에 발생하는 ‘정적’ 다형성입니다.&lt;/li&gt;
+&lt;li&gt;자바스크립트에는 함수의 매개변수가 자유롭기 때문에 없는 개념입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;void overload(){
+  System.out.println(&amp;quot;매개변수 0개&amp;quot;);
+}
+
+void overload(int i, int j){
+  System.out.println(&amp;quot;매개변수 &amp;quot;+ i + &amp;quot; 그리고 &amp;quot; + j);
+}
+
+void overload(double d){
+  System.out.println(&amp;quot;매개변수 &amp;quot; + d);
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드는 자바입니다.&lt;/p&gt;
+&lt;p&gt;매개변수의 개수에 따라 다른 함수가 호출 되는 것을 보실 수 있습니다.
+자바스크립트의 경우에는 맨 마지막 함수가 덮어씌워집니다. 타입스크립트의 경우에는 에러를 띄우겠네요.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function overload(a, b, c) {
+  if (c) {
+    console.log(a, b, c);
+  } else if (b) {
+    console.log(a, b);
+  } else if (a) {
+    console.log(a);
+  } else {
+    console.log(&amp;quot;매개변수 없음&amp;quot;);
+  }
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;자바스크립트의 경우에는 위 코드와 같이 모든 경우를 조건문으로 대응하면 됩니다.
+다른 언어와는 다르게 자바스크립트는 자유도가 높다는 걸 볼 수 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;오버라이딩
+&lt;ul&gt;
+&lt;li&gt;오버라이딩은 상위 클래스로부터 상속받은 메서드를 하위 클래스가 재정의하는 것을 의미합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;객체지향 프로그래밍 설계 원칙&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;객체지향 프로그래밍을 설계할 때는 SOLID 원칙을 지켜주어야 합니다.&lt;/p&gt;
+&lt;p&gt;S는 단일 책임 원칙, O는 개방-폐쇄 원칙, L은 리스코프 치환 원칙, I는 인터페이스 분리 원칙, D는 의존역전 원칙을 의미합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;단일 책임 원칙
+&lt;ul&gt;
+&lt;li&gt;단일 책임 원칙은 모든 클래스는 각각 하나의 책임만 가져야 하는 원칙입니다. 예를 들어서 A라는 로직이 존재한다면 어떠한 클래스는
+A에 관한 클래스여야 하고 이를 수정한다고 했을 때 A와 관련된 수정이어야 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;개방-폐쇄 원칙
+&lt;ul&gt;
+&lt;li&gt;개방-폐쇄 원칙은 유지 보수 사항이 생긴다면 코드를 쉽게 확장할 수 있도록 하고 수정할 때는 닫혀 있어야 하는 원칙입니다.
+즉, 기존의 코드는 잘 변경하지 않으면서도 확장은 쉽게 할 수 있어야 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;리스코프 치환 원칙
+&lt;ul&gt;
+&lt;li&gt;리스코프 치환 원칙은 프로그램의 객체는 프로그램의 정확성을 깨뜨리지 않으면서 하위 타입의 인스턴스로 바꿀 수 있어야 하는 것을 의미합니다.
+클래스는 상속이 되기 마련이고 부모, 자식이라는 계층 관계가 만들어집니다. 이때 부모 객체에 자식 객체를 넣어도 시스템이 문제없이 돌아가는
+것을 의미 합니다. 즉, 고양이 객체가 동물 객체의 자식 계층일 때 고양이 객체를 동물 객체와 바꿔도 문제가 없어야 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;인터페이스 분리 원칙
+&lt;ul&gt;
+&lt;li&gt;인터페이스 분리 원칙은 하나의 일반적인 인터페이스보다 구체적인 여러 개의 인터페이스를 만들어야 하는 원칙을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;의존 역전 원칙
+&lt;ul&gt;
+&lt;li&gt;의존 역전 원칙은 자신보다 변하기 쉬운것에 의존하던 것을 추상화된 인터페이스나 상위 클래스를 두어 변하기 쉬운 것의 변화에 영향받지 않게
+하는 원칙을 말합니다. 예를 들어서 사진을 끼울 수 있는 액자틀을 만들어 놓은 후 여러 사진을 번갈아 끼울수 있어야 합니다.
+즉, 상위 계층은 하위 계층의 변화에 대한 구현으로부터 독립되어야 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[선언형과 함수형 프로그래밍]]></title><description><![CDATA[선언형 프로그래밍은 '무엇을' 풀어내는가에 집중하는 패러다임이며 '프로그램은 함수로 이루어진 것이다.' 라는 명제가 담겨 있는 패러다임이기도 합니다. 함수형 프로그래밍도 선언형 패러다임의 일종입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/function-programing</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/function-programing</guid><pubDate>Mon, 10 Jul 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;선언형 프로그래밍과 함수형 프로그래밍이란?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;선언형 프로그래밍은 ‘무엇을’ 풀어내는가에 집중하는 패러다임이며&lt;br/&gt;
