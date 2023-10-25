@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 Oct 2023 09:31:05 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 25 Oct 2023 08:55:40 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;CSR 이란?&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -240,7 +240,223 @@ const iceCream2 = new IceCreamFactory(&amp;quot;보석바&amp;quot;, &amp;quot;2
 &lt;li&gt;링크를 통해 전달되는 단위 시간당 데이터양을 말합니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[HTTP란 무엇인가]]></title><description><![CDATA[HTTP는 Hyper Text Transfer Protocol 의 약자이다. 직역을 하자면 하이퍼텍스트(웹 문서)를 주고 받는 통신 규약이라는 의미이다.]]></description><link>https://lumen.alxshelepenok.com/posts/http란</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/http란</guid><pubDate>Mon, 07 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 294px; &quot;&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 591px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/7e236cd37c1002d579439b916eb23083/e4c9a/throughput.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 54.58333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACCklEQVQoz32SS08UQRSFiwr8DRJjghvC6NqFG6O/w3/iQreasBncaSJEJCNqojHj0CBKVILDaHiJOt3z7GEeHQSmX9Ndn+nqUTbCTU6qcuvm1Dl1SsRxjFLqTJCsoME5c3oWEEEQ4HkuZ5WmU8mlcbo/pxJS4fs+nh8QxWC32nS7Du1Oj9ZBB6frDEn/KgT/6ISG3aLnHOp527bpdNpEUZQqDMMQz/1NFB5Ttb5TtfaolHexyru0mybRzibKO0T5R4TlHUKnSa9b56BpYv7colaraNLk6TRh343ol27B+jiUrkBxCkoZ+DoFmxnipXH4PMHg9QSRcRGKk7AxCaXLhO8v0Ph0e+h3qPBLaZdg/RrHzwWVOYH5WFCdEziLgigvUIZAvRXEjwQsCVQh7bMsaM0JPmQzSVak4caIb1t7NI0bWLOCsDAGKxI/L2ktSirzktrTEerzksZDiZ2T1BYk1hNJ89kom1lB7s4lKuY+plWh2+0klgdsv7ypVbA6hlqW8E7CqtTkrIwQGZJ+XtJ/I1HGsL82SntBsJbNgBr8S1oMYtjKXWXwShAn1vIptN2CACO1SiFFMqMtG4LevKA4e10TRVGobYsgVLT2X+D9msY1Z3DLWQ3feoCzc5/6xl162/dwy6dnCTxzhpMf0/SqH/GCGLd/QvKnhRrG/b/yBlC3j+g4AefX6Yf/A+Bl852IzGZ0AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/7e236cd37c1002d579439b916eb23083/8ac56/throughput.webp 240w,
+/static/7e236cd37c1002d579439b916eb23083/d3be9/throughput.webp 480w,
+/static/7e236cd37c1002d579439b916eb23083/48c21/throughput.webp 591w&quot; sizes=&quot;(max-width: 591px) 100vw, 591px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/7e236cd37c1002d579439b916eb23083/8ff5a/throughput.png 240w,
+/static/7e236cd37c1002d579439b916eb23083/e85cb/throughput.png 480w,
+/static/7e236cd37c1002d579439b916eb23083/e4c9a/throughput.png 591w&quot; sizes=&quot;(max-width: 591px) 100vw, 591px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/7e236cd37c1002d579439b916eb23083/e4c9a/throughput.png&quot; alt=&quot;throughput&quot; title=&quot;throughput&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;단위로는 bps를 씁니다. 초당 전송 또는 수신되는 비트 수라는 의미입니다.&lt;/p&gt;
+&lt;p&gt;처리량은 사용자들이 많이 접속할 때마다 커지는 트래픽, 네트워크 장치 간의 대역폭, 네트워크 중간에 발생하는 에러,
+장치의 하드웨어 스펙에 영향을 받습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;트래픽&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;서버와 스위치 등 네트워크 장치에서 일정 시간 내에 흐르는 데이터의 양을 말한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;대역폭&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;주어진 시간 동안 네트워크 연결을 통해 흐를 수 있는 최대 비트 수&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;지연시간&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;요청이 처리되는 시간을 말하며 어떤 메시지가 두 장치 사이를 왕복하는 데 걸린 시간을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 446px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/7cfb1180454486606fdd3c5500c020fe/6244b/latency.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 45.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAABGUlEQVQoz51RyYqEQAyt//8Jf8CLgl68CN6kFdGLiAeXdgP3BVHUDAnUYM9M92ECISZ5lTxfGLyx67ooHscBmqaBYRiUn+f53fvLGDYRxIEczGPf96CqKg3l9Z+4e87gg3HQMAyw7/tL7R7vhNi6rvB8Psmrqvo1bNs2KMsSpml6u/Dll33fhyzLoG1bCIIAmqahIV3XETOsx3EMaZpSjo49xKHleU5y6LpOPWbbNiRJQgDP84jNPM80iD9G5qgld6xxxvheFEUQBAEcxwFmmiZIkgSKooAsy7SRXxMNtYuiiBbdD8AdB9d1TZLhso9H+Y+xZVlgHEfAiFsejweEYUiOUliWRd/IHKPruqRpURSUIyuUCGfggb8ABa6v3FZ3s+MAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/7cfb1180454486606fdd3c5500c020fe/8ac56/latency.webp 240w,
+/static/7cfb1180454486606fdd3c5500c020fe/5021b/latency.webp 446w&quot; sizes=&quot;(max-width: 446px) 100vw, 446px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/7cfb1180454486606fdd3c5500c020fe/8ff5a/latency.png 240w,
+/static/7cfb1180454486606fdd3c5500c020fe/6244b/latency.png 446w&quot; sizes=&quot;(max-width: 446px) 100vw, 446px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/7cfb1180454486606fdd3c5500c020fe/6244b/latency.png&quot; alt=&quot;latency&quot; title=&quot;latency&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;지연 시간은 매체 타입(무선, 유선), 패킷 크기, 라우터의 패킷 처리 시간에 영향을 받습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;네트워크 토폴로지와 병목 현상&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;네트워크를 설계할 때 고려하는 네트워크 토폴로지를 알아보겠습니다. 네트워크 토폴로지는 노드와 링크가 어떻게 배치되어 있는지에 대한
+방식이자 연결 형태를 의미합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;트리 토폴로지
+&lt;ul&gt;
+&lt;li&gt;계층형 토폴로지라고 하며 트리 형태로 배치한 네트워크 구성을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 423px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/c2c2a3b957302e9b362a576e6a468dbe/f687d/tree.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 54.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABnElEQVQoz31SS48BQRCen+tm/4EQFzfLUTi4MMFNSMaFOMxcOAjxFq8QzIh4jNeMb1O127OzyH5Jpau7v6qu+qol/ODxeLAJ37Zt9lerFabTKXRdR6fTwf1+f8sXkNyHbpJAq9VCtVpFt9tFsVjE4XDAcxHuHNLzC2J/PB7ZNpsNEokEvB9e5PN5nE4n7Pd7XK/Xl5g/FRJhNBpxW7VajYP+w2w2Q6PRwHA4xHq9/q1QJCStiESYz+cwDIN90tKyLGcVfJKAzsja7fZrQtImGo3C4/HA5/M5r4rhCJ7Yl8tlBAIB+P1+KIri3EnuNi6XC1RNxXa7fauPW2vyVVVFpVJxJs8a3m43bpHKJg0Ji8WC98vl0hFfJKOh0KDoKwkQjzSnXBL9L8PQnUS73Y7Jtm3xlN2BpmliPB4763esgcFgwHH9fh8SXcRiMaTTMmRZ5ldyuRxbNpvlSQqcz2cUCgXWL5VKYTKZsGUyGWiaxlpK1FKppCAS+USz2eTAXq+HcDjMScVHFsMgTigUQjKZ5A7oPh6PIxgMol6v4wtkSzJAcJ+VCQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/c2c2a3b957302e9b362a576e6a468dbe/8ac56/tree.webp 240w,
+/static/c2c2a3b957302e9b362a576e6a468dbe/2c5ea/tree.webp 423w&quot; sizes=&quot;(max-width: 423px) 100vw, 423px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/c2c2a3b957302e9b362a576e6a468dbe/8ff5a/tree.png 240w,
+/static/c2c2a3b957302e9b362a576e6a468dbe/f687d/tree.png 423w&quot; sizes=&quot;(max-width: 423px) 100vw, 423px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/c2c2a3b957302e9b362a576e6a468dbe/f687d/tree.png&quot; alt=&quot;tree&quot; title=&quot;tree&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;노드의 추가, 삭제가 쉬우며 특정 노드에 트래픽이 집중될 때 하위 노드에 영향을 끼칠 수 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;버스 토폴로지
+&lt;ul&gt;
+&lt;li&gt;중앙 통신 회선 하나에 여러 개의 노드가 연결되어 공유하는 네트워크 구성을 말하며 근거리 통신망(LAN)에서 사용합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 382px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/665cd750035c0282bde006e9b6658a07/77edc/bus.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 34.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAABMUlEQVQY00WOUYuCQBSF/f8/JMGH6N2nEMdSi9KMRrvTFOg8mGOBhZedvAs77O55/Djf4TiIWJZl3/dCCK01ERljyrLUWgsh2raln5zP57ZtpZRN0xDRNE1E5CBiFEVpmoZheL/fiejz+SQ/CYKgrmsrZ1kWx3EQBADwLxtjlFK+7wPAOI5W7rpuuVzmef5+v231+XwmSRLH8TAMlkzT5ByPx6qq0jTlnFdVFYZhURRCiO12WxQFADDGDocDAGRZtt/vL5fLer3e7Xacc+dvhoj6vo+i6Ha7GWMsGYZhtVpJKRHR/kfEzWbDOR/H0bHIVk+n0+v1AoDH42E5AHRd1zSNUsqSuq6VUlprKaXz9RtEXCwW8/l8Nptdr1e76Pu+53mu6+Z5bmXGmOu6nucxxr4BN6R3tQZ/RiEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/665cd750035c0282bde006e9b6658a07/8ac56/bus.webp 240w,
+/static/665cd750035c0282bde006e9b6658a07/c5024/bus.webp 382w&quot; sizes=&quot;(max-width: 382px) 100vw, 382px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/665cd750035c0282bde006e9b6658a07/8ff5a/bus.png 240w,
+/static/665cd750035c0282bde006e9b6658a07/77edc/bus.png 382w&quot; sizes=&quot;(max-width: 382px) 100vw, 382px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/665cd750035c0282bde006e9b6658a07/77edc/bus.png&quot; alt=&quot;bus&quot; title=&quot;bus&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;설치 비용이 적고 신뢰성이 우수하며 중앙 통신 회선에 노드를 추가하거나 삭제하기 쉽습니다. 그러나 스푸팡이 가능한 문제점이 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;스푸핑
+&lt;ul&gt;
+&lt;li&gt;LAN상에서 송신부의 패킷을 송신과 관련 없는 다른 호스트에 가지 않도록 하는 스위칭 기능을 마비시키거나 속여서 특정 노드에 해당 패킷이 오도록 처리하는 것을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 428px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5ad99798787d082109ce957a64858a34/65a3f/spoofing.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 40.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdiQsD//xAAYEAADAQEAAAAAAAAAAAAAAAABAhEAIv/aAAgBAQABBQKCtzgon//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABgQAAIDAAAAAAAAAAAAAAAAABEhABAi/9oACAEBAAY/Ahpwuv/EABkQAAMBAQEAAAAAAAAAAAAAAAABEZEhQf/aAAgBAQABPyFo3KIolpyUW9af/9oADAMBAAIAAwAAABDzz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAQADAQEBAAAAAAAAAAAAAAEAESExgaH/2gAIAQEAAT8QcbdIweynl4D6gDtdbtP/2Q==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/5ad99798787d082109ce957a64858a34/8ac56/spoofing.webp 240w,
+/static/5ad99798787d082109ce957a64858a34/3b73a/spoofing.webp 428w&quot; sizes=&quot;(max-width: 428px) 100vw, 428px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/5ad99798787d082109ce957a64858a34/09b79/spoofing.jpg 240w,
+/static/5ad99798787d082109ce957a64858a34/65a3f/spoofing.jpg 428w&quot; sizes=&quot;(max-width: 428px) 100vw, 428px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/5ad99798787d082109ce957a64858a34/65a3f/spoofing.jpg&quot; alt=&quot;spoofing&quot; title=&quot;spoofing&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;앞의 그림처럼 올바르게 전달 되어야 하는 패킷이 악의적인 노드에 전달되게 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;스타 토폴로지
+&lt;ul&gt;
+&lt;li&gt;중앙에 있는 노드에 모두 연결된 네트워크 구성을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 278px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/c36fa8f2a97cabcfcc8dcc3f1aad1aa1/7cdc7/star.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 65.41666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe3Eimw//8QAGxAAAgIDAQAAAAAAAAAAAAAAAQIDEQASEzH/2gAIAQEAAQUCBNpW2zZNJzEr81Hn/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGhABAQACAwAAAAAAAAAAAAAAAQAQITEykf/aAAgBAQAGPwLidvl1Yhx//8QAGxABAQEAAgMAAAAAAAAAAAAAAREAQWEh0fH/2gAIAQEAAT8hexYHOfgp0xN8s95kBazPFvGVD1v/2gAMAwEAAgADAAAAEPfP/8QAFREBAQAAAAAAAAAAAAAAAAAAECH/2gAIAQMBAT8Qh//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EAB0QAAIDAAIDAAAAAAAAAAAAAAERACFBMXFRYYH/2gAIAQEAAT8Q0X4AR6uEM8FUlvKDl5HGVh8jAqjS9wIrTRrOoY9yQM//2Q==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/c36fa8f2a97cabcfcc8dcc3f1aad1aa1/8ac56/star.webp 240w,
+/static/c36fa8f2a97cabcfcc8dcc3f1aad1aa1/bd3df/star.webp 278w&quot; sizes=&quot;(max-width: 278px) 100vw, 278px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/c36fa8f2a97cabcfcc8dcc3f1aad1aa1/09b79/star.jpg 240w,
+/static/c36fa8f2a97cabcfcc8dcc3f1aad1aa1/7cdc7/star.jpg 278w&quot; sizes=&quot;(max-width: 278px) 100vw, 278px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/c36fa8f2a97cabcfcc8dcc3f1aad1aa1/7cdc7/star.jpg&quot; alt=&quot;star&quot; title=&quot;star&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;노드를 추가하거나 에러를 탐지하기 쉽고 패킷의 충돌 발생 가능성이 적습니다. 또한, 어떠한 노드에
+장애가 발생해도 쉽게 에러를 발견할 수 있으며 장애 노드가 중앙 노드가 아닐 경우 다른 노드에 영향을 끼치는 것이 적습니다.
+하지만 중앙 노드에 장애가 발생하면 전체 네트워크를 사용할 수 없고 설치 비용이 고가입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;링형 토폴로지
+&lt;ul&gt;
+&lt;li&gt;각각의 노드가 양 옆의 두 노드와 연결하여 전체적으로 고리처럼 하나의 연속된 길을 통해 통신을 하는 망 구성 방식입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 256px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/2d7717c20e5b0b1722a73017194fa715/6f3f2/ring.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 77.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6ElEQVQoz42Ty6riQBCG86DiuHM1x2U2Ij7B+ACCCxcuxK0gomTjAQ8BhVw0QdMmwahJ1MSYbnPpTmaOGUKYcYbzrYqi/66qv6up9BVJkmw2G9M0z+ezLMv3+z1L/nGMeilGCM1mM9M0fd9nWfZ0Or0WE0IghOhJHMcIIcdxwjDo9Xrl8rdSqdRut29PEEIY48fjgRCCEBJCKF3XJUkyDAMAwPN8HMeEkOzi6/VqWVYWY4yjKAIAcBynqqokSYqiULIsr9drCCEAQBTFvD2McfIEY5wnNU0DAKRp6jgOz/OUqqrNZrNSqTQaDUVRirNl4jxO01RV1Xq9Xq1WaZrmOO7TsCiKlstlGIbpFwiCgGGYzH8qT6VfJi9D3W43RVFWq5WiKL7v/1+GENrtdoIgAAAghJ+GeZ5HCLlcLpqm5eMlBYqGXa/XMAxd1wUAUCzLDgaD9/dZv99fLBbkyd81CSFJknx8fIzHY1EUp9OpIAiUZVmdTuft7Xu327VtOwgC13UhhIZhqKqq67pt2wgh13WDINjv961Wq1wut1o/DocDle9A8UmOx+N2u03TNI5jWZYdxyl2Ecfxb8OSJMn6zBrLxJ7nDYdDlmXn8/lkMilencXZClH/MnY0GtVqNZqmGYZ5+St+Vf4J6QA+PhDUnHEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/2d7717c20e5b0b1722a73017194fa715/8ac56/ring.webp 240w,
+/static/2d7717c20e5b0b1722a73017194fa715/f4e34/ring.webp 256w&quot; sizes=&quot;(max-width: 256px) 100vw, 256px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/2d7717c20e5b0b1722a73017194fa715/8ff5a/ring.png 240w,
+/static/2d7717c20e5b0b1722a73017194fa715/6f3f2/ring.png 256w&quot; sizes=&quot;(max-width: 256px) 100vw, 256px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/2d7717c20e5b0b1722a73017194fa715/6f3f2/ring.png&quot; alt=&quot;ring&quot; title=&quot;ring&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;데이터는 노드에서 노드로 이동을 하게 되며, 각각의 노드는 고리 모양의 길을 통해 패킷을 처리합니다.&lt;/p&gt;
+&lt;p&gt;노드 수가 증가되어도 네트워크상의 손실이 거의 없고 충돌이 발생되는 가능성이 적고 노드의 고장 발견을 쉽게 찾을 수 있습니다.
+하지만 네트워크 구성 변경이 어렵고 회선에 장애가 발생하면 전체 네트워크에 영향을 크게 끼치는 단점이 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;메시 토폴로지
+&lt;ul&gt;
+&lt;li&gt;망형 토폴로지라고도 하며 그물망처럼 연결되어 있는 구조입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 349px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/de61d60678acd9330cd2ab2cca9c1e46/e9bf8/mesh.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 74.58333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACFUlEQVQ4y3VTS48pURDu/+h3SEQs76wtsJC4sbNgITO2goVBYuUZr5Do5uJ6NvFs2vu7qZp7Os2YSk7Oq+qrr746R8ILu91uPP8dDKDIMlarFVRVRaPRwP1+5zsxP5v0fECOAvBPt4vPzyR6vR7K5TKy2azhI8aPgObMAnC9XuO3zweLxQK73Y5SqWRUYPbn9X9syZzN7Eh2Op14n8/nMZ/P+f5yuXyrxjxLr3Q4HA6sm6btsNvtcDweed7v93y+3W5xvV5fa9jpdNBsNnnIssxlUqBgSsG0JkAhhUgwGAxQq9U4tlKpsK80nU4NdAJU1RkulzN0Xcdms8ZsNmMASkRrXT9wQiq92WwZTIn5aDSCFIlEEI/HEYvFEAqFMB6PGYACSDdiQlrSmM9VTkRrAkomkwgEAkgkEvD5fGi1WpDS6TQcDgdsNhs7fLFZMRCVYLbz+cxM6ZyAu90uvF4vrFYrwuEwlsvlY1OIlSiByptMJhwo7giMdCOGonnfmmLuFjHQNO3BmbTp9/ssxdezuRqJSUthtDeejejeYrFALpdDpVrhR6woCgMTACWj70c/plqtolAocBMfHrf4KQKw3W5zoLBisch6bTYbLl1RZAyHQ+OeNBTlvwSkzC6XC36/H263G6lUytCPjBh6PB7uKPm9v3+8Zig2pEkmk8Hb2y9Eo1HWz3xPOtXrdTidTgSDQdb1GfAfYZNmk/sUIdAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/de61d60678acd9330cd2ab2cca9c1e46/8ac56/mesh.webp 240w,
+/static/de61d60678acd9330cd2ab2cca9c1e46/d2f1d/mesh.webp 349w&quot; sizes=&quot;(max-width: 349px) 100vw, 349px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/de61d60678acd9330cd2ab2cca9c1e46/8ff5a/mesh.png 240w,
+/static/de61d60678acd9330cd2ab2cca9c1e46/e9bf8/mesh.png 349w&quot; sizes=&quot;(max-width: 349px) 100vw, 349px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/de61d60678acd9330cd2ab2cca9c1e46/e9bf8/mesh.png&quot; alt=&quot;mesh&quot; title=&quot;mesh&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;한 단말 장치에 장애가 발생해도 여러 개의 경로가 존재하므로 네트워크를 계속 사용할 수 있고 트래픽도 분산 처리가 가능합니다.
+하지만 노드의 추가가 어렵고 구축 비용과 운용 비용이 고가인 단점이 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;병목 현상
+&lt;ul&gt;
+&lt;li&gt;전체 시스템의 성능이나 용량이 하나의 구성 요소로 인해 제한을 받는 현상이다.&lt;/li&gt;
+&lt;li&gt;네트워크의 구조라고도 일컫는 토폴로지가 중요한 이유는 병목 현상을 찾을 때 중요한 기준이 되기 때문입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 399px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/e8abf9abc01b1ca3ac40020a9bc762f4/a307d/prev.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB00lEQVQ4y5VTzW7TQBDeR4mUl8khT5ITEnkEbiAVeomo4IxAUJEIEZCQeoh64NoCQqGOG7vOrp3K9a5/Evz3oVnHVhIFUUYaz3hm9O18uzOsKEtwx8HcnCGJY9SSJAmuZwYc20ZRFDpWluWOPSQsjmN8PT/Hx+EQC8dpEoIv8GU8xuTsDKskaYD+BcryPMfs6go/Li8RhmGTiKJIx4xfU1CNBthouaUkxKBmwZRSCIIAnudpECmlVgL3lkv4d3cIlYIMAoRqc2CJHbBaKMa2292mse0XFQbc2yXSIsc+WcMwYJpm1WG5R2GfTpammD8fYvHsHYwnr+A8fQvrZIhYKqRZpms6nQ663e79ANNkBefBAOrRG8ijEaLH78EfnsC9tpEVOT6Nx2i1Wmi325hMJvfr0HoxAj8+hXn0GovjU9gvPyDe3Ge/3wdjTGuv1/vPO/RvkaLQ/8UmzznHYDDQKoQAo9f0fR9cCNBMKilBL0++67o6F4WRjsdRVJ/WjA8J1dm2Xd1hlmUwaQ4vLqCUbLoi/+f3bzCmU1BNBYKdOTzEiiX1poxGcAVvkpw25XO1Kev16q+bQrYebA1IH8E5biwLv9frBpBAbqw5PFccBNm3tf8HVMTQ8PagBQYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/e8abf9abc01b1ca3ac40020a9bc762f4/8ac56/prev.webp 240w,
+/static/e8abf9abc01b1ca3ac40020a9bc762f4/66086/prev.webp 399w&quot; sizes=&quot;(max-width: 399px) 100vw, 399px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/e8abf9abc01b1ca3ac40020a9bc762f4/8ff5a/prev.png 240w,
+/static/e8abf9abc01b1ca3ac40020a9bc762f4/a307d/prev.png 399w&quot; sizes=&quot;(max-width: 399px) 100vw, 399px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/e8abf9abc01b1ca3ac40020a9bc762f4/a307d/prev.png&quot; alt=&quot;prev&quot; title=&quot;prev&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;앞의 그림처럼 서비스를 만들었는데, 병목 현상이 일어나서 사용자가 서비스를 이용할 때 지연 시간이 길게 발생하고 있다고 가정 해봅시다.
+저는 지연 시간을 짧게 만들기 위해 대역폭을 크게 설정했음에도 성능이 개선되지 않았습니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 420px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/1a901ccec73c85a34bf55edae3d4aacd/d10fb/next.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 59.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAACEklEQVQoz32TTU/bQBCG82P4P9xy5Ee0t9KeK1XtJTduXFv144DUQ6BquKCeKgIEElInoODYie3EHxvbWXv9VLslaYCqrzTad8czr2Y8O7WqqtBwnTHdzgVCCFYI53PjmwW+uatSoeN1yipvda5QM4FKcXF6yvHREe54vP54OxxyfNhk8KtPmmZ0r7pYA4twHq7FNs0IalKWJRPXpXd1RZIkyKKgKApmQUD38pL5bEaxlCRRTJ5mhm9Wp2O1xlowS1OyNEMsBOk8IuwMSbPM+JM4Js+XKGAhl5Qb7elc3d0Kmtd4DFkie+MHrlykJJbN9OyaabuHGNqU91VqNBoNDg4O7issFcXARXbvkH2H/KeF+HJi+LIzQloTJu+/4zzbw3/9geDNR+zne3jnfXJVsBCCra0t6vX6vaBSKC9COXPKaURhuaTf2oZLO0DNBN7XH7gv9/HffsZ79wn71T6T874R2H2xS61WM9ZsNp+2XOWSZdd+4CukJHN8pr0h/vUNqeOvB9Nqtdje3mZnZ4fBYPBnKLpskSREcYyYhYS9W8RigUgEURiS6QEVS+JUoB4NRWM0GuG67t8pq0oxtu+4PD8jEYlJ0hMLfJ+LszaB51HqpyQllarQv2nzYUspjWluWtZvqNM+pXXYZOI46wqGlmV8Vr//pKp/bYoRXDl8z2N0c0OeZeuAOIrMtuhzczP+x38DBvaD81iLyPsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/1a901ccec73c85a34bf55edae3d4aacd/8ac56/next.webp 240w,
+/static/1a901ccec73c85a34bf55edae3d4aacd/ce09e/next.webp 420w&quot; sizes=&quot;(max-width: 420px) 100vw, 420px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/1a901ccec73c85a34bf55edae3d4aacd/8ff5a/next.png 240w,
+/static/1a901ccec73c85a34bf55edae3d4aacd/d10fb/next.png 420w&quot; sizes=&quot;(max-width: 420px) 100vw, 420px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/1a901ccec73c85a34bf55edae3d4aacd/d10fb/next.png&quot; alt=&quot;next&quot; title=&quot;next&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;저는 네트워크 토폴로지가 어떻게 되었나 확인했고, 서버와 서버 간 그리고 게이트웨이로 이어지는 회선을 추가해서 병목 현상을 해결했습니다.
+이처럼 네트워크가 어떤 토폴로지를 갖는지, 또한 어떠한 경로로 이루어져 있는지 알아야 병목 현상을 올바르게 해결할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[HTTP란 무엇인가]]></title><description><![CDATA[HTTP는 Hyper Text Transfer Protocol 의 약자이다. 직역을 하자면 하이퍼텍스트(웹 문서)를 주고 받는 통신 규약이라는 의미이다.]]></description><link>https://lumen.alxshelepenok.com/posts/http란</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/http란</guid><pubDate>Mon, 07 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 294px; &quot;&gt;
       &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/29b934bc777bc378c09a9c5b4fb0b9c6/04a86/mixed-error.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
     &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAAB5UlEQVQoz22S2Y6bQBBF+f8vivKYZTxmsxsw4IDHMIaw2ECDPY49EX0iTEbKQx6u6pZUpVKf29rw+RNDkYNYgetAHIPnwNqBwIe6gM0GdjuwDAhCeHtDJgnNPmHIck77PWUUQd+jqUMKvs/tZU+2FhRBiNztOG0jCs+jjGNyP6DyfX4aOo23od69ELseiefxwzCI7DVby+ZSVGjj6UgZhAxlhbQMOuHQC5f+y3e6p2c6z6MzTGQQ0C4WyOWCLt7RL3Uu0Y7heGQoS4Ys4/3UoI11RWuYvNsrsEwQAtzN/MzJmzpYFmy3c6/roFuw+Aa6Aa4AP4ROwjCgUVdgWvD1CQwDfmzh8gbXK1wuILvHIOfzrMlPy72EtoW2geHMeP3FvWnQ1OlIE4TUrscpDBnSlPv9zu9x5B1mKfV//6Fx5Ha7ca1rtPuxJhQOoRB4K0EkXLJgS3/IkLaNFB7SD2mXOp2uI/0N0rSQQUhv2Y+ZLsuQh8NfhkVJu1ojLfPBcgJ+dTx4TSH0YWmAWIPrwvNiRjKxjGKw7ZlvXsw4pm9DWc2gnWlhCU8L8DaoskRlB1SSotJ07pMEleeoLEMVxexfX1F5gZLyIY2uQx0yVH1EVdXsy/mimjQFM2kKY6r/hvPhzwPIOeU/cw/leJcxGw4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
   &lt;picture&gt;
