@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 25 Oct 2023 08:55:40 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Oct 2023 08:31:10 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;CSR 이란?&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -155,7 +155,70 @@ const iceCream2 = new IceCreamFactory(&amp;quot;보석바&amp;quot;, &amp;quot;2
 &lt;p&gt;아이스크림 만드는 공장(함수)에 이름과 가격을 재료(함수인자)로 넣으면 아이스크림이 만들어 집니다.
 이제 생성 로직이 바뀌면 아이스크림 공장(함수)만 바꾸면 됩니다.&lt;/p&gt;
 &lt;p&gt;코드가 좀 더 깔끔해지고 유지보수성도 높아졌습니다.&lt;/p&gt;
-&lt;p&gt;메모리의 효율성을 위해서 getInfo 함수는 프로토타입으로 지정해 줍니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프록시 패턴 (Proxy Pattern)]]></title><description><![CDATA[프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/proxy</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/proxy</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;메모리의 효율성을 위해서 getInfo 함수는 프로토타입으로 지정해 줍니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크 분류와 프로토콜]]></title><description><![CDATA[네트워크는 LAN과 MAN 그리고 WAN으로 분류할 수 있습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network-protocal</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network-protocal</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;네트워크 분류&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;네트워크는 규모를 기반으로 분류할 수 있습니다. 사무실과 개인적으로 소유 가능한 규모인 LAN(Local Area Network)과 서울시 등 시 정도의
+규모인 MAN(Metropolitan Area Network), 그리고 세계 규모의 WAN(Wide Area Network)으로 나뉩니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 691px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/68bcb3f9e4febdd9d73bdd15dd9d6678/e185b/network_area.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 58.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAADDElEQVQoz2WR609aBxiHz7+5L8u2bGlMW9usHTp0ckAUuVitxVMUFOR2DjflgAqew1VBjgqipWPepl2/dFmzbM02l+3Ls8iyT3uTJ2/yJO/v9+EVpv2f4w4N4V4bwhO+z2z0HjPBYV7IbuLbS3gTZmZj93guP/gfC8oDvKlhvMmHPFf+dUJANRPZsQ4IF78huycxubzEtD9Ao9Pl/S+3BFQ/ctlCvGQjXrIS060kqpP40ibMzk8Y93xGcHMcpWJD8GdHCe+IBLcnyNQdRLaKfDExgj8V4t2PV8Cv1I+O8aYnUSoWoppITBeJahbmIo+Z8g3hWL6PlPxqUCbMx4Z5mTExLw+zubdIcf81G3qaP37/if+mflBlZOEpwa1RlrMm/KppsL3JL/GtP0VKPxlw54RAboR4yUKoOMq2IfH3X7dc3HQ4PTvl3fsPg8DuSYfIlhulJiJXrMgVEbkskqzZyDTsAxLVO29ByB96qPYl6n0fek/i5w99/rz9DYt3iiczViI5g/PzNvtnElrvBdVvFym/9tK4XGKj6cLlf8iz4CMKnTl2L3wIastJuSehH8+hHtopd+e4etslJKf4+JEdX2oTo59E606inaygv/Kiv1pgveEkqtl4mRzBlx5FLttRDQ9CXLeQrNnxRB7jDH6EtPYpqboNJT9DKOsiX51mMWvGtTqEN24muTeFajiIahPE7m7rkyhV6+BJSsWKECuJpJtTZAwniYKNREkksztFRhfJtuwohTHUtodMzYZSMJNve1APXOSP3AO2j2cpdJ+RO3KjHroQSj0fxnWCWiuP0U3RuolQMZIcnBQxfoih1wLsH+kcvElQMZapG1u0r7M036zQ/H4V/8YES5lxWm/XaFyvIpROAvS/61ErNelcFehd7tOoHnLUq3ByrdFuddlv7XF8k+P0tMtuuUn7Ok/lXCJ3OM/S+jj+7DhbxwvUL/wI6bqLmfkxRIeJcH4ab9jKhN2EFLMSUqcRHSO4pTHkHSeOua+xukzENReNmxWKp4tUz5Yp931oPYndywD/AGvryj0NYycbAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/68bcb3f9e4febdd9d73bdd15dd9d6678/8ac56/network_area.webp 240w,
+/static/68bcb3f9e4febdd9d73bdd15dd9d6678/d3be9/network_area.webp 480w,
+/static/68bcb3f9e4febdd9d73bdd15dd9d6678/c0989/network_area.webp 691w&quot; sizes=&quot;(max-width: 691px) 100vw, 691px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/68bcb3f9e4febdd9d73bdd15dd9d6678/8ff5a/network_area.png 240w,
+/static/68bcb3f9e4febdd9d73bdd15dd9d6678/e85cb/network_area.png 480w,
+/static/68bcb3f9e4febdd9d73bdd15dd9d6678/e185b/network_area.png 691w&quot; sizes=&quot;(max-width: 691px) 100vw, 691px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/68bcb3f9e4febdd9d73bdd15dd9d6678/e185b/network_area.png&quot; alt=&quot;network area&quot; title=&quot;network area&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;ul&gt;
+&lt;li&gt;LAN이란?
+&lt;ul&gt;
+&lt;li&gt;근거리 통신망을 의미하며 같은 건물이나 캠퍼스 같은 좁은 공간에서 운영됩니다. 전송 속도가 빠르고 혼잡하지 않습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;MAN이란?
+&lt;ul&gt;
+&lt;li&gt;대도시 지역 네트워크를 나타내며 도시 같은 넓은 지역에서 운영됩니다. 전송 속도는 평균이며 LAN보다는 더 많이 혼잡합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;WAN이란?
+&lt;ul&gt;
+&lt;li&gt;광역 네트워크를 의미하며 국가 또는 대륙 같은 더 넓은 지역에서 운영됩니다. 전송 속도는 낮으며 MAN보다 더 혼잡합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;네트워크 프로토콜 표준화&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;네트워크 프로토콜이란?
+&lt;ul&gt;
+&lt;li&gt;다른 장치들끼리 데이터를 주고받기 위해 설정된 공통된 인터페이스를 말합니다. 이러한 프로토콜은 기업이나 개인이 발표해서 정하는 것이 아닌
+IEEE 또는 IETF라는 표준화 단체가 이를 정합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/73fe934e8358916e60ba93165c76d224/0a47e/network_protocal.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 30.83333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA3klEQVQY023Ly4qEMBQEUP//I1RmIbh15/MjFEm0fS0awXciRmNi4jBxM83MWRQF95YGAGCMCSH4J4wxQmhd13meEULLsiCEMMbP9bqu4zi0vu9P5fpEKd33nVJ6niel9FAopb8fNM75+/2GEJZlCQCAEOZKWZZ1XVdV1XUdIeQZ78pTCCE/47Zt0zQFACRJEsdxohRFMQzDtm2ccynl/QdjTLvvexzHLMvqui6Ul5LnedM00zQJIe7/SCk1x3Fs2/5STNM0DEPX9ScflmV5nheGYRRFQRD4vh8prut+A24NQjl+AFeNAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/73fe934e8358916e60ba93165c76d224/8ac56/network_protocal.webp 240w,
+/static/73fe934e8358916e60ba93165c76d224/d3be9/network_protocal.webp 480w,
+/static/73fe934e8358916e60ba93165c76d224/e88ff/network_protocal.webp 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/73fe934e8358916e60ba93165c76d224/8ff5a/network_protocal.png 240w,
+/static/73fe934e8358916e60ba93165c76d224/e85cb/network_protocal.png 480w,
+/static/73fe934e8358916e60ba93165c76d224/0a47e/network_protocal.png 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/73fe934e8358916e60ba93165c76d224/0a47e/network_protocal.png&quot; alt=&quot;network protocal&quot; title=&quot;network protocal&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;IEEE802.3은 유선 LAN 프로토콜로, 유선으로 LAN을 구축할 때 쓰이는 프로토콜입니다. 이를 통해 만든 기업이 다른 장치라도 서로 데이터를 수신할 수 있죠.&lt;/p&gt;
+&lt;p&gt;예를 들어서 웹을 접속할 때 쓰이는 HTTP가 있습니다. ‘서로 약속된’ 인터페이스인 HTTP라는 프로노콜을 통해 노드들은 웹 서비스를 기반으로
+데이터를 주고받을 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프록시 패턴 (Proxy Pattern)]]></title><description><![CDATA[프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/proxy</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/proxy</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;프록시 패턴이란?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의
