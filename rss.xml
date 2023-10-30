@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Oct 2023 08:31:10 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 30 Oct 2023 09:34:22 GMT</lastBuildDate><item><title><![CDATA[웹 렌더링 방식 (CSR vs SSR vs SSG)]]></title><description><![CDATA[웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-rendering</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-rendering</guid><pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;웹 렌더링 방식에 있어서 CSR, SSG, SSR 크게 3가지 방식이 있다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;CSR 이란?&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -114,7 +114,146 @@ item2.getPrice();
 // 네이버 페이로 결재하여 10% 할인된 가격은 10000원 입니다!&lt;/code&gt;
         &lt;/deckgo-highlight-code&gt;
 &lt;p&gt;위 코드에서 처럼 어떤 방식으로 결재를 할 것 인지에 따라서 상품의 가격은 달라집니다.
-카카오 페이, 네이버 페이 2개의 전략 패턴을 사용 했습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[팩토리 패턴 (Factory Pattern)]]></title><description><![CDATA[객체를 사용하는 코드에서 객체 생성 부분을 떼어내 추상화한 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 중요한 뼈대를 결정하고, 하위 클래스에서 객체 생성에 관한 구체적인 내용을 결정하는 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/factory</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/factory</guid><pubDate>Mon, 14 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+카카오 페이, 네이버 페이 2개의 전략 패턴을 사용 했습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[IP 주소]]></title><description><![CDATA[컴퓨터와 컴퓨터 간의 통신은 흔히들 IP 주소 기반으로 통신한다고 알고 있지만 정확히 이야기하면 IP 주소에서 ARP를 통해 MAC 주소를 찾아 MAC 주소를 기반으로 통신합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/ip</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/ip</guid><pubDate>Tue, 15 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;IP 주소란?
+&lt;ul&gt;
+&lt;li&gt;IP 통신에 필요한 고유 주소를 말하며, 통신 기능이 제공되는 기기들이 서로 통신을 하기 위해 필요한 고유 번호이다. 각 장치들 간 통신을 식별할 수 있는 전화번호라고 생각하면 쉽다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;컴퓨터와 컴퓨터 간의 통신은 흔히들 IP 주소 기반으로 통신한다고 알고 있지만 정확히 이야기하면 IP 주소에서 ARP를 통해 MAC 주소를 찾아 MAC 주소를 기반으로 통신합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ARP&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ARP(Address Resolution Protocol)란 IP 주소로부터 MAC 주소를 구하는 IP와 MAC 주소의 다리 역할을 하는 프로토콜입니다.&lt;/p&gt;
+&lt;p&gt;ARP를 통해 가상 주소인 IP 주소를 실제 주소인 MAC 주소로 변환합니다. 이와 반대로 RARP를 통해 실제 주소인 MAC 주소를 가상 주소인 IP 주소로
+변환하기도 합니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/44c1fed034769480976a6ad977dc924d/b4294/arp.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 49.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIEBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdps5i4iD//EABkQAAIDAQAAAAAAAAAAAAAAAAASAQIRIf/aAAgBAQABBQLuydGtrWGk/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFxAAAwEAAAAAAAAAAAAAAAAAAAExEP/aAAgBAQAGPwLaysrP/8QAHBAAAwABBQAAAAAAAAAAAAAAAAERIUGBscHh/9oACAEBAAE/IboZg7mwnKweyMD5hR7j/9oADAMBAAIAAwAAABDAD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABwQAAICAgMAAAAAAAAAAAAAAAABEVEhMYGRsf/aAAgBAQABPxDZ6AripTaRKDCKOD3G6bXchvSf/9k=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/44c1fed034769480976a6ad977dc924d/8ac56/arp.webp 240w,
+/static/44c1fed034769480976a6ad977dc924d/d3be9/arp.webp 480w,
+/static/44c1fed034769480976a6ad977dc924d/e88ff/arp.webp 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/44c1fed034769480976a6ad977dc924d/09b79/arp.jpg 240w,
+/static/44c1fed034769480976a6ad977dc924d/7cc5e/arp.jpg 480w,
+/static/44c1fed034769480976a6ad977dc924d/b4294/arp.jpg 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/44c1fed034769480976a6ad977dc924d/b4294/arp.jpg&quot; alt=&quot;arp&quot; title=&quot;arp&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/773ca79bbcc78d8df40687b6ad439143/b4294/arp_ing.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 72.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAIBAwQF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB7yJBoKQ//8QAGhAAAgIDAAAAAAAAAAAAAAAAAAECEhARIf/aAAgBAQABBQJ8WLo3Euj/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAXEAADAQAAAAAAAAAAAAAAAAAAETEg/9oACAEBAAY/Ao8w/8QAHBAAAgICAwAAAAAAAAAAAAAAAREAIWFxEDGR/9oACAEBAAE/ITLBojV3wztrUKgACFiZXk//2gAMAwEAAgADAAAAEGPP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHBABAQEAAQUAAAAAAAAAAAAAAREAMUFRgcHR/9oACAEBAAE/EHil2Ia0NdggWa5sKrkj7lFhDwfeeqnhv//Z&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/773ca79bbcc78d8df40687b6ad439143/8ac56/arp_ing.webp 240w,
+/static/773ca79bbcc78d8df40687b6ad439143/d3be9/arp_ing.webp 480w,
+/static/773ca79bbcc78d8df40687b6ad439143/e88ff/arp_ing.webp 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/773ca79bbcc78d8df40687b6ad439143/09b79/arp_ing.jpg 240w,
+/static/773ca79bbcc78d8df40687b6ad439143/7cc5e/arp_ing.jpg 480w,
+/static/773ca79bbcc78d8df40687b6ad439143/b4294/arp_ing.jpg 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/773ca79bbcc78d8df40687b6ad439143/b4294/arp_ing.jpg&quot; alt=&quot;arp ing&quot; title=&quot;arp ing&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;앞의 그림처럼 장치 A가 ARP Request 브로드캐스트를 보내서 IP 주소인 120.70.80.3에 해당하는 MAC 주소를 찾습니다.
+그러고 나서 해당 주소에 맞는 장치 B가 유니캐스트를 통해 MAC 주소를 반환하는 과정을 거쳐 IP 주소에 맞는 MAC 주소를 찾게 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;브로드캐스트&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;송신 호스트가 전송한 데이터가 네트워크에 연결된 모든 호스트에 전송되는 방식&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;유니캐스트&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;고유 주소로 식별된 하나의 네트워크 목적지에 1:1로 데이터를 전송하는 방식&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;홉바이홉 통신&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;IP 주소를 통해 통신하는 과정을 홉바이홉(hop by hop) 통신이라고 합니다.&lt;/p&gt;
+&lt;p&gt;여기서 홉(hop)이란 영어 뜻 자체로는 건너뛰는 모습을 의미합니다. 이는 통신망에서 각 패킷이 여러 개의 라우터를 건너가는 모습을 비유적으로
+표현한 것입니다. 각각의 라우터에 있는 라우팅 테이블의 IP를 기반으로 패킷을 전달하고 다시 전달해나갑니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/2c8a5fbfe174b5ce517fc3411c1699bc/0a47e/hopboyhop.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 55.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABV0lEQVQoz43STYvqMBQG4Px/3AiuXSg4ggtdS0URNwFBRbootop2odYWbZJzzFfTgXa8yID33mcZ8p6ENyHH41EpdTgctNbli3Muz/MoiiilnudNp9P5fB6GIav82UnG4/FsNmu1WohojLlVsiwTQnDOi6IwxmitrbWcc1PJ8/wnHMfxYrHwPA8RkyRZrVaUUt/3pZQAULw454QQ1lrG2Pl8vl6viEje7wkAnPMsywCgLEtEFC8AwBiTUoZhuFwuKaVxHJM6Wf6LUgoAhBBSyrxijCHvJf2acr/f9/t9EARRFK3X6zRNf00kn45yziVJstvtNpvNdrsNguByuRRF8V9hay0ivq/U/Sml0jSteyHug7pYWXk+n1prxlhZlrfbDQAQ0fd98peS6hH1Qzwej/pvnE6nyWQyHA47nQ75+qz/MhqNBoNBr9frdrv9fr/dbjcajWaz+Q1ec15/2m1pHgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/2c8a5fbfe174b5ce517fc3411c1699bc/8ac56/hopboyhop.webp 240w,
+/static/2c8a5fbfe174b5ce517fc3411c1699bc/d3be9/hopboyhop.webp 480w,
+/static/2c8a5fbfe174b5ce517fc3411c1699bc/e88ff/hopboyhop.webp 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/2c8a5fbfe174b5ce517fc3411c1699bc/8ff5a/hopboyhop.png 240w,
+/static/2c8a5fbfe174b5ce517fc3411c1699bc/e85cb/hopboyhop.png 480w,
+/static/2c8a5fbfe174b5ce517fc3411c1699bc/0a47e/hopboyhop.png 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/2c8a5fbfe174b5ce517fc3411c1699bc/0a47e/hopboyhop.png&quot; alt=&quot;hopboyhop&quot; title=&quot;hopboyhop&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;즉, 통신 장치에 있는 ‘라우팅 테이블’의 IP를 통해 시작 주소부터 시작하여 다음 IP로 계속해서 이동하는 ‘라우팅’ 과정을 거쳐 패킷이 최종 목적지까지
+도달하는 통신을 말합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;라우팅&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IP 주소를 찾아가는 과정&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;라우팅 테이블&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;라우팅 테이블(routing table)은 송신지에서 수신지까지 도달하기 위해 사용되며 라우터에 들어가 있는 목적지 정보들과 그 목적지로 가기 위한
+방법이 들어 있는 리스트를 뜻합니다. 라우팅 테이블에는 게이트웨이와 모든 목적지에 대해 해당 목적지에 도달하기 위해 거쳐야 할 다음 라우터의
+정보를 가지고 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;게이트웨이&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;게이트웨이(gateway)는 서로 다른 통신망, 프로토콜을 사용하는 네트워크 간의 통신을 가능하게 하는 관문 역할을 하는 컴퓨터나 소프트웨어를
+두루 일컫는 용어입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/27da3c017c4aeb41d6a15188652ddc61/b4294/gateway.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 32.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB1wUD/8QAGBAAAwEBAAAAAAAAAAAAAAAAAAESAhP/2gAIAQEAAQUCpMpaOh//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAWEAEBAQAAAAAAAAAAAAAAAAAxABD/2gAIAQEABj8CZz//xAAYEAEBAQEBAAAAAAAAAAAAAAARAQAxgf/aAAgBAQABPyGlQV53UiCu8b//2gAMAwEAAgADAAAAEHAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHBABAAEEAwAAAAAAAAAAAAAAAQARITHRQWFx/9oACAEBAAE/EFmfGJ8YgQGmsFr1iUX31P/Z&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/27da3c017c4aeb41d6a15188652ddc61/8ac56/gateway.webp 240w,
+/static/27da3c017c4aeb41d6a15188652ddc61/d3be9/gateway.webp 480w,
+/static/27da3c017c4aeb41d6a15188652ddc61/e88ff/gateway.webp 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/27da3c017c4aeb41d6a15188652ddc61/09b79/gateway.jpg 240w,
+/static/27da3c017c4aeb41d6a15188652ddc61/7cc5e/gateway.jpg 480w,
+/static/27da3c017c4aeb41d6a15188652ddc61/b4294/gateway.jpg 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/27da3c017c4aeb41d6a15188652ddc61/b4294/gateway.jpg&quot; alt=&quot;gateway&quot; title=&quot;gateway&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;사용자는 인터넷에 접속하기 위해 수많은 톨게이트인 게이트웨이를 거쳐야 하며 게이트웨이는 서로 다른 네트워크상의 통신 프로토콜을 변환해주는
+역할을 하기도 합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IP 주소 체계&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;IP 주소는 IPv4와 IPv6로 나뉩니다. IPv4는 32 비트를 8비트 단위로 점을 찍어 표기하며, 123.45.67.89 같은 방식으로 IP 주소를 나타냅니다.
+IPv6은 64비트를 16비트 단위로 점을 찍어 표기하며, 2001:db8::ffoo:42:8329 같은 방식으로 IP 주소를 나타냅니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/8d0e61aaddc8a58f5dc243b07b4baac1/b4294/ipv4_ipv6.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 44.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAgP/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAGxuX1HhEP/xAAbEAACAQUAAAAAAAAAAAAAAAABAhIAITEyQ//aAAgBAQABBQJWEntSmQ6HVMf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAbEAACAQUAAAAAAAAAAAAAAAAAEQECECExgf/aAAgBAQAGPwJNm1Biq0nT/8QAGxAAAgMAAwAAAAAAAAAAAAAAAAERITGBocH/2gAIAQEAAT8hegVmpoaClMLLiRJxSFvnw6JuP//aAAwDAQACAAMAAAAQsM//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAcEAEAAgIDAQAAAAAAAAAAAAABABEhoTFBkbH/2gAIAQEAAT8QDtkgHVc+wXKMqFRnvBYKxNj4jazdT//Z&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/8d0e61aaddc8a58f5dc243b07b4baac1/8ac56/ipv4_ipv6.webp 240w,
+/static/8d0e61aaddc8a58f5dc243b07b4baac1/d3be9/ipv4_ipv6.webp 480w,
+/static/8d0e61aaddc8a58f5dc243b07b4baac1/e88ff/ipv4_ipv6.webp 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/8d0e61aaddc8a58f5dc243b07b4baac1/09b79/ipv4_ipv6.jpg 240w,
+/static/8d0e61aaddc8a58f5dc243b07b4baac1/7cc5e/ipv4_ipv6.jpg 480w,
+/static/8d0e61aaddc8a58f5dc243b07b4baac1/b4294/ipv4_ipv6.jpg 600w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/8d0e61aaddc8a58f5dc243b07b4baac1/b4294/ipv4_ipv6.jpg&quot; alt=&quot;ipv4 ipv6&quot; title=&quot;ipv4 ipv6&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;추세는 IPv6로 가고 있지만 현재 가장 많이 쓰이는 주소 체계는 IPv4이며 이후에 설명할 때도 IPv4를 기준으로 설명합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[팩토리 패턴 (Factory Pattern)]]></title><description><![CDATA[객체를 사용하는 코드에서 객체 생성 부분을 떼어내 추상화한 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 중요한 뼈대를 결정하고, 하위 클래스에서 객체 생성에 관한 구체적인 내용을 결정하는 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/factory</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/factory</guid><pubDate>Mon, 14 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;팩토리 패턴이란?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;객체를 사용하는 코드에서 객체 생성 부분을 떼어내 추상화한 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 중요한
@@ -155,7 +294,103 @@ const iceCream2 = new IceCreamFactory(&amp;quot;보석바&amp;quot;, &amp;quot;2
 &lt;p&gt;아이스크림 만드는 공장(함수)에 이름과 가격을 재료(함수인자)로 넣으면 아이스크림이 만들어 집니다.
 이제 생성 로직이 바뀌면 아이스크림 공장(함수)만 바꾸면 됩니다.&lt;/p&gt;
 &lt;p&gt;코드가 좀 더 깔끔해지고 유지보수성도 높아졌습니다.&lt;/p&gt;
-&lt;p&gt;메모리의 효율성을 위해서 getInfo 함수는 프로토타입으로 지정해 줍니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크 분류와 프로토콜]]></title><description><![CDATA[네트워크는 LAN과 MAN 그리고 WAN으로 분류할 수 있습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network-protocal</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network-protocal</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;메모리의 효율성을 위해서 getInfo 함수는 프로토타입으로 지정해 줍니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[TCP/IP 4계층 모델]]></title><description><![CDATA[TCP/IP 4계층 모델을 중심으로 설명하며, 네트워크에서 사용되는 통신 프로토콜의 집합으로 계층들을 프로토콜의 네트워킹 범위에 따라 네 개의 추상화 계층으로 구성됩니다.]]></description><link>https://lumen.alxshelepenok.com/posts/tcpip</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/tcpip</guid><pubDate>Fri, 11 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;계층 구조&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;TCP/IP 계층은 네 개의 계층을 가지고 있으며 OSI 7계층과 많이 비교합니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 613px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/2f4d613554077b717414afba03fd98c1/0c9cf/tcp_ip_4%EA%B3%84%EC%B8%B5.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 89.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAASABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECBAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHsTQaECwAP/8QAGhAAAgMBAQAAAAAAAAAAAAAAAQIRITEQMv/aAAgBAQABBQKbYwRYOvq+e//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABYQAAMAAAAAAAAAAAAAAAAAAAAhMP/aAAgBAQAGPwIUP//EABsQAAMAAwEBAAAAAAAAAAAAAAABERAxUSFB/9oACAEBAAE/IW3wNh4Hg8N6w1Ui4Rcx/9oADAMBAAIAAwAAABCwADz/xAAWEQEBAQAAAAAAAAAAAAAAAAABESD/2gAIAQMBAT8QC4//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAdEAEAAgICAwAAAAAAAAAAAAABABEhMUFhUXGR/9oACAEBAAE/ELzKr8YlCAVsiqFLLWzyzpFG5bSvqdT5Fth9kACgon//2Q==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/2f4d613554077b717414afba03fd98c1/8ac56/tcp_ip_4%EA%B3%84%EC%B8%B5.webp 240w,
+/static/2f4d613554077b717414afba03fd98c1/d3be9/tcp_ip_4%EA%B3%84%EC%B8%B5.webp 480w,
+/static/2f4d613554077b717414afba03fd98c1/0abb1/tcp_ip_4%EA%B3%84%EC%B8%B5.webp 613w&quot; sizes=&quot;(max-width: 613px) 100vw, 613px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/2f4d613554077b717414afba03fd98c1/09b79/tcp_ip_4%EA%B3%84%EC%B8%B5.jpg 240w,
+/static/2f4d613554077b717414afba03fd98c1/7cc5e/tcp_ip_4%EA%B3%84%EC%B8%B5.jpg 480w,
+/static/2f4d613554077b717414afba03fd98c1/0c9cf/tcp_ip_4%EA%B3%84%EC%B8%B5.jpg 613w&quot; sizes=&quot;(max-width: 613px) 100vw, 613px&quot; type=&quot;image/jpeg&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/2f4d613554077b717414afba03fd98c1/0c9cf/tcp_ip_4%EA%B3%84%EC%B8%B5.jpg&quot; alt=&quot;tcp ip 4  &quot; title=&quot;tcp ip 4  &quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;앞의 그림처럼 TCP/IP 계층과 달리 OSI 계층은 애플리케이션 계층을 세 개로 쪼개고 링크 계층을 데이터 링크 계층, 물리 계층으로 나눠서 표현하는 것이 다르며, 인터넷 계층을 네트워크 계층으로 부른다는 점이 다릅니다.&lt;/p&gt;
+&lt;p&gt;이 계층들은 특정 계층이 변경되었을 때 다른 계층이 영향을 받지 않도록 설계되었습니다. 예를 들어 전송 계층에서 TCP를 UDP로 변경했다고 해서
+인터넷 웹 브라우저를 다시 설치해야 하는 것은 아니듯 유연하게 설계 되었습니다.&lt;/p&gt;
+&lt;p&gt;각 계층을 대표하는 스택을 정리한 그림입니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 384px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/601e365de1aeab9ff2d39d21f8060dd6/804b2/tcp_ip_4%EA%B3%84%EC%B8%B52.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 88.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAACOElEQVQ4y22U16oqQRBF5/9/QQ6iiOCroj77IIiYc85ZzDnWYRW3hzl6GzY1M929a1ca6/1+ixOs5XIp5XJZms2mTGdTKZVKCtbr9ZL7/S6Px0Nut5uCb+a+5SRiY7FYyGg0km63K71eT5+xrVZLptOpnE4n+VzmPusPIV4hGo/HNiDEzmYzVbzb7RTb7dbGfD6X1Wqlgr4IB4OBTCYTJcE6gdL9fq8pyeVyUigUJJ/PSzqdViek4osQRZVKRWKxmMTjcUUqlZJkMqnOCJlz6/VayTebjVo4+P5F2O/3VV2311UCg+FwKO12Wy6Xi32ZEE1BTHEsZ0JNyOQEkDcDikXIpiicfT6fSmKsXRTnRr1e15CxFKHRbOpztVrV1iE84xDF1+v1T7UtQ8YLm51OR8ODIJFIKLLZrOYWB4fDQS2FgJRCOPvYIrm0Ct4IB0seIaa5UQdIBUTH41HPQWzCNuqUkCqhACISCzmEtATqUEKVIYSYohgCyD4nzSLM8/msZDxDTPJRBxF9lslk1AmEnDVkTmU2obP0HGo0GlKr1XTUUAsIHzKcmJ5DACF/kv53Ukg2iiClOKimbfjGqPHOHqRfCp1DjkIqzGWUFYtFKZXLqppxc04KoZuwncti04AcooiQIaGqzX99CMinmVnOYp3AgeX1esXv90sgEFD78/OjcLlc4na7xePx2PD5fBIOhyUajSpCoZBEIhF9DgaDmmOLipoc8Uchf/Qm4WHN3OIdoMT8WD+Bwl/O+kGNb7sGFQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/601e365de1aeab9ff2d39d21f8060dd6/8ac56/tcp_ip_4%EA%B3%84%EC%B8%B52.webp 240w,
+/static/601e365de1aeab9ff2d39d21f8060dd6/e6f2f/tcp_ip_4%EA%B3%84%EC%B8%B52.webp 384w&quot; sizes=&quot;(max-width: 384px) 100vw, 384px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/601e365de1aeab9ff2d39d21f8060dd6/8ff5a/tcp_ip_4%EA%B3%84%EC%B8%B52.png 240w,
+/static/601e365de1aeab9ff2d39d21f8060dd6/804b2/tcp_ip_4%EA%B3%84%EC%B8%B52.png 384w&quot; sizes=&quot;(max-width: 384px) 100vw, 384px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/601e365de1aeab9ff2d39d21f8060dd6/804b2/tcp_ip_4%EA%B3%84%EC%B8%B52.png&quot; alt=&quot;tcp ip 4  2&quot; title=&quot;tcp ip 4  2&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;각각의 계층들을 하나씩 살펴보겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;애플리케이션 계층&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;에플리케이션 계층은 FTP, HTTP, SSH, SMTP, DNS 등 응용 프로그램이 사용되는 프로토콜 계층이며 웹 서비스, 이메일 등 서비스를 실질적으로 사람들에게 제공하는 층입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FTP
+&lt;ul&gt;
+&lt;li&gt;장치와 장치 간의 파일을 전송하는 데 사용되는 표준 통신 프로토콜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SSH
+&lt;ul&gt;
+&lt;li&gt;보안되지 않은 네트워크에서 네트워크 서비스를 안전하게 운영하기 위한 암호화 네트워크 프로토콜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;HTTP
+&lt;ul&gt;
+&lt;li&gt;World Wide Web을 위한 데이터 통신의 기초이자 웹 사이트를 이용하는 데 쓰는 프로토콜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SMTP
+&lt;ul&gt;
+&lt;li&gt;전자 메일 전송을 위한 인터넷 표준 통신 프로토콜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DNS
+&lt;ul&gt;
+&lt;li&gt;도메인 이름과 IP 주소를 매핑해주는 서버, 예를 들어 &lt;a href=&quot;http://www.naver.com%EC%97%90&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;www.naver.com에&lt;/a&gt; DNS 쿼리가 오면 [Root DNS]=&gt;[.com DNS]=&gt;[.naver DNS]=&gt;[.www DNS]
+과정을 거쳐 완벽한 주소를 찾아 IP 주소를 매핑한다. 이를 통해 IP 주소가 바뀌어도 사용자들에게 똑같은 도메인 주소로 서비스할 수 있다.
+예를 들어서 &lt;a href=&quot;http://www.naver.com%EC%9D%98&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;www.naver.com의&lt;/a&gt; IP 주소가 222.111.222.111에서 111.222.111.222로 바뀌었음에도 똑같은 &lt;a href=&quot;http://www.naver.com%EC%9D%B4%EB%9D%BC%EB%8A%94&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;www.naver.com이라는&lt;/a&gt; 주소로 서비스가 가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;전송 계층&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;전송계층은 송신자와 수신자를 연결하는 통신 서비스를 제공하며 연결 지향 데이터 스트림 지원, 신뢰성, 흐름 제어를 제공하며, 애플리케이션과 인터넷 계층 사이의 데이터가 전달될 때의 중계 역할을 합니다. 대표적으로는 TCP, UDP 등이 있습니다.&lt;/p&gt;
+&lt;p&gt;TCP는 패킷 사이의 순서를 보장하고 연결지향 프로토콜을 사용해서 연결을 하여 신뢰성을 구축해서 수신 여부를 확인하며 ‘가상회선 패킷 교환 방식’을 사용합니다.&lt;/p&gt;
+&lt;p&gt;UDP는 순서를 보장하지 않고 수신 여부를 확인하지 않으며 단순히 데이터만 주는 ‘데이터그램 패킷 교환 방식’을 사용합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;가상회선 패킷 교환 방식&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;각 패킷에는 가상회선 식별자가 포함되며 모든 패킷을 전송하면 가상회선이 해제되고 패킷들은 전송된 ‘순서대로’ 도착하는 방식을 말합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;데이터그램 패킷 교환 방식&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;패킷이 독립적으로 이동하며 최적의 경로를 선택하여 가는데, 하나의 메시지에서 분할된 여러 패킷은 서로 다른 경로로 전송될 수 있으며 도착한
+‘순서가 다를 수’ 있는 방식을 뜻합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인터넷 계층&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;장치로부터 받은 네트워크 패킷을 IP 주소로 지정된 목적지로 전송하기 위해 사용되는 계층입니다. IP, ARP, ICMP 등이 있으며 패킷을 수신해야 할 상대의 주소를 지정하여 데이터를 전달합니다. 상대방이 제대로 받았는지에 대해 보장하지 않는 비연결형적인 특징을 가지고 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;링크 계층&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;전선, 광섬유, 무선 등으로 실질적으로 데이터를 전달하며 장치 간에 신호를 주고받는 ‘규칙’을 정하는 계층입니다. 네트워크 접근 계층이라고도 합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크 분류와 프로토콜]]></title><description><![CDATA[네트워크는 LAN과 MAN 그리고 WAN으로 분류할 수 있습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network-protocal</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network-protocal</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;네트워크 분류&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;네트워크는 규모를 기반으로 분류할 수 있습니다. 사무실과 개인적으로 소유 가능한 규모인 LAN(Local Area Network)과 서울시 등 시 정도의
