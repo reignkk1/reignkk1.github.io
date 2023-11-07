@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 31 Oct 2023 09:22:22 GMT</lastBuildDate><item><title><![CDATA[리액트는 왜 Key 값이 필요할까]]></title><description><![CDATA[객체지향 프로그래밍은 객체들의 집합으로 프로그램의 상호 작용을 표현하며 데이터를 객체로 취급하여 객체 내부에 선언된 메서드를 활용하는 방식을 말합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/react-key</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/react-key</guid><pubDate>Mon, 25 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 07 Nov 2023 08:44:26 GMT</lastBuildDate><item><title><![CDATA[시간 복잡도(Time Complexity)]]></title><description><![CDATA[프로그램을 작성할 때에도 입력의 크기에 따라서 프로그램이 계산하는 횟수가 크게 달라진다.]]></description><link>https://lumen.alxshelepenok.com/posts/time-complexity</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/time-complexity</guid><pubDate>Tue, 10 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;시간 복잡도(Time Complexity)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;방을 정리한다고 해보자.
+방에 얼마나 많은 양의 물건들이 널브러져 있는지에 따라 정리하는데 시간이 달라 질 것이다.&lt;/p&gt;
+&lt;p&gt;프로그램을 작성할 때에도 입력의 크기에 따라서 프로그램이 계산하는 횟수가 크게 달라진다.
+입력된 자료의 양과 알고리즘 실행에 걸리는 시간 사이에는 어느 정도의 관계가 있다.
+이것을 알고리즘의 시간 복잡도라고 한다.&lt;/p&gt;
+&lt;p&gt;이해하기 쉽게 자연수 10이 주어졌을 때 1부터 10까지의 합을 구하는 코드를 작성해보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;let sum;
+for (let i = 1; i &amp;lt;= 10; i++) {
+  sum += i;
+}
+console.log(sum); // 55&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드를 살펴보면 for 반복문으로 1부터 10까지의 숫자를 하나하나 더해서 55라는 숫자를 구했습니다.
+총 10번의 계산 횟수가 걸렸습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const sum = (n) =&amp;gt; n(n + 1) / 2;
+console.log(sum(10)); // 55&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드를 보면 천재수학자 가우스가 초등학교 때 발견한 등차수열의 합으로 알려진 가우스의 덧셈공식을 이용한 코드입니다.
+총 2번의 계산 횟수가 걸렸습니다.&lt;/p&gt;
+&lt;p&gt;극단적으로 1부터 1000까지 숫자를 더하는 것으로 문제를 바꿔보면 첫번째 코드는 1000번의 계산 횟수가 걸리는 반면에 두번째 코드는 똑같이 2번의 계산 횟수가 걸립니다.&lt;/p&gt;
+&lt;p&gt;이처럼 어느 숫자가 오던간에 동일한 계산횟수, 동일한 시간이 걸리는 코드를 시간 복잡도가 동일하다라고 표현할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;즉 알고리즘이 계산하는 시간을 결정하는 것은 계산횟수, 입력받은 데이터의 양 크게 2가지라고 생각합니다.
+이 2가지에 따라서 알고리즘의 시간 복잡도가 결정되며, 결국 성능이 좋은 코드는 시간 복잡도가 낮은 알고리즘입니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트는 왜 Key 값이 필요할까]]></title><description><![CDATA[객체지향 프로그래밍은 객체들의 집합으로 프로그램의 상호 작용을 표현하며 데이터를 객체로 취급하여 객체 내부에 선언된 메서드를 활용하는 방식을 말합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/react-key</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/react-key</guid><pubDate>Mon, 25 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
           &lt;code slot=&quot;code&quot;&gt;function NumberList() {
   const numbers = [1, 2, 3, 4, 5];
   return numbers.map((number) =&amp;gt; {
