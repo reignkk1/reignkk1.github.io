@@ -1,4 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 08 Nov 2023 08:59:18 GMT</lastBuildDate><item><title><![CDATA[[알고리즘] 에라토스테네스의 체]]></title><description><![CDATA[에라토스테네스의 체는 N보다 작거나 같은 모든 소수를 찾는 유명한 알고리즘이다.]]></description><link>https://lumen.alxshelepenok.com/posts/에라토스테네스의체</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/에라토스테네스의체</guid><pubDate>Sun, 15 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Nov 2023 09:38:11 GMT</lastBuildDate><item><title><![CDATA[클로저(Closure)]]></title><description><![CDATA[독립적인 (자유)변수를 참조하는 함수이다.]]></description><link>https://lumen.alxshelepenok.com/posts/closure</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/closure</guid><pubDate>Mon, 16 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;클로저(Closure)란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;간략하게 요악하자면 MDN에서는 클로저를 독립적인 (자유)변수를 참조하는 함수이다. 라고 정의 하고있습니다.
+이렇게 말하면 이해하기 어려우니 코드로 설명해보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function foo() {
+  let bar = &amp;quot;closure&amp;quot;;
+  return function baz() {
+    return console.log(bar);
+  };
+}
+
+foo()(); // closure&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드를 보시면 foo라는 함수는 bar라는 변수를 갖습니다. 그리고 리턴 값으로 baz라는 함수를 리턴합니다.
+foo라는 함수를 실행시키면 baz함수가 리턴되고 baz함수를 실행하면 콘솔에 bar 변수인 closure가 찍히게 됩니다.&lt;/p&gt;
+&lt;p&gt;우리는 baz함수안에 bar라는 변수를 선언한 적이 없는데 어떻게 실행이 잘되는걸까요.
+그 이유는 바로 baz함수는 클로저이기 때문입니다. foo라는 함수의 변수를 참조하고있는 함수이죠.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;클로저의 목적?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;변수-숨기기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B3%80%EC%88%98-%EC%88%A8%EA%B8%B0%EA%B8%B0&quot; aria-label=&quot;변수 숨기기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;변수 숨기기&lt;/h3&gt;
+&lt;p&gt;어떤 특정 변수에 아무도 접근하지 못하게끔 할때 클로저가 활용됩니다. 즉 변수를 숨기는 것이죠.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function Person(name) {
+  this._name = name;
+}
+
+Person.prototype.hello = function () {
+  console.log(`hello, ${this._name}`);
+};
+
+const mingyeom = new Person(&amp;quot;mingyeom&amp;quot;);
+
+mingyeom.hello(); // hello, mingyeom
+mingyeom._name = &amp;quot;foo&amp;quot;;
+mingyeom.hello(); // hello, foo&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드에서 처럼 name 이라는 변수에 접근하여 값을 바꿀수 있는 것을 보실 수 있습니다.
+이 문제점을 클로저를 활용해서 해결해 보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function hello(name) {
+  let _name = name;
+  return function () {
+    console.log(`hello, ${_name}`);
+  };
+}
+
+const sayHello = hello(&amp;quot;mingyeom&amp;quot;);
+
+sayHello(); // hello, mingyeom
+sayHello._name = &amp;quot;foo&amp;quot;;
+sayHello(); // hello, mingyeom&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드에서 처럼 name 변수에 접근을 하지 못하는 걸 보여줍니다.&lt;/p&gt;
+&lt;p&gt;바로 이것이 클로저를 활용하는 목적이 됩니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[알고리즘] 에라토스테네스의 체]]></title><description><![CDATA[에라토스테네스의 체는 N보다 작거나 같은 모든 소수를 찾는 유명한 알고리즘이다.]]></description><link>https://lumen.alxshelepenok.com/posts/에라토스테네스의체</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/에라토스테네스의체</guid><pubDate>Sun, 15 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;에라토스테네스의 체&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;프로그래머스 코딩 테스트 문제를 풀다가 소수를 구하는 문제에서 효율성 테스트가 자꾸 실패하여 어떤 것이 효율성이 좋은 알고리즘인지 찾아보았다.&lt;/p&gt;
