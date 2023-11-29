@@ -1,4 +1,93 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 28 Nov 2023 09:14:52 GMT</lastBuildDate><item><title><![CDATA[렌더링 엔진 동작과정]]></title><description><![CDATA[렌더링 엔진은 URI를 통해 요청을 받아서 해당하는 데이터를 렌더링하는 역할을 담당한다.]]></description><link>https://lumen.alxshelepenok.com/posts/rendering-engine</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/rendering-engine</guid><pubDate>Fri, 20 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 29 Nov 2023 09:19:19 GMT</lastBuildDate><item><title><![CDATA[Event loop와 call stack 은 어떻게 작동할까]]></title><description><![CDATA[자바스크립트의 Event Loop와 Call Stack 작동방식]]></description><link>https://lumen.alxshelepenok.com/posts/eventloop-callstack</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/eventloop-callstack</guid><pubDate>Fri, 27 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;event-loop와-call-stack&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#event-loop%EC%99%80-call-stack&quot; aria-label=&quot;event loop와 call stack permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Event loop와 call stack&lt;/h3&gt;
+&lt;p&gt;자바스크립트의 비동기 처리를 제대로 이해하기 위해 내부적으로 어떻게 동작하는지 살펴보자.&lt;/p&gt;
+&lt;p&gt;아래 그림은 자바스크립트의 동작방식을 그림으로 추상화 한 것이다.&lt;/p&gt;
+&lt;p&gt;JS라고 적혀있는 박스는 자바스크립트의 엔진이다.
+우리가 자바스크립트로 작성한 코드들을 컴퓨터가 이해할 수 있도록 기계어로 바꿔주는 곳이라고 할 수 있다.&lt;/p&gt;
+&lt;p&gt;자바스크립트의 엔진은 Memory Heap과 Call Stack으로 이루어져 있으며 자바스크립트로 선언한 변수들은 Memory Heap에 저장되고 함수들은 Call Stack에 쌓인다.&lt;/p&gt;
+&lt;p&gt;여기서 Call Stack의 특징은 먼저 쌓인 것이 나중에 나오고 나중에 쌓인 것이 먼저 나온다는 특징이다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*FA9NGxNB6-v1oI2qGEtlRQ.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;console.log(&amp;quot;Hi&amp;quot;);
+setTimeout(function cb1() {
+  console.log(&amp;quot;cb1&amp;quot;);
+}, 5000);
+console.log(&amp;quot;Bye&amp;quot;);&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드를 실행했을 때 console의 결과이다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Hi&lt;/li&gt;
+&lt;li&gt;Bye&lt;/li&gt;
+&lt;li&gt;cb1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;자바스크립트는 위에서 아래로 순서대로 코드를 한줄씩 실행하게 되는데 왜 Bye가 2번째로 실행이되고 cb1이 맨 마지막에 실행이 되는지 살펴보자.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;아무것도 실행되지 않았기 때문에 텅텅 비어있는 모습이다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*9fbOuFXJHwhqa6ToCc_v2A.png&quot; width=&quot;650px&quot;&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;위에 있는 첫번째의 코드 console.log는 함수이기 때문에 Call Stack에 쌓이게 된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*dvrghQCVQIZOfNC27Jrtlw.png&quot; width=&quot;650px&quot;&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Call Stack에 쌓인 함수를 자바스크립트가 실행하게 되면서 console에 ‘Hi’가 찍히게 된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*yn9Y4PXNP8XTz6mtCAzDZQ.png&quot; width=&quot;650px&quot;&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;실행이 완료된 함수는 Call Stack에서 빠져나가게 된다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/format:webp/1*iBedryNbqtixYTKviPC1tA.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;이제 그 다음 코드인 setTimeout 함수가 Call Stack으로 들어오게 된다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*HIn-BxIP38X6mF_65snMKg.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;setTimeout 함수는 Web APIs의 timer라는 API를 호출하는 함수이다.&lt;/p&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;setTimeout 함수가 실행되게 되면서 cb1이라는 값과 함께 Web APIs의 timer가 실행되게 된다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*vd3X2O_qRfqaEpW4AfZM4w.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;setTimeout 함수가 실행이 완료됬으니 Call Stack에서 빠져나간다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*_nYLhoZPKD_HPhpJtQeErA.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;이제 다음 코드인 console.log(‘Bye’) 함수를 Call Stack에 넣는다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*1NAeDnEv6DWFewX_C-L8mg.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;자바스크립트는 Call Stack을 계속 비우고 싶어하기 때문에 Call Stack에 쌓인 코드를 실행하게 되면서 console에 ‘Bye’가 찍히게 된다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*UwtM7DmK1BmlBOUUYEopGQ.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;console.log(‘Bye’) 함수가 실행되었으니 Call Stack에서 빠져나간다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*-vHNuJsJVXvqq5dLHPt7cQ.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;이제 timer에 등록된 시간이 지나고 cb1이라는 함수가 Callback Queue로 들어가게 된다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;여기서 Event Loop라는 녀석이 Call Stack을 계속 주시하며 다 비워질 때까지 기다리게 된다.
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*eOj6NVwGI2N78onh6CuCbA.png&quot; width=&quot;650px&quot;&gt;&lt;/p&gt;
+&lt;ol start=&quot;12&quot;&gt;
+&lt;li&gt;이제 Call Stack이 비워져있는 것을 발견하고 Callback Queue에 있는 cb1이라는 함수를 올려보낸다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*jQMQ9BEKPycs2wFC233aNg.png&quot; width=&quot;650px&quot;&gt;
+&lt;ol start=&quot;13&quot;&gt;
+&lt;li&gt;Call Stack에 cb1함수를 실행하게 되면서 console.log(‘cb1’)이라는 함수가 Call Stack으로 들어오게 된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*hpyVeL1zsaeHaqS7mU4Qfw.png&quot; width=&quot;650px&quot;&gt;
+&lt;ol start=&quot;14&quot;&gt;
+&lt;li&gt;console.log(‘cb1’)이라는 함수를 실행하게 되어 console에 cb1이 찍힌다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*lvOtCg75ObmUTOxIS6anEQ.png&quot; width=&quot;650px&quot;&gt;
+&lt;ol start=&quot;15&quot;&gt;
+&lt;li&gt;실행이 완료 된 함수는 Call Stack에서 빠져나간다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*Jyyot22aRkKMF3LN1bgE-w.png&quot; width=&quot;650px&quot;&gt;
+    &lt;img src=&quot;https://miro.medium.com/v2/resize:fit:828/format:webp/1*t2Btfb_tBbBxTvyVgKX0Qg.png&quot; width=&quot;650px&quot;&gt;
+&lt;p&gt;레퍼런스 - &lt;a href=&quot;https://medium.com/sessionstack-blog/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://medium.com/sessionstack-blog/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[렌더링 엔진 동작과정]]></title><description><![CDATA[렌더링 엔진은 URI를 통해 요청을 받아서 해당하는 데이터를 렌더링하는 역할을 담당한다.]]></description><link>https://lumen.alxshelepenok.com/posts/rendering-engine</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/rendering-engine</guid><pubDate>Fri, 20 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;렌더링 엔진 동작과정&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;렌더링 엔진은 URI를 통해 요청을 받아서 해당하는 데이터를 렌더링하는 역할을 담당합니다.
