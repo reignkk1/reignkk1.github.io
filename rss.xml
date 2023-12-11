@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 08 Dec 2023 08:26:48 GMT</lastBuildDate><item><title><![CDATA[동기와 비동기 프로그래밍]]></title><description><![CDATA[비동기가 왜 등장하였을까.]]></description><link>https://lumen.alxshelepenok.com/posts/async</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/async</guid><pubDate>Wed, 08 Nov 2023 00:00:00 GMT</pubDate><content:encoded>&lt;img src=&quot;https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdgzxm2%2Fbtq6gMWpMoE%2F4AlwRpWQMwCqYFIgbKuVG0%2Fimg.png&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 11 Dec 2023 09:18:47 GMT</lastBuildDate><item><title><![CDATA[동기와 비동기 프로그래밍]]></title><description><![CDATA[비동기가 왜 등장하였을까.]]></description><link>https://lumen.alxshelepenok.com/posts/async</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/async</guid><pubDate>Wed, 08 Nov 2023 00:00:00 GMT</pubDate><content:encoded>&lt;img src=&quot;https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdgzxm2%2Fbtq6gMWpMoE%2F4AlwRpWQMwCqYFIgbKuVG0%2Fimg.png&quot;&gt;
 &lt;img src=&quot;https://velog.velcdn.com/images%2Fslobber%2Fpost%2F0722db09-f9f9-4f61-8708-4e9d53924fee%2F%E1%84%83%E1%85%A1%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%85%E1%85%A9%E1%84%83%E1%85%B3%20(1).jpeg&quot; width=&quot;410px&quot;&gt;
 &lt;p&gt;자바스크립트는 싱글스레드이기 때문에 한 번에 하나의 작업만 수행할 수 있다. 이를 해결하기 위해 비동기가 생겼다.&lt;/p&gt;
 &lt;h3 id=&quot;동기synchronous&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8F%99%EA%B8%B0synchronous&quot; aria-label=&quot;동기synchronous permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;동기(Synchronous)&lt;/h3&gt;
@@ -301,7 +301,39 @@ for (let i = 0; i &amp;lt; numbers.length; i++) {
 
 // 남아 있는 수
 return numbers.filter((number) =&amp;gt; number).length; // 4&lt;/code&gt;
-        &lt;/deckgo-highlight-code&gt;</content:encoded></item><item><title><![CDATA[시간 복잡도(Time Complexity)]]></title><description><![CDATA[프로그램을 작성할 때에도 입력의 크기에 따라서 프로그램이 계산하는 횟수가 크게 달라진다.]]></description><link>https://lumen.alxshelepenok.com/posts/time-complexity</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/time-complexity</guid><pubDate>Tue, 10 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+        &lt;/deckgo-highlight-code&gt;</content:encoded></item><item><title><![CDATA[SPA(Single Page Application)이란?]]></title><description><![CDATA[SPA(Single Page Application)는 하나의 페이지처럼 사용하는 애플리케이션이다.]]></description><link>https://lumen.alxshelepenok.com/posts/spa</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/spa</guid><pubDate>Thu, 12 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;spa란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spa%EB%9E%80&quot; aria-label=&quot;spa란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SPA란?&lt;/h3&gt;
+&lt;p&gt;싱글 페이지 어플리케이션(SPA)는 말 그대로 하나의 페이지인 것 처럼 작동하는 어플리케이션이다.
+서버로부터 매 페이지마다 HTML을 가져와서 렌더링 하는 것이아닌 JS파일에 의해서 빈 HTML에 동적으로 UI를 그리는 방식인 웹 어플리케이션이다.&lt;/p&gt;
+&lt;p&gt;옛날에는 페이지 하나에 전달되는 데이터의 양도 적었고 HTML파일의 크기가 크지 않아 큰 문제가 없었다.
+하지만 점차 웹 사이트가 더 복잡해지고 고도화됨에 따라서 파일크기, 데이터의 양이 많아졌고 매번 서버로 부터 페이지를 전달 받는게 힘들어지자 SPA(Single Page Application) 방식이 나왔다고 생각한다.&lt;/p&gt;
+&lt;img src=&quot;https://velog.velcdn.com/images/yejine2/post/3d2b9821-be92-44ed-ba6e-1f6c7ff9b50c/image.png&quot; width=&quot;600px&quot;&gt;
+&lt;p&gt;위 그림처럼 초기에만 HTML을 받고 그 후에는 AJAX 통신으로 필요한 데이터들을 받아 적절히 가공하여 JS에 의해서 UI를 그린다.&lt;/p&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;새로고침 없는 부드러운 화면 전환으로 사용자 경험이 증가한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;초기에 JS 파일을 받을 때 시간이 걸려 첫 페이지 로딩이 느릴 수 있다.&lt;/li&gt;
+&lt;li&gt;검색엔진 최적화(SEO)가 어렵다.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[AJAX는 왜 필요할까]]></title><description><![CDATA[AJAX는 비동기적인 웹 애플리케이션의 제작을 위해 사용하는 웹 개발 기법이다.]]></description><link>https://lumen.alxshelepenok.com/posts/ajax</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/ajax</guid><pubDate>Tue, 10 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;ajax란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ajax%EB%9E%80&quot; aria-label=&quot;ajax란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;AJAX란?&lt;/h3&gt;
+&lt;p&gt;Ajax(Asynchronous JavaScript and XML)는 비동기적인 웹 애플리케이션의 제작을 위해 사용하는 웹 개발 기법이라고 할 수 있다.
+보통 웹 서버와 비동기적으로 데이터를 교환하고 조작하기 위해서 이 기술을 쓴다.&lt;/p&gt;
+&lt;p&gt;AJAX를 쓰지 않고 데이터를 주고 받으면 페이지가 새로고침 되고 서버로부터 똑같은 HTML파일을 내려받게 된다.
+이렇게 되면 많은 대역폭을 낭비하게 된다. 사용자와 상호 작용하는 서비스를 만들기도 어렵다.&lt;/p&gt;
+&lt;p&gt;반면에 AJAX를 사용한다면 필요한 데이터만을 웹 서버에서 요청해서 받은 후 클라이언트단에서 데이터에 대한 처리를 할 수 있다. 보통 웹페이지를 리로드 하면서 불필요한 리소스가 낭비가 되는데, 비동기 방식을 이용하면 필요한 데이터만 불러오면서 리소스 낭비를 줄일 수 있다.&lt;/p&gt;
+&lt;img src=&quot;https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FNVOQf%2FbtrDje1eZhb%2FlNvm4CXCfPR7WqhlENxgT1%2Fimg.png&quot;&gt;
+&lt;h3 id=&quot;ajax를-썻을-때-장점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ajax%EB%A5%BC-%EC%8D%BB%EC%9D%84-%EB%95%8C-%EC%9E%A5%EC%A0%90&quot; aria-label=&quot;ajax를 썻을 때 장점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;AJAX를 썻을 때 장점&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;페이지 이동없이 화면 전환이 빠르다&lt;/li&gt;
+&lt;li&gt;서버 처리를 기다리지 않고, 비동기 요청이 가능하다.&lt;/li&gt;
+&lt;li&gt;클라이언트에게 처리를 위임할 수도있다.&lt;/li&gt;
+&lt;li&gt;인터렉티브한 웹 페이지를 구현 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;ajax의-단점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ajax%EC%9D%98-%EB%8B%A8%EC%A0%90&quot; aria-label=&quot;ajax의 단점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;AJAX의 단점&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;연속으로 데이터 요청시 서버 부하 증가&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[시간 복잡도(Time Complexity)]]></title><description><![CDATA[프로그램을 작성할 때에도 입력의 크기에 따라서 프로그램이 계산하는 횟수가 크게 달라진다.]]></description><link>https://lumen.alxshelepenok.com/posts/time-complexity</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/time-complexity</guid><pubDate>Tue, 10 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;시간 복잡도(Time Complexity)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;방을 정리한다고 해보자.
@@ -378,7 +410,49 @@ console.log(sum(10)); // 55&lt;/code&gt;
 &lt;li&gt;JavaScript 해석기는 파싱한 결과를 렌더링 엔진에 전달하여 3번과 5번에서 파싱한 HTML의 결과인 DOM tree를 조작한다.&lt;/li&gt;
 &lt;li&gt;조작이 완료된 DOM node(DOM tree 구성요소)는 render object로 변한다.&lt;/li&gt;
 &lt;li&gt;UI 백엔드는 render object를 브라우저 렌더링 화면에 띄워준다.&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[리액트는 왜 Key 값이 필요할까]]></title><description><![CDATA[객체지향 프로그래밍은 객체들의 집합으로 프로그램의 상호 작용을 표현하며 데이터를 객체로 취급하여 객체 내부에 선언된 메서드를 활용하는 방식을 말합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/react-key</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/react-key</guid><pubDate>Mon, 25 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[로컬 스토리지와 세션 스토리지의 차이점]]></title><description><![CDATA[웹 스토리지는 서버가 아닌 클라이언트 내에서 데이터를 저장할 수 있도록 지원하는 저장소를 의미합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-storage</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-storage</guid><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;웹-스토리지web-storage란-무엇일까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9B%B9-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80web-storage%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C&quot; aria-label=&quot;웹 스토리지web storage란 무엇일까 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;웹 스토리지(Web Storage)란 무엇일까.&lt;/h3&gt;
+&lt;p&gt;서버가 아닌 클라이언트 내에서 데이터를 저장할 수 있도록 지원하는 저장소이다.
+쿠키의 단점을 보완하기 위해서 HTML5에서 추가된 기능이다.&lt;/p&gt;
+&lt;p&gt;스토리지의 특징은&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;key:value 형태의 구조로 저장된다.&lt;/li&gt;
+&lt;li&gt;value는 오직 문자열(String)로만 저장하여야 한다. (JSON.stringfy, JSON.parse 사용)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;쿠키와의 차이점은&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;모든 HTTP 요청에서 데이터를 주고받지 않아도 된다.&lt;/li&gt;
+&lt;li&gt;쿠키의 저장용량 보다 스토리지의 저장 용량이 더 많다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;로컬-스토리지&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A1%9C%EC%BB%AC-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80&quot; aria-label=&quot;로컬 스토리지 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;로컬 스토리지&lt;/h3&gt;
+&lt;p&gt;직접 로컬 스토리지를 초기화 하거나 삭제하지 않는다면 영원히 사리지지 않는다.
+즉, 페이지를 변경하거나 브라우저를 닫아도 값은 유지.
+도메인이 다른 경우에는 로컬 스토리지 공유는 불가능하다.&lt;/p&gt;
+&lt;h3 id=&quot;세션-스토리지&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%B8%EC%85%98-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80&quot; aria-label=&quot;세션 스토리지 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;세션 스토리지&lt;/h3&gt;
+&lt;p&gt;브라우저를 닫으면 데이터가 삭제되는 저장소이다.&lt;/p&gt;
+&lt;p&gt;보통 서버와 관련없는 데이터나 브라우저에서만 공유되어야 하는 데이터를 저장하는 편이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;로컬 스토리지: 지속적으로 필요한 데이터 저장이 필요할 때&lt;/li&gt;
+&lt;li&gt;세션 스토리지: 일시적으로 필요한 데이터 저장이 필요할 때&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[양방향 vs 단방향 바인딩]]></title><description><![CDATA[양방향 바인딩과 단방향 바인딩에 대해서 알아보자.]]></description><link>https://lumen.alxshelepenok.com/posts/양방향-단방향</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/양방향-단방향</guid><pubDate>Sat, 30 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;데이터-바인딩&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%94%EC%9D%B8%EB%94%A9&quot; aria-label=&quot;데이터 바인딩 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;데이터 바인딩&lt;/h3&gt;
+&lt;p&gt;화면상에 보여지는 데이터(View)와 브라우저 메모리에 있는 데이터를 묶어서 서로 간의 데이터를 동기화 하는 것을 의미&lt;/p&gt;
+&lt;p&gt;데이터를 화면에 그렸을 때 해당 데이터가 변경될 경우 변경된 값에 맞춰 바뀌는 동작을 데이터 바인딩이라고 한다.&lt;/p&gt;
+&lt;h3 id=&quot;단방향-바인딩&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8B%A8%EB%B0%A9%ED%96%A5-%EB%B0%94%EC%9D%B8%EB%94%A9&quot; aria-label=&quot;단방향 바인딩 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;단방향 바인딩&lt;/h3&gt;
+&lt;img src=&quot;https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzSq3p%2FbtrY1l5encV%2FUkHPjoWaCkSSJ5E9TL76C0%2Fimg.png&quot;&gt;
+&lt;p&gt;리액트 컴포넌트 내에서 ‘단방향 바인딩’은 한 방향으로만 데이터를 동기화 시키는 것
+즉, 부모 컴포넌트에서 자식 컴포넌트로만 데이터가 전달되는 구조이다.&lt;/p&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;데이터의 흐름을 파악하기 쉽다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;양방향-바인딩&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%96%91%EB%B0%A9%ED%96%A5-%EB%B0%94%EC%9D%B8%EB%94%A9&quot; aria-label=&quot;양방향 바인딩 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;양방향 바인딩&lt;/h3&gt;
+&lt;img src=&quot;https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwPlyi%2FbtrY4lDTdkI%2FwCRhYKWh5bQZpsrz6yiXL0%2Fimg.png&quot;&gt;
+&lt;p&gt;리액트 컴포넌트 내에서 ‘양방향 바인딩’은 양쪽 방향으로 데이터를 동기화 시키는 것
+즉, 부모 컴포넌트에서 자식 컴포넌트로 데이터가 전달되고 자식 컴포넌트에서 부모 컴포넌트로도 데이터를 전달 할 수 있다.&lt;/p&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;데이터의 흐름을 파악하기 어렵다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;개인적으로 개발을 하다보면 코드의 양이 늘어남에 따라 데이터의 흐름을 파악하기 쉽지 않다. 그래서 단방향 흐름을 지향한다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트는 왜 Key 값이 필요할까]]></title><description><![CDATA[객체지향 프로그래밍은 객체들의 집합으로 프로그램의 상호 작용을 표현하며 데이터를 객체로 취급하여 객체 내부에 선언된 메서드를 활용하는 방식을 말합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/react-key</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/react-key</guid><pubDate>Mon, 25 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
           &lt;code slot=&quot;code&quot;&gt;function NumberList() {
   const numbers = [1, 2, 3, 4, 5];
   return numbers.map((number) =&amp;gt; {
