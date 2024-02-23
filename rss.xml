@@ -1,4 +1,125 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 17 Jan 2024 08:19:51 GMT</lastBuildDate><item><title><![CDATA[JS에서 '??' 문법]]></title><description><![CDATA[자바스크립트에서 '??' 의 문법에 대해 알아보자]]></description><link>https://lumen.alxshelepenok.com/posts/nullish</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/nullish</guid><pubDate>Wed, 27 Dec 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;자바스크립트에선 보통 3가지 논리 연산자를 사용한다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 23 Feb 2024 08:10:07 GMT</lastBuildDate><item><title><![CDATA[배열 순회 구문 비교]]></title><description><![CDATA[배열을 순회하는 반복문들을 비교해보자.]]></description><link>https://lumen.alxshelepenok.com/posts/loop</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/loop</guid><pubDate>Tue, 23 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;자바스크립트에서 제공하는 배열 반복 구문 4가지에 대해서 비교해보자.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const numbers = [1, 2, 3, 4, 5];
+
+// ES1 for 구문
+for (let i = 0; i &amp;lt; numbers.length; i++) {
+  console.log(i, numbers[i]);
+}
+
+// ES1 for in 구문
+for (const number in numbers) {
+  console.log(number);
+}
+
+// ES5 forEach 구문
+numbers.forEach((number, i) =&amp;gt; console.log(i, number));
+
+// ES6 for of 구문
+for (const number of numbers) {
+  console.log(number);
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h3 id=&quot;1-for-loop-es1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-for-loop-es1&quot; aria-label=&quot;1 for loop es1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. for loop (ES1)&lt;/h3&gt;
+&lt;p&gt;EDMAScript1에서 정의된 for 구문은 배열의 index와 value값들을 순회한다.
+구문이 다소 번거롭기는 하지만, 배열을 순회할 때 시작점을 지정할 수 있다는 장점이 있다.
+거의 정석으로 쓰는 반복문이라고 생각한다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const numbers = [1, 2, 3, 4, 5];
+
+for (let i = 0; i &amp;lt; numbers.length; i++) {
+  console.log(i, numbers[i]);
+}
+
+// console
+// 0 1
+// 1 2
+// 2 3
+// 3 4
+// 4 5&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;ul&gt;
+&lt;li&gt;break문과 continue문으로 반복문을 멈추거나 건너뛸 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-for-in-loop-es1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-for-in-loop-es1&quot; aria-label=&quot;2 for in loop es1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. for-in loop (ES1)&lt;/h3&gt;
+&lt;p&gt;ECMAScript1에서 정의되었으며 for-in은 배열의 키를 순회한다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const numbers = [1, 2, 3, 4, 5];
+
+for (const number in numbers) {
+  console.log(number);
+}
+
+// console
+// &amp;#39;0&amp;#39;
+// &amp;#39;1&amp;#39;
+// &amp;#39;2&amp;#39;
+// &amp;#39;3&amp;#39;
+// &amp;#39;4&amp;#39;
+// &amp;#39;5&amp;#39;
+
+const obj = { a: 1, b: 2, c: 3 };
+
+for (const key in obj) {
+  console.log(key);
+}
+
+// console
+// a
+// b
+// c&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;ul&gt;
+&lt;li&gt;break문과 continue문으로 반복문을 멈추거나 건너뛸 수 있다.&lt;/li&gt;
+&lt;li&gt;배열을 순회할 때는 값들이 String 형태로 출력된다.&lt;/li&gt;
+&lt;li&gt;객체도 순회할 수 있고 key값을 출력한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-foreach-es5&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-foreach-es5&quot; aria-label=&quot;3 foreach es5 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. forEach (ES5)&lt;/h3&gt;
+&lt;p&gt;ECMAScript5에서 소개된 메서드이다.&lt;/p&gt;
+&lt;p&gt;forEach는 굉장히 편하고, ES6에서 도입된 화살표 함수 구문과도 함께 사용할 수 있다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach((number, i) =&amp;gt; console.log(i, number));
+
+// console
+// 0 1
+// 1 2
+// 2 3
+// 3 4
+// 4 5&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;ul&gt;
+&lt;li&gt;코드의 양이 줄고 간결하게 쓸 수 있다.&lt;/li&gt;
+&lt;li&gt;도중에 반복문을 멈출 수 없다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;for-of-loop-es6&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#for-of-loop-es6&quot; aria-label=&quot;for of loop es6 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;for-of loop (ES6)&lt;/h3&gt;
+&lt;p&gt;for-of는 ECMAScript6에서 추가되었다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const numbers = [1, 2, 3, 4, 5];
+
+for (const number of numbers) {
+  console.log(number);
+}
+
+// console
+// 1
+// 2
+// 3
+// 4
+// 5&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;ul&gt;
+&lt;li&gt;entries를 사용해서 index,value값에 접근할 수 있다.&lt;/li&gt;
+&lt;li&gt;break문과 continue를 사용할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;결론&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B2%B0%EB%A1%A0&quot; aria-label=&quot;결론 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;결론&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;객체를 순회해야 할 떄는 for-in 문을 사용하자.&lt;/li&gt;
+&lt;li&gt;단순히 배열을 처음부터 끝까지 순회해야할 때는 forEach문 =&gt; 중간에 멈출 수 없음&lt;/li&gt;
+&lt;li&gt;배열을 순회하다가 중간에 멈추거나 건너뛰어야 할 때는 for-of문 또는 for문&lt;/li&gt;
+&lt;li&gt;배열의 시작점을 정해서 해야할 때는 for문&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[JS에서 '??' 문법]]></title><description><![CDATA[자바스크립트에서 '??' 의 문법에 대해 알아보자]]></description><link>https://lumen.alxshelepenok.com/posts/nullish</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/nullish</guid><pubDate>Wed, 27 Dec 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;자바스크립트에선 보통 3가지 논리 연산자를 사용한다.&lt;/p&gt;
 &lt;p&gt;|| =&gt; OR , &amp;#x26;&amp;#x26; =&gt; AND , ! =&gt; NOT&lt;/p&gt;
 &lt;p&gt;여기에 추가로 ES2020에서 새롭게 추가된 연산자가 바로 ’??’ 이다. ’??’는 Nullish Coalescing Operator라고 불린다. 아래 예시처럼 ‘A가 null 이거나 undefined이면 B로 해라’ 라는 의미가 된다.&lt;/p&gt;
 &lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
@@ -665,30 +786,7 @@ console.log(sum(10)); // 55&lt;/code&gt;
 &lt;p&gt;극단적으로 1부터 1000까지 숫자를 더하는 것으로 문제를 바꿔보면 첫번째 코드는 1000번의 계산 횟수가 걸리는 반면에 두번째 코드는 똑같이 2번의 계산 횟수가 걸립니다.&lt;/p&gt;
 &lt;p&gt;이처럼 어느 숫자가 오던간에 동일한 계산횟수, 동일한 시간이 걸리는 코드를 시간 복잡도가 동일하다라고 표현할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;즉 알고리즘이 계산하는 시간을 결정하는 것은 계산횟수, 입력받은 데이터의 양 크게 2가지라고 생각합니다.
-이 2가지에 따라서 알고리즘의 시간 복잡도가 결정되며, 결국 성능이 좋은 코드는 시간 복잡도가 낮은 알고리즘입니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[로컬 스토리지와 세션 스토리지의 차이점]]></title><description><![CDATA[웹 스토리지는 서버가 아닌 클라이언트 내에서 데이터를 저장할 수 있도록 지원하는 저장소를 의미합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-storage</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-storage</guid><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;웹-스토리지web-storage란-무엇일까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9B%B9-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80web-storage%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C&quot; aria-label=&quot;웹 스토리지web storage란 무엇일까 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;웹 스토리지(Web Storage)란 무엇일까.&lt;/h3&gt;
-&lt;p&gt;서버가 아닌 클라이언트 내에서 데이터를 저장할 수 있도록 지원하는 저장소이다.
-쿠키의 단점을 보완하기 위해서 HTML5에서 추가된 기능이다.&lt;/p&gt;
-&lt;p&gt;스토리지의 특징은&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;key:value 형태의 구조로 저장된다.&lt;/li&gt;
-&lt;li&gt;value는 오직 문자열(String)로만 저장하여야 한다. (JSON.stringfy, JSON.parse 사용)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;쿠키와의 차이점은&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;모든 HTTP 요청에서 데이터를 주고받지 않아도 된다.&lt;/li&gt;
-&lt;li&gt;쿠키의 저장용량 보다 스토리지의 저장 용량이 더 많다.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;로컬-스토리지&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A1%9C%EC%BB%AC-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80&quot; aria-label=&quot;로컬 스토리지 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;로컬 스토리지&lt;/h3&gt;
-&lt;p&gt;직접 로컬 스토리지를 초기화 하거나 삭제하지 않는다면 영원히 사리지지 않는다.
-즉, 페이지를 변경하거나 브라우저를 닫아도 값은 유지.
-도메인이 다른 경우에는 로컬 스토리지 공유는 불가능하다.&lt;/p&gt;
-&lt;h3 id=&quot;세션-스토리지&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%B8%EC%85%98-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80&quot; aria-label=&quot;세션 스토리지 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;세션 스토리지&lt;/h3&gt;
-&lt;p&gt;브라우저를 닫으면 데이터가 삭제되는 저장소이다.&lt;/p&gt;
-&lt;p&gt;보통 서버와 관련없는 데이터나 브라우저에서만 공유되어야 하는 데이터를 저장하는 편이다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;로컬 스토리지: 지속적으로 필요한 데이터 저장이 필요할 때&lt;/li&gt;
-&lt;li&gt;세션 스토리지: 일시적으로 필요한 데이터 저장이 필요할 때&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Browser 구성 요소]]></title><description><![CDATA[브라우저 구성요소를 살펴보자.]]></description><link>https://lumen.alxshelepenok.com/posts/browser-elements</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/browser-elements</guid><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;browser-elements&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#browser-elements&quot; aria-label=&quot;browser elements permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Browser elements&lt;/h3&gt;
+이 2가지에 따라서 알고리즘의 시간 복잡도가 결정되며, 결국 성능이 좋은 코드는 시간 복잡도가 낮은 알고리즘입니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Browser 구성 요소]]></title><description><![CDATA[브라우저 구성요소를 살펴보자.]]></description><link>https://lumen.alxshelepenok.com/posts/browser-elements</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/browser-elements</guid><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;browser-elements&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#browser-elements&quot; aria-label=&quot;browser elements permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Browser elements&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;사용자 인터페이스: 주소표시줄, 이전/다음 버튼, 홈버튼, 새로고침/정지 버튼 등 요청한 페이지를 보여주는 창 외에 사용자가 컨트롤 할 수 있는 부분&lt;/p&gt;
@@ -738,7 +836,30 @@ console.log(sum(10)); // 55&lt;/code&gt;
 &lt;li&gt;JavaScript 해석기는 파싱한 결과를 렌더링 엔진에 전달하여 3번과 5번에서 파싱한 HTML의 결과인 DOM tree를 조작한다.&lt;/li&gt;
 &lt;li&gt;조작이 완료된 DOM node(DOM tree 구성요소)는 render object로 변한다.&lt;/li&gt;
 &lt;li&gt;UI 백엔드는 render object를 브라우저 렌더링 화면에 띄워준다.&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[양방향 vs 단방향 바인딩]]></title><description><![CDATA[양방향 바인딩과 단방향 바인딩에 대해서 알아보자.]]></description><link>https://lumen.alxshelepenok.com/posts/양방향-단방향</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/양방향-단방향</guid><pubDate>Sat, 30 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;데이터-바인딩&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%94%EC%9D%B8%EB%94%A9&quot; aria-label=&quot;데이터 바인딩 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;데이터 바인딩&lt;/h3&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[로컬 스토리지와 세션 스토리지의 차이점]]></title><description><![CDATA[웹 스토리지는 서버가 아닌 클라이언트 내에서 데이터를 저장할 수 있도록 지원하는 저장소를 의미합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/web-storage</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/web-storage</guid><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;웹-스토리지web-storage란-무엇일까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9B%B9-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80web-storage%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C&quot; aria-label=&quot;웹 스토리지web storage란 무엇일까 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;웹 스토리지(Web Storage)란 무엇일까.&lt;/h3&gt;
+&lt;p&gt;서버가 아닌 클라이언트 내에서 데이터를 저장할 수 있도록 지원하는 저장소이다.
+쿠키의 단점을 보완하기 위해서 HTML5에서 추가된 기능이다.&lt;/p&gt;
+&lt;p&gt;스토리지의 특징은&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;key:value 형태의 구조로 저장된다.&lt;/li&gt;
+&lt;li&gt;value는 오직 문자열(String)로만 저장하여야 한다. (JSON.stringfy, JSON.parse 사용)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;쿠키와의 차이점은&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;모든 HTTP 요청에서 데이터를 주고받지 않아도 된다.&lt;/li&gt;
+&lt;li&gt;쿠키의 저장용량 보다 스토리지의 저장 용량이 더 많다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;로컬-스토리지&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A1%9C%EC%BB%AC-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80&quot; aria-label=&quot;로컬 스토리지 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;로컬 스토리지&lt;/h3&gt;
+&lt;p&gt;직접 로컬 스토리지를 초기화 하거나 삭제하지 않는다면 영원히 사리지지 않는다.
+즉, 페이지를 변경하거나 브라우저를 닫아도 값은 유지.
+도메인이 다른 경우에는 로컬 스토리지 공유는 불가능하다.&lt;/p&gt;
+&lt;h3 id=&quot;세션-스토리지&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%B8%EC%85%98-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80&quot; aria-label=&quot;세션 스토리지 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;세션 스토리지&lt;/h3&gt;
+&lt;p&gt;브라우저를 닫으면 데이터가 삭제되는 저장소이다.&lt;/p&gt;
+&lt;p&gt;보통 서버와 관련없는 데이터나 브라우저에서만 공유되어야 하는 데이터를 저장하는 편이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;로컬 스토리지: 지속적으로 필요한 데이터 저장이 필요할 때&lt;/li&gt;
+&lt;li&gt;세션 스토리지: 일시적으로 필요한 데이터 저장이 필요할 때&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[양방향 vs 단방향 바인딩]]></title><description><![CDATA[양방향 바인딩과 단방향 바인딩에 대해서 알아보자.]]></description><link>https://lumen.alxshelepenok.com/posts/양방향-단방향</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/양방향-단방향</guid><pubDate>Sat, 30 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;데이터-바인딩&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%94%EC%9D%B8%EB%94%A9&quot; aria-label=&quot;데이터 바인딩 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;데이터 바인딩&lt;/h3&gt;
 &lt;p&gt;화면상에 보여지는 데이터(View)와 브라우저 메모리에 있는 데이터를 묶어서 서로 간의 데이터를 동기화 하는 것을 의미&lt;/p&gt;
 &lt;p&gt;데이터를 화면에 그렸을 때 해당 데이터가 변경될 경우 변경된 값에 맞춰 바뀌는 동작을 데이터 바인딩이라고 한다.&lt;/p&gt;
 &lt;h3 id=&quot;단방향-바인딩&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8B%A8%EB%B0%A9%ED%96%A5-%EB%B0%94%EC%9D%B8%EB%94%A9&quot; aria-label=&quot;단방향 바인딩 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;단방향 바인딩&lt;/h3&gt;
