@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 23 Feb 2024 08:10:07 GMT</lastBuildDate><item><title><![CDATA[배열 순회 구문 비교]]></title><description><![CDATA[배열을 순회하는 반복문들을 비교해보자.]]></description><link>https://lumen.alxshelepenok.com/posts/loop</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/loop</guid><pubDate>Tue, 23 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;자바스크립트에서 제공하는 배열 반복 구문 4가지에 대해서 비교해보자.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 26 Feb 2024 09:00:44 GMT</lastBuildDate><item><title><![CDATA[리액트 메모이제이션?]]></title><description><![CDATA[useMemo와 useCallback에 대해서 알아보자]]></description><link>https://lumen.alxshelepenok.com/posts/memoization</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/memoization</guid><pubDate>Tue, 30 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;메모이제이션이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;메모이제이션이란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;메모이제이션이란?&lt;/h3&gt;
+&lt;p&gt;컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을 메모리에 저장함으로서 동일한 계산의 반복 수행을 제거하여 프로그램 실행속도를 빠르게 하는 기술이다.&lt;/p&gt;
+&lt;h3 id=&quot;usecallback-usememo-언제-써야-할까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#usecallback-usememo-%EC%96%B8%EC%A0%9C-%EC%8D%A8%EC%95%BC-%ED%95%A0%EA%B9%8C&quot; aria-label=&quot;usecallback usememo 언제 써야 할까 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;useCallback, useMemo 언제 써야 할까?&lt;/h3&gt;
+&lt;p&gt;우리는 React로 개발하다 보면 상태변경을 통해서 UI를 제어합니다.
+이러한 상태변경이 되었을 때 컴포넌트는 재렌더링이 되면서 UI를 업데이트 하죠.
+이렇게 재렌더링이 일어나면서 컴포넌트 안에서 정의한 함수 또는 값들이 재생성됩니다.
+만약 무거운 함수로직과 오래걸리는 연산작업으로 리턴된 값이 계속해서 재렌더링 될 때마다 생성된다면 웹 성능이 떨어질수 밖에 없습니다.&lt;/p&gt;
+&lt;p&gt;이럴 때 리액트에서 useCallback과 useMemo hook을 사용합니다.&lt;/p&gt;
+&lt;h3 id=&quot;usememo와-usecallback의-차이점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#usememo%EC%99%80-usecallback%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90&quot; aria-label=&quot;usememo와 usecallback의 차이점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;useMemo와 useCallback의 차이점?&lt;/h3&gt;
+&lt;p&gt;useMemo는 메모이제이션된 “값”을 반환하고 useCallback은 메모이제이션된 “함수”를 반환합니다.&lt;/p&gt;
+&lt;p&gt;코드의 예시를 통해서 보여드리겠습니다.&lt;/p&gt;
+&lt;h3 id=&quot;usememo&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#usememo&quot; aria-label=&quot;usememo permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;useMemo&lt;/h3&gt;
+&lt;deckgo-highlight-code language=&quot;jsx&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function Parent() {
+  const [state, setState] = useState(0);
+
+  return (
+    &amp;lt;div&amp;gt;
+      &amp;lt;div&amp;gt;{state}&amp;lt;/div&amp;gt;
+      &amp;lt;Child /&amp;gt;
+      &amp;lt;button onClick={() =&amp;gt; setState((prev) =&amp;gt; prev + 1)}&amp;gt;plus&amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+  );
+}
+function Child() {
+  console.log(&amp;quot;render&amp;quot;);
+  return &amp;lt;div&amp;gt;Hi&amp;lt;/div&amp;gt;;
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드는 리액트 코드이며 Parent 부모 컴포넌트 안에 Child 컴포넌트가 있습니다.&lt;/p&gt;
+&lt;p&gt;Parent 컴포넌트에서 버튼을 클릭할 때마다 상태가 바뀌어 재렌더링이 일어나 Child 컴포넌트도 같이 불필요한 재렌더링이 일어나게 되면서 console에 ‘render’가 찍히게 됩니다.&lt;/p&gt;
+&lt;p&gt;이러한 불필요한 재렌더링을 useMemo로 해결해보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;jsx&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function Parent() {
+  const [state, setState] = useState(0);
+
+  const ChildComponent = useMemo(() =&amp;gt; &amp;lt;Child /&amp;gt;, []);
+
+  return (
+    &amp;lt;div&amp;gt;
+      &amp;lt;div&amp;gt;{state}&amp;lt;/div&amp;gt;
+      {ChildComponent}
+      &amp;lt;button onClick={() =&amp;gt; setState((prev) =&amp;gt; prev + 1)}&amp;gt;plus&amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+  );
+}
+function Child() {
+  console.log(&amp;quot;render&amp;quot;);
+  return &amp;lt;div&amp;gt;Hi&amp;lt;/div&amp;gt;;
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드에서 버튼을 클릭해도 Child 컴포넌트는 재렌더링 되지 않습니다.
+이처럼 부모 컴포넌트의 렌더링에 의해서 어떠한 값이 재생성 또는 재렌더링 되는 것을 막아 애플리케이션의 성능저하를 막을 수 있습니다.&lt;/p&gt;
+&lt;h3 id=&quot;usecallback&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#usecallback&quot; aria-label=&quot;usecallback permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;useCallback&lt;/h3&gt;
+&lt;p&gt;이번에는 부모 컴포넌트에서 생성한 함수를 자식 컴포넌트로 전달하면서 useCallback을 활용해 보겠습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;jsx&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function Parent() {
+  const [state, setState] = useState(0);
+
+  const fn = () =&amp;gt; {
+    console.log(&amp;quot;run&amp;quot;);
+  };
+
+  let ChildComponent = React.useMemo(() =&amp;gt; &amp;lt;Child fn={fn} /&amp;gt;, [fn]);
+
+  return (
+    &amp;lt;div&amp;gt;
+      &amp;lt;div&amp;gt;{state}&amp;lt;/div&amp;gt;
+      {ChildComponent}
+      &amp;lt;button onClick={() =&amp;gt; setState((prev) =&amp;gt; prev + 1)}&amp;gt;plus&amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+  );
+}
+function Child({ fn }: { fn(): void }) {
+  fn();
+  return &amp;lt;div&amp;gt;Hi&amp;lt;/div&amp;gt;;
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;위 코드를 실행해보면 useMemo를 사용하였는데도 자식 컴포넌트가 재렌더링 되는 현상을 볼 수 있습니다.&lt;/p&gt;
+&lt;p&gt;그 이유는 props로 전달된 함수가 재렌더링 될때마다 다시 생성되므로 props가 바뀌었다고 리액트는 판단하여 자식 컴포넌트를 재렌더링하게 됩니다.&lt;/p&gt;
+&lt;p&gt;이렇듯 함수를 메모이제이션 하고 싶다면 useCallback을 사용합니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;jsx&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;const fn = React.useCallback(() =&amp;gt; {
+  console.log(&amp;quot;run&amp;quot;);
+}, []);&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;함수를 useCallback hook으로 감싸준다면 부모 컴포넌트가 재렌더링이 될때마다 함수를 재생성하지 않아 자식 컴포넌트는 불필요한 렌더링이 일어나지 않습니다.&lt;/p&gt;
+&lt;p&gt;이처럼 기존에 수행한 연산의 결과값을 어딘가에 저장해두고 동일한 입력이 들어오면 재활용하는 프로그래밍 기법이라고 볼 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이것을 적절하게 활용한다면 중복 연산을 피할수 있고 메모리를 적게 쓰며 애플리케이션의 성능을 최적화 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[배열 순회 구문 비교]]></title><description><![CDATA[배열을 순회하는 반복문들을 비교해보자.]]></description><link>https://lumen.alxshelepenok.com/posts/loop</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/loop</guid><pubDate>Tue, 23 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;자바스크립트에서 제공하는 배열 반복 구문 4가지에 대해서 비교해보자.&lt;/p&gt;
 &lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
           &lt;code slot=&quot;code&quot;&gt;const numbers = [1, 2, 3, 4, 5];
 
@@ -1401,62 +1489,7 @@ const iceCream2 = new IceCreamFactory(&amp;quot;보석바&amp;quot;, &amp;quot;2
 &lt;blockquote&gt;
 &lt;p&gt;링크 계층&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;전선, 광섬유, 무선 등으로 실질적으로 데이터를 전달하며 장치 간에 신호를 주고받는 ‘규칙’을 정하는 계층입니다. 네트워크 접근 계층이라고도 합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프록시 패턴 (Proxy Pattern)]]></title><description><![CDATA[프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/proxy</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/proxy</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
-&lt;p&gt;프록시 패턴이란?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의
-인터페이스 역할을 하는 디자인 패턴입니다.&lt;/p&gt;
-&lt;p&gt;이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
-프록시 서버로도 활용되며 예시를 보여드리겠습니다.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;CORS와 프론트엔드 프록시 서버&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 가져오려 할때
-오리진이 서로 다르다면 데이터를 가져가지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.&lt;/p&gt;
-&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 782px; &quot;&gt;
-      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
-    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAAwAPtFYpEuoJSOhsAgBABoJZ2M+ADc1aXEFAAD+8gp7uu05TCkYtKxsVah9CpaBC1bYB2Scguegy2aPSNJl0EEfdmrCcy2gKIAA&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
-/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
-/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
-          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
-/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
-/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
-          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; alt=&quot;proxy prev&quot; title=&quot;proxy prev&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;
-&lt;p&gt;개발을 하다 보면 프론트엔드 서버와 백엔드 서버가 서로 통신할 때 주로 CORS 에러를 마주칩니다.
-이를 해결하기 위해 서버 쪽에서 모든 오리진을 허용하는 방법도 있지만
-보안상 문제가 될 수 있으므로 프론트 서버 쪽에서 프록시 서버를 두기도 합니다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;오리진이란?
-&lt;ul&gt;
-&lt;li&gt;프로토콜과 호스트 이름, 포트의 조합을 말합니다.&lt;/li&gt;
-&lt;li&gt;ex) &lt;a href=&quot;https://www.naver.com:80/cafe&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80/cafe&lt;/a&gt; 에서 &lt;a href=&quot;https://www.naver.com:80&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80&lt;/a&gt; 부분을 말합니다&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;예를 들어서 오리진이 localhost:3000 서버에서 localhost:8000 서버로 통신을 하면
-포트번호가 다르기 때문에 CORS 에러가 나타납니다.&lt;/p&gt;
-&lt;p&gt;이때 프록시 서버를 중간에 둬서 localhost:3000에서 오는 요청의 오리진을 localhost:8000으로 바꾸는 것 입니다.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;&gt;
-      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
-    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoUAA0APtFYpEuoJSOhsAgBABoJZQAAYf+RndOfwEN1gAD+9PgZ0DBk9JMO+Z37mlid5pc2DyaDBOfM20QD7RBI3pHh/9efhvr77BusgPSD8ixqfV5oawAAAAA=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
-/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
-/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
-          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
-/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
-/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
-          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; alt=&quot;proxy next&quot; title=&quot;proxy next&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;위 그림처럼 프론트엔드 서버 앞단에 프록시 서버를 두어서 요청에 대한 처리를 할 수 있으며
-자연스레 CORS 에러도 해결 할 수 있고 통신도 매끄럽게 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크 분류와 프로토콜]]></title><description><![CDATA[네트워크는 LAN과 MAN 그리고 WAN으로 분류할 수 있습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network-protocal</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network-protocal</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;전선, 광섬유, 무선 등으로 실질적으로 데이터를 전달하며 장치 간에 신호를 주고받는 ‘규칙’을 정하는 계층입니다. 네트워크 접근 계층이라고도 합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크 분류와 프로토콜]]></title><description><![CDATA[네트워크는 LAN과 MAN 그리고 WAN으로 분류할 수 있습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network-protocal</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network-protocal</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;네트워크 분류&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;네트워크는 규모를 기반으로 분류할 수 있습니다. 사무실과 개인적으로 소유 가능한 규모인 LAN(Local Area Network)과 서울시 등 시 정도의
@@ -1519,7 +1552,62 @@ IEEE 또는 IETF라는 표준화 단체가 이를 정합니다.&lt;/li&gt;
     &lt;/span&gt;
 &lt;p&gt;IEEE802.3은 유선 LAN 프로토콜로, 유선으로 LAN을 구축할 때 쓰이는 프로토콜입니다. 이를 통해 만든 기업이 다른 장치라도 서로 데이터를 수신할 수 있죠.&lt;/p&gt;
 &lt;p&gt;예를 들어서 웹을 접속할 때 쓰이는 HTTP가 있습니다. ‘서로 약속된’ 인터페이스인 HTTP라는 프로노콜을 통해 노드들은 웹 서비스를 기반으로
-데이터를 주고받을 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크의 기초]]></title><description><![CDATA[네트워크란 노드(Node)와 링크(Link)가 서로 연결되어 있거나 연결되어 있지 않은 집합체를 의미합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network</guid><pubDate>Wed, 09 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+데이터를 주고받을 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프록시 패턴 (Proxy Pattern)]]></title><description><![CDATA[프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/proxy</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/proxy</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;프록시 패턴이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의
+인터페이스 역할을 하는 디자인 패턴입니다.&lt;/p&gt;
+&lt;p&gt;이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
+프록시 서버로도 활용되며 예시를 보여드리겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CORS와 프론트엔드 프록시 서버&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 가져오려 할때
+오리진이 서로 다르다면 데이터를 가져가지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 782px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAAwAPtFYpEuoJSOhsAgBABoJZ2M+ADc1aXEFAAD+8gp7uu05TCkYtKxsVah9CpaBC1bYB2Scguegy2aPSNJl0EEfdmrCcy2gKIAA&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; alt=&quot;proxy prev&quot; title=&quot;proxy prev&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;개발을 하다 보면 프론트엔드 서버와 백엔드 서버가 서로 통신할 때 주로 CORS 에러를 마주칩니다.
+이를 해결하기 위해 서버 쪽에서 모든 오리진을 허용하는 방법도 있지만
+보안상 문제가 될 수 있으므로 프론트 서버 쪽에서 프록시 서버를 두기도 합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;오리진이란?
+&lt;ul&gt;
+&lt;li&gt;프로토콜과 호스트 이름, 포트의 조합을 말합니다.&lt;/li&gt;
+&lt;li&gt;ex) &lt;a href=&quot;https://www.naver.com:80/cafe&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80/cafe&lt;/a&gt; 에서 &lt;a href=&quot;https://www.naver.com:80&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80&lt;/a&gt; 부분을 말합니다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예를 들어서 오리진이 localhost:3000 서버에서 localhost:8000 서버로 통신을 하면
+포트번호가 다르기 때문에 CORS 에러가 나타납니다.&lt;/p&gt;
+&lt;p&gt;이때 프록시 서버를 중간에 둬서 localhost:3000에서 오는 요청의 오리진을 localhost:8000으로 바꾸는 것 입니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoUAA0APtFYpEuoJSOhsAgBABoJZQAAYf+RndOfwEN1gAD+9PgZ0DBk9JMO+Z37mlid5pc2DyaDBOfM20QD7RBI3pHh/9efhvr77BusgPSD8ixqfV5oawAAAAA=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
+/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
+/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
+/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
+/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; alt=&quot;proxy next&quot; title=&quot;proxy next&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;위 그림처럼 프론트엔드 서버 앞단에 프록시 서버를 두어서 요청에 대한 처리를 할 수 있으며
+자연스레 CORS 에러도 해결 할 수 있고 통신도 매끄럽게 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크의 기초]]></title><description><![CDATA[네트워크란 노드(Node)와 링크(Link)가 서로 연결되어 있거나 연결되어 있지 않은 집합체를 의미합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network</guid><pubDate>Wed, 09 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;네트워크란?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;네트워크는 노드(Node)와 링크(Link)가 서로 연결되어 있거나 연결되어 있지 않은 집합체를 의미합니다.
