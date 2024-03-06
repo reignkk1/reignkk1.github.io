@@ -1,4 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 26 Feb 2024 09:00:44 GMT</lastBuildDate><item><title><![CDATA[리액트 메모이제이션?]]></title><description><![CDATA[useMemo와 useCallback에 대해서 알아보자]]></description><link>https://lumen.alxshelepenok.com/posts/memoization</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/memoization</guid><pubDate>Tue, 30 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;메모이제이션이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;메모이제이션이란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;메모이제이션이란?&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by 김민겸]]></title><description><![CDATA[Blog by 김민겸]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 06 Mar 2024 09:34:52 GMT</lastBuildDate><item><title><![CDATA[parser-localStorage 구현기]]></title><description><![CDATA[브라우저 저장소 로컬 스토리지를 기반으로 만든 라이브러리]]></description><link>https://lumen.alxshelepenok.com/posts/parser-localstorage</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/parser-localstorage</guid><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;기존-localstorage의-문제점-및-불편한-점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B8%B0%EC%A1%B4-localstorage%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90-%EB%B0%8F-%EB%B6%88%ED%8E%B8%ED%95%9C-%EC%A0%90&quot; aria-label=&quot;기존 localstorage의 문제점 및 불편한 점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;기존 localStorage의 문제점 및 불편한 점&lt;/h3&gt;
+&lt;p&gt;프론트 개발을 하다보면 클라이언트의 데이터 값을 저장하기 위해서 브라우저 저장소인 localStorage를 사용합니다.&lt;/p&gt;
+&lt;p&gt;localStorage의 특징중 하나는 항상 문자 형태로 값을 저장해야 한다는 점과 값을 가져올 때마다 항상 문자 형태로 리턴이 된다는 점입니다.&lt;/p&gt;
+&lt;p&gt;이러한 점 때문에 Object(객체,배열) 타입의 경우 JSON.stringify 매서드를 사용하여 타입을 변환해준 후 값을 저장해야 하는 불편한 점이 생깁니다. 또한 number, boolean 형태로 값을 저장할 경우 값을 가져올 때마다 문자 타입의 형태로 리턴되어 한번더 타입을 체크 해야하는 불편한 점이 생기기 마련이고, 이는 결국 개발자의 실수로 이어져 에러가 발생될 확률이 높아집니다.&lt;/p&gt;
+&lt;p&gt;이러한 문제점들을 해결하고자 parser-localStorage 라는 라이브러리를 개발하게 되었습니다.&lt;/p&gt;
+&lt;h3 id=&quot;기존-localstorage와-parser-localstorage의-차이점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B8%B0%EC%A1%B4-localstorage%EC%99%80-parser-localstorage%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90&quot; aria-label=&quot;기존 localstorage와 parser localstorage의 차이점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;기존 localStorage와 parser-localStorage의 차이점&lt;/h3&gt;
+&lt;deckgo-highlight-code language=&quot;jsx&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;import parserLocalStorage from &amp;quot;parser-localstorage&amp;quot;;
+
+// localStorage를 이용하여 [1,2,3,4,5] 라는 배열을 저장하는 코드
+localStorage.setItem(&amp;quot;test&amp;quot;, JSON.stringify([1, 2, 3, 4, 5]));
+console.log(JSON.parse(localStorage.getItem(&amp;quot;test&amp;quot;)));
+
+// parserLocalStorage 라이브러리를 사용하여 [1,2,3,4,5] 라는 배열을 저장하는 코드
+parserLocalStorage.set(&amp;quot;test&amp;quot;, [1, 2, 3, 4, 5]);
+console.log(parserlocalStorage.get(&amp;quot;test&amp;quot;));&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 412px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/f0a55ee27d06a5f1fafeb5447dcb6b58/9e32a/console.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 24.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABJ0AAASdAHeZh94AAAA4klEQVQY04WO0W6EIBBF/RqNIqCoFV0U1xWNjTXRJr7t/3/G3TBJN+lL+3CAYe4cCNZ1xbIsuK4Lxhjs+w7nJtj7A1/fT9ynBY9xhM91XYfjOHCeJ7Zto7yvx3HEPM/kCKZpQt/3mGeHoihhTIe6rnGzDp/HE611NNi2LaqqIqnH12VZwloLrTXhPcEwDNTwEsYSNI0G5ykyKdCZBnEckVAIgSRJEMfxG8YY7f7+pxf4JctyeuGj0shkgZRJCF6ApyUKpSE4/zX4F0EURXRQSiHPFaTIwVP5RgpFPwnDED77Hy8E5qJxUOAvmwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/f0a55ee27d06a5f1fafeb5447dcb6b58/8ac56/console.webp 240w,
+/static/f0a55ee27d06a5f1fafeb5447dcb6b58/3b1af/console.webp 412w&quot; sizes=&quot;(max-width: 412px) 100vw, 412px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/f0a55ee27d06a5f1fafeb5447dcb6b58/8ff5a/console.png 240w,
+/static/f0a55ee27d06a5f1fafeb5447dcb6b58/9e32a/console.png 412w&quot; sizes=&quot;(max-width: 412px) 100vw, 412px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/f0a55ee27d06a5f1fafeb5447dcb6b58/9e32a/console.png&quot; alt=&quot;console&quot; title=&quot;console&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;위 코드에서 처럼 따로 JSON 객체를 사용하지 않아도 라이브러리가 자동으로 파싱 해주어 코드가 좀 더 간결해졌습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;localStorage.setItem(&amp;quot;test&amp;quot;, 123);
+localStorage.setItem(&amp;quot;test2&amp;quot;, true);
+
+console.log(localStorage.getItem(&amp;quot;test&amp;quot;));
+console.log(localStorage.getItem(&amp;quot;test2&amp;quot;));&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 442px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/b03cf8894a0c615db002752f12d6b909/e03bf/console3.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 25.416666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABJ0AAASdAHeZh94AAAAxElEQVQY052QQQqDMBREcxdBo5QgxkTQaEQIJVGqKNL7n2RKfrGLrkoXQzJvhll85pxDCAHbtqHve8zzDGsHOL/BP57EQvAYhgHLsuA8T3jvYa3FcRzE13XFvu8YxxFsmiYKjTGo6xpd10Ipjen+wOgWtF0PYzpUVQWlFLTW1Iu+aRp6o4+ZlBIsFq6SEIIg5xy1rCDEDWVZkoqiQJ7npPi//DdnSZK8B6VEmqY0FsMs4+A8J3+xX8TiiNKabsV59hn4Vy/ScJ/SEN7MmgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/b03cf8894a0c615db002752f12d6b909/8ac56/console3.webp 240w,
+/static/b03cf8894a0c615db002752f12d6b909/3fa5c/console3.webp 442w&quot; sizes=&quot;(max-width: 442px) 100vw, 442px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/b03cf8894a0c615db002752f12d6b909/8ff5a/console3.png 240w,
+/static/b03cf8894a0c615db002752f12d6b909/e03bf/console3.png 442w&quot; sizes=&quot;(max-width: 442px) 100vw, 442px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/b03cf8894a0c615db002752f12d6b909/e03bf/console3.png&quot; alt=&quot;console3&quot; title=&quot;console3&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;위 코드를 보시면 개발자는 분명히 숫자 123과 불리언 값 true를 저장하였지만 값을 가져와보니 문자 타입으로 변환되어 리턴되는 것을 볼 수 있습니다.&lt;/p&gt;
+&lt;deckgo-highlight-code language=&quot;js&quot; terminal=&quot;carbon&quot; theme=&quot;one-dark&quot; line-numbers=&quot;true&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;import parserLocalStorage from &amp;quot;parser-localstorage&amp;quot;;
+
+parserLocalStorage.setItem(&amp;quot;test&amp;quot;, 123);
+parserLocalStorage.setItem(&amp;quot;test2&amp;quot;, true);
+
+console.log(parserLocalStorage.getItem(&amp;quot;test&amp;quot;));
+console.log(parserLocalStorage.getItem(&amp;quot;test2&amp;quot;));&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 510px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/ff84e1713dd82d0b3edec2afb16a9c5a/0abdd/console2.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 22.916666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABJ0AAASdAHeZh94AAAAuUlEQVQY052MTW6DMBQGfZrahsQB46amGOQmVVXEn0BimfsfYyKQklUXURejNxrpfaLrOvq+J4TA5iHUdMuNy0/PV4xcrldijCzLwjAMVFXFOI57a9uWeZ7332maWNcVUdeBsvQ45/DeU7gz378jH2VD0zQURUGe51hrdzb/qz1cFPaMMRnGmB2tFdnJkCYaa3PSNCVJkpcRmfnEHBxSvqGUQmuNlAqltiuf7VXE8fDO6eifg4+R/3IHe3+eaxzyI6UAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/ff84e1713dd82d0b3edec2afb16a9c5a/8ac56/console2.webp 240w,
+/static/ff84e1713dd82d0b3edec2afb16a9c5a/d3be9/console2.webp 480w,
+/static/ff84e1713dd82d0b3edec2afb16a9c5a/b7235/console2.webp 510w&quot; sizes=&quot;(max-width: 510px) 100vw, 510px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/ff84e1713dd82d0b3edec2afb16a9c5a/8ff5a/console2.png 240w,
+/static/ff84e1713dd82d0b3edec2afb16a9c5a/e85cb/console2.png 480w,
+/static/ff84e1713dd82d0b3edec2afb16a9c5a/0abdd/console2.png 510w&quot; sizes=&quot;(max-width: 510px) 100vw, 510px&quot; type=&quot;image/png&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/ff84e1713dd82d0b3edec2afb16a9c5a/0abdd/console2.png&quot; alt=&quot;console2&quot; title=&quot;console2&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;parserLocalStorage 라이브러리를 사용하여 값을 저장하고 값을 가져온 결과입니다.&lt;/p&gt;
+&lt;p&gt;이처럼 어떤 타입으로 값을 저장하였는지를 판단하여 값을 가져올 때 자동으로 타입을 변환하여 리턴해줍니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 메모이제이션?]]></title><description><![CDATA[useMemo와 useCallback에 대해서 알아보자]]></description><link>https://lumen.alxshelepenok.com/posts/memoization</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/memoization</guid><pubDate>Tue, 30 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;메모이제이션이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;메모이제이션이란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;메모이제이션이란?&lt;/h3&gt;
 &lt;p&gt;컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을 메모리에 저장함으로서 동일한 계산의 반복 수행을 제거하여 프로그램 실행속도를 빠르게 하는 기술이다.&lt;/p&gt;
 &lt;h3 id=&quot;usecallback-usememo-언제-써야-할까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#usecallback-usememo-%EC%96%B8%EC%A0%9C-%EC%8D%A8%EC%95%BC-%ED%95%A0%EA%B9%8C&quot; aria-label=&quot;usecallback usememo 언제 써야 할까 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;useCallback, useMemo 언제 써야 할까?&lt;/h3&gt;
 &lt;p&gt;우리는 React로 개발하다 보면 상태변경을 통해서 UI를 제어합니다.
@@ -1489,7 +1563,62 @@ const iceCream2 = new IceCreamFactory(&amp;quot;보석바&amp;quot;, &amp;quot;2
 &lt;blockquote&gt;
 &lt;p&gt;링크 계층&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;전선, 광섬유, 무선 등으로 실질적으로 데이터를 전달하며 장치 간에 신호를 주고받는 ‘규칙’을 정하는 계층입니다. 네트워크 접근 계층이라고도 합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크 분류와 프로토콜]]></title><description><![CDATA[네트워크는 LAN과 MAN 그리고 WAN으로 분류할 수 있습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network-protocal</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network-protocal</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;전선, 광섬유, 무선 등으로 실질적으로 데이터를 전달하며 장치 간에 신호를 주고받는 ‘규칙’을 정하는 계층입니다. 네트워크 접근 계층이라고도 합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프록시 패턴 (Proxy Pattern)]]></title><description><![CDATA[프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/proxy</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/proxy</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;프록시 패턴이란?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의
+인터페이스 역할을 하는 디자인 패턴입니다.&lt;/p&gt;
+&lt;p&gt;이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
+프록시 서버로도 활용되며 예시를 보여드리겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CORS와 프론트엔드 프록시 서버&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 가져오려 할때
+오리진이 서로 다르다면 데이터를 가져가지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 782px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAAwAPtFYpEuoJSOhsAgBABoJZ2M+ADc1aXEFAAD+8gp7uu05TCkYtKxsVah9CpaBC1bYB2Scguegy2aPSNJl0EEfdmrCcy2gKIAA&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
+/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; alt=&quot;proxy prev&quot; title=&quot;proxy prev&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;p&gt;개발을 하다 보면 프론트엔드 서버와 백엔드 서버가 서로 통신할 때 주로 CORS 에러를 마주칩니다.
+이를 해결하기 위해 서버 쪽에서 모든 오리진을 허용하는 방법도 있지만
+보안상 문제가 될 수 있으므로 프론트 서버 쪽에서 프록시 서버를 두기도 합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;오리진이란?
+&lt;ul&gt;
+&lt;li&gt;프로토콜과 호스트 이름, 포트의 조합을 말합니다.&lt;/li&gt;
+&lt;li&gt;ex) &lt;a href=&quot;https://www.naver.com:80/cafe&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80/cafe&lt;/a&gt; 에서 &lt;a href=&quot;https://www.naver.com:80&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80&lt;/a&gt; 부분을 말합니다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예를 들어서 오리진이 localhost:3000 서버에서 localhost:8000 서버로 통신을 하면
+포트번호가 다르기 때문에 CORS 에러가 나타납니다.&lt;/p&gt;
+&lt;p&gt;이때 프록시 서버를 중간에 둬서 localhost:3000에서 오는 요청의 오리진을 localhost:8000으로 바꾸는 것 입니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;&gt;
+      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoUAA0APtFYpEuoJSOhsAgBABoJZQAAYf+RndOfwEN1gAD+9PgZ0DBk9JMO+Z37mlid5pc2DyaDBOfM20QD7RBI3pHh/9efhvr77BusgPSD8ixqfV5oawAAAAA=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
+/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
+/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
+/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
+/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
+          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; alt=&quot;proxy next&quot; title=&quot;proxy next&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;위 그림처럼 프론트엔드 서버 앞단에 프록시 서버를 두어서 요청에 대한 처리를 할 수 있으며
+자연스레 CORS 에러도 해결 할 수 있고 통신도 매끄럽게 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크 분류와 프로토콜]]></title><description><![CDATA[네트워크는 LAN과 MAN 그리고 WAN으로 분류할 수 있습니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network-protocal</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network-protocal</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;네트워크 분류&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;네트워크는 규모를 기반으로 분류할 수 있습니다. 사무실과 개인적으로 소유 가능한 규모인 LAN(Local Area Network)과 서울시 등 시 정도의
@@ -1552,62 +1681,7 @@ IEEE 또는 IETF라는 표준화 단체가 이를 정합니다.&lt;/li&gt;
     &lt;/span&gt;
 &lt;p&gt;IEEE802.3은 유선 LAN 프로토콜로, 유선으로 LAN을 구축할 때 쓰이는 프로토콜입니다. 이를 통해 만든 기업이 다른 장치라도 서로 데이터를 수신할 수 있죠.&lt;/p&gt;
 &lt;p&gt;예를 들어서 웹을 접속할 때 쓰이는 HTTP가 있습니다. ‘서로 약속된’ 인터페이스인 HTTP라는 프로노콜을 통해 노드들은 웹 서비스를 기반으로
-데이터를 주고받을 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프록시 패턴 (Proxy Pattern)]]></title><description><![CDATA[프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴입니다.]]></description><link>https://lumen.alxshelepenok.com/posts/proxy</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/proxy</guid><pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
-&lt;p&gt;프록시 패턴이란?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;프록시 패턴(proxy pattern)은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의
-인터페이스 역할을 하는 디자인 패턴입니다.&lt;/p&gt;
-&lt;p&gt;이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
-프록시 서버로도 활용되며 예시를 보여드리겠습니다.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;CORS와 프론트엔드 프록시 서버&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 가져오려 할때
-오리진이 서로 다르다면 데이터를 가져가지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.&lt;/p&gt;
-&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 782px; &quot;&gt;
-      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
-    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAAwAPtFYpEuoJSOhsAgBABoJZ2M+ADc1aXEFAAD+8gp7uu05TCkYtKxsVah9CpaBC1bYB2Scguegy2aPSNJl0EEfdmrCcy2gKIAA&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
-/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
-/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
-          &lt;source srcset=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/8ac56/proxy_prev.webp 240w,
-/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/d3be9/proxy_prev.webp 480w,
-/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp 782w&quot; sizes=&quot;(max-width: 782px) 100vw, 782px&quot; type=&quot;image/webp&quot;&gt;
-          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/cfe08b3fcc6b2c3902e9e2faf9a683d6/c0b7e/proxy_prev.webp&quot; alt=&quot;proxy prev&quot; title=&quot;proxy prev&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;
-&lt;p&gt;개발을 하다 보면 프론트엔드 서버와 백엔드 서버가 서로 통신할 때 주로 CORS 에러를 마주칩니다.
-이를 해결하기 위해 서버 쪽에서 모든 오리진을 허용하는 방법도 있지만
-보안상 문제가 될 수 있으므로 프론트 서버 쪽에서 프록시 서버를 두기도 합니다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;오리진이란?
-&lt;ul&gt;
-&lt;li&gt;프로토콜과 호스트 이름, 포트의 조합을 말합니다.&lt;/li&gt;
-&lt;li&gt;ex) &lt;a href=&quot;https://www.naver.com:80/cafe&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80/cafe&lt;/a&gt; 에서 &lt;a href=&quot;https://www.naver.com:80&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.naver.com:80&lt;/a&gt; 부분을 말합니다&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;예를 들어서 오리진이 localhost:3000 서버에서 localhost:8000 서버로 통신을 하면
-포트번호가 다르기 때문에 CORS 에러가 나타납니다.&lt;/p&gt;
-&lt;p&gt;이때 프록시 서버를 중간에 둬서 localhost:3000에서 오는 요청의 오리진을 localhost:8000으로 바꾸는 것 입니다.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;&gt;
-      &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
-    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoUAA0APtFYpEuoJSOhsAgBABoJZQAAYf+RndOfwEN1gAD+9PgZ0DBk9JMO+Z37mlid5pc2DyaDBOfM20QD7RBI3pHh/9efhvr77BusgPSD8ixqfV5oawAAAAA=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
-/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
-/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
-          &lt;source srcset=&quot;/static/5b443a174d12deca4a55f8678adf638c/8ac56/proxy_next.webp 240w,
-/static/5b443a174d12deca4a55f8678adf638c/d3be9/proxy_next.webp 480w,
-/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp 768w&quot; sizes=&quot;(max-width: 768px) 100vw, 768px&quot; type=&quot;image/webp&quot;&gt;
-          &lt;img class=&quot;gatsby-resp-image-image&quot; src=&quot;/static/5b443a174d12deca4a55f8678adf638c/8b983/proxy_next.webp&quot; alt=&quot;proxy next&quot; title=&quot;proxy next&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;위 그림처럼 프론트엔드 서버 앞단에 프록시 서버를 두어서 요청에 대한 처리를 할 수 있으며
-자연스레 CORS 에러도 해결 할 수 있고 통신도 매끄럽게 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크의 기초]]></title><description><![CDATA[네트워크란 노드(Node)와 링크(Link)가 서로 연결되어 있거나 연결되어 있지 않은 집합체를 의미합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network</guid><pubDate>Wed, 09 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+데이터를 주고받을 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[네트워크의 기초]]></title><description><![CDATA[네트워크란 노드(Node)와 링크(Link)가 서로 연결되어 있거나 연결되어 있지 않은 집합체를 의미합니다.]]></description><link>https://lumen.alxshelepenok.com/posts/network</link><guid isPermaLink="false">https://lumen.alxshelepenok.com/posts/network</guid><pubDate>Wed, 09 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;네트워크란?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;네트워크는 노드(Node)와 링크(Link)가 서로 연결되어 있거나 연결되어 있지 않은 집합체를 의미합니다.
