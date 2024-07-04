@@ -1,4 +1,138 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev's RSS Feed]]></title><description><![CDATA[MinGyeom's Blog]]></description><link>https://gatsby-starter-apple.netlify.app</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 16 Apr 2024 08:47:26 GMT</lastBuildDate><item><title><![CDATA[parser-storages 구현]]></title><description><![CDATA[기존 localStorage의 문제점 및 불편한 점 프론트 개발을 하다보면 클라이언트의 데이터 값을 저장하기 위해서 브라우저 저장소인 localStorage를 사용합니다. localStorage…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/parser-storages/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/parser-storages/</guid><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;기존 localStorage의 문제점 및 불편한 점&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev's RSS Feed]]></title><description><![CDATA[MinGyeom's Blog]]></description><link>https://gatsby-starter-apple.netlify.app</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 04 Jul 2024 09:03:41 GMT</lastBuildDate><item><title><![CDATA[Data Driven UI]]></title><description><![CDATA[Data Driven UI란? 데이터를 기반으로 한 UI라는 뜻이다.
+프론트엔드 개발자는 UI를 보고 객체 형태로 데이터를 추상화 한다.
+객체 형태로 된 데이터 조각들이 UI를 제어하는 설계기법이다.
+나는 이러한 설계기법에 Data Driven UI…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/data-driven-ui/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/data-driven-ui/</guid><pubDate>Sat, 06 Jul 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Data Driven UI란? 데이터를 기반으로 한 UI라는 뜻이다.
+프론트엔드 개발자는 UI를 보고 객체 형태로 데이터를 추상화 한다.
+객체 형태로 된 데이터 조각들이 UI를 제어하는 설계기법이다.
+나는 이러한 설계기법에 Data Driven UI라는 이름을 붙였다.&lt;/p&gt;
+&lt;p&gt;이 설계가 필요한 이유는 장기적인 유지보수에 적합하며 작은 노력으로도 UI를 편하게 제어할 수 있다는 장점이있다.
+단점으로는 개발 시간이 오래걸리고 복잡하다. 이러한 설계를 내 개인 프로젝트에 도입해보았다.&lt;/p&gt;
+&lt;img src=&quot;/ceff3965ffcb84dc9f9d622f246967c7/selectors.gif&quot;&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;p&gt;위 모달창들을 보면 각각의 모달들은 하나씩만 열려야하는 독립적인 관계이다.
+그리고 모달창을 열었을 때 체크 박스들도 하나만 체크 되어야하는 독립적 관계이다.&lt;/p&gt;
+&lt;p&gt;약간의 기능 설명을 해보자면 채용사이트를 선택하고 완료를 누르면 URI에 path부분이 바뀌고
+개발, 경력을 선택하고 완료를 누르면 URI에 쿼리 스트링 부분이 바뀐다.&lt;/p&gt;
+&lt;p&gt;ex) saramin?job=frontend&amp;#x26;career=junior&lt;/p&gt;
+&lt;p&gt;이러한 UI를 보았을 때 우리는 어떠한 형태로 데이터를 추상화 해야할지 생각해보자.&lt;/p&gt;
+&lt;p&gt;일단 각각의 모달들은 독립적인 관계이므로 ID가 필요할 것이다. 그리고 title(채용사이트, 개발, 경력)도 필요하다.
+모달창 확인 버튼을 눌렀을 때 URI가 바뀌어야 하므로 path인지 query인지도 알아야한다.
+그리고 모달창 안의 체크박스 Text 부분과 체크했을 때의 value값 초기 default 값도 있어야한다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 107.36196319018406%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC5klEQVR42p1Uy04UQRTlP1wYYXjMqx/TXdPVj+rpeTHDY2KI3yBbjCbqQndgREkQBQ0EkYXEuELX+m/He6vmQTtECYvb1XW769S559yqmYufv7F79AXb+8d4dXCCnXfHt4q3H8/x9ccvzOyffUcvipB0bNxxbcyWHNwrO5gtm/F/MVtxcbdooSJiHHz+hpm9T+dwoxSVIISbZCj5IZZqEouuRNG7WSy6dcLI8OboDDP8qNYTAgkgsg5KIkKlLilHPzp1LFDwgn/FvO3DkilefzglwEMClAoF20OZwFrrGwibKQYPmpBZAiuQU6ALjsgDOkPA96dDhkGid9GAgw34aRu+IqZCauajhUs1M+oya6NcQGs92GPAQwPIu/JHBou7q6jFEbprKewwgeqt06jQ7CliHaNO0qT9dXhJGyLpk+7RBHCXAJkuA/LOJS/U87II4IY8D7RZlXpMwksIYl72JWqqRf8pVEWqAfk9B8j0eRGzLHpC61awaWSNLE9vOG9TzhL6vUA5lmnBFfmSDaDSH7l01R9oU9KOGuvHo4mJjuOcG+gN/mKocqa4cYNAY90+2lX6Ns8MHW4RMQxfAxnm/jRD0woBwnZPsxyZ4qsYotGFbC1DpDEaywpBRht2VhBTuCFpGWR5QDtkDY0pzNKNm/RTaAyguWh0aNNYO1yLQ3hkCOds2YArW7qKqZI5yYt1+7i+nl81wIyTck3O13FtycYUYtHqExOFrJcORa9fMSdviH4nmXIn5VpTIoW4naBI/VawfN0WzKwwNITZ6bZxhm3j+Nc39hJp2FgdIFu7T6cgRkia+SnplXXJkAQROe/GCunKgPIdOLJNWqfTbWNMMaXw9cWisylsghNG8MkAh1pJKPqWRPqUcDdY2pS2XjdlijkhMmfCnDUxwIymbJ7PVT0jxdCU6ghwj65uSybja+mmsTgadTd4mpS+YE8uLvH4xTY2t57h4dbTW8Xmo+d48nIHxxeX+AN6fPDlefDzqAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;modalData&quot; title=&quot;&quot; src=&quot;/static/090c894bc09565c8f105c82fc6f7c925/a6d36/modalData.png&quot; srcset=&quot;/static/090c894bc09565c8f105c82fc6f7c925/222b7/modalData.png 163w,
+/static/090c894bc09565c8f105c82fc6f7c925/ff46a/modalData.png 325w,
+/static/090c894bc09565c8f105c82fc6f7c925/a6d36/modalData.png 650w,
+/static/090c894bc09565c8f105c82fc6f7c925/e548f/modalData.png 975w,
+/static/090c894bc09565c8f105c82fc6f7c925/3c492/modalData.png 1300w,
+/static/090c894bc09565c8f105c82fc6f7c925/61946/modalData.png 1546w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br/&gt;
+&lt;p&gt;3개의 모달창들의 UI를 객체 형태로 추상화를 한 모습이다. 추상화한 데이터로 컴포넌트 설계 및 상태관리 로직을 개발하면 된다.&lt;/p&gt;
+&lt;p&gt;만약 개발 부분에 모바일을 추가해달라는 요청이 들어온다면?&lt;/p&gt;
+&lt;img src=&quot;/f936475980ee074232fb07a89e0a664a/checkbox-add.gif&quot;&gt;
+&lt;br/&gt;
+&lt;p&gt;options 배열에 간단히 데이터를 추가해준다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;만약 성별이라는 모달을 추가해달라는 요청이 들어온다면?&lt;/p&gt;
+&lt;img src=&quot;/fbee7c955870e70424113427cc777fd6/modal-add.gif&quot;&gt;
+&lt;br/&gt;
+&lt;p&gt;id는 gender이고 성별은 쿼리스트링 데이터이므로 route는 query로 지정해준다.
+그리고 checkbox는 남자인지 여자인지를 체크해야 하므로 options 배열에 데이터를 추가해준다.&lt;/p&gt;
+&lt;p&gt;여기서 default 값은 여자가 true이므로 초기값은 여자로 체크되어있다.&lt;/p&gt;
+&lt;p&gt;이처럼 데이터를 기반으로한 Data Driven UI 방식이다.
+데이터로 UI를 조작/제어하며 유지보수나 추가사항 등에 대처가 빠르다고 볼 수 있는 설계라고 생각이 든다.&lt;/p&gt;
+&lt;style class=&quot;grvsc-styles&quot;&gt;
+  .grvsc-container {
+    overflow: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 1rem;
+    padding-top: var(--grvsc-padding-top, var(--grvsc-padding-v, 1rem));
+    padding-bottom: 1rem;
+    padding-bottom: var(--grvsc-padding-bottom, var(--grvsc-padding-v, 1rem));
+    border-radius: 8px;
+    border-radius: var(--grvsc-border-radius, 8px);
+    font-feature-settings: normal;
+    line-height: 1.4;
+  }
+  
+  .grvsc-code {
+    display: table;
+  }
+  
+  .grvsc-line {
+    display: table-row;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+  }
+  
+  .grvsc-line &gt; * {
+    position: relative;
+  }
+  
+  .grvsc-gutter-pad {
+    display: table-cell;
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  .grvsc-gutter {
+    display: table-cell;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter::before {
+    content: attr(data-content);
+  }
+  
+  .grvsc-source {
+    display: table-cell;
+    padding-left: 1.5rem;
+    padding-left: var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem));
+    padding-right: 1.5rem;
+    padding-right: var(--grvsc-padding-right, var(--grvsc-padding-h, 1.5rem));
+  }
+  
+  .grvsc-source:empty::after {
+    content: &apos; &apos;;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter + .grvsc-source {
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  /* Line transformer styles */
+  
+  .grvsc-has-line-highlighting &gt; .grvsc-code &gt; .grvsc-line::before {
+    content: &apos; &apos;;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .grvsc-line-diff-add::before {
+    background-color: var(--grvsc-line-diff-add-background-color, rgba(0, 255, 60, 0.2));
+  }
+  
+  .grvsc-line-diff-del::before {
+    background-color: var(--grvsc-line-diff-del-background-color, rgba(255, 0, 20, 0.2));
+  }
+  
+  .grvsc-line-number {
+    padding: 0 2px;
+    text-align: right;
+    opacity: 0.7;
+  }
+  
+&lt;/style&gt;</content:encoded></item><item><title><![CDATA[parser-storages 구현]]></title><description><![CDATA[기존 localStorage의 문제점 및 불편한 점 프론트 개발을 하다보면 클라이언트의 데이터 값을 저장하기 위해서 브라우저 저장소인 localStorage를 사용합니다. localStorage…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/parser-storages/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/parser-storages/</guid><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;기존 localStorage의 문제점 및 불편한 점&lt;/h3&gt;
 &lt;p&gt;프론트 개발을 하다보면 클라이언트의 데이터 값을 저장하기 위해서 브라우저 저장소인 localStorage를 사용합니다.&lt;/p&gt;
 &lt;p&gt;localStorage의 특징중 하나는 항상 문자 형태로 값을 저장해야 한다는 점과 값을 가져올 때마다 항상 문자 형태로 리턴이 된다는 점입니다.&lt;/p&gt;
 &lt;p&gt;이러한 점 때문에 Object(객체,배열) 타입의 경우 JSON.stringify 매서드를 사용하여 타입을 변환해준 후 값을 저장해야 하는 불편한 점이 생깁니다. 또한 number, boolean 형태로 값을 저장할 경우 값을 가져올 때마다 문자 타입의 형태로 리턴되어 한번더 타입을 체크 해야하는 불편한 점이 생기기 마련이고, 이는 결국 개발자의 실수로 이어져 에러가 발생될 확률이 높아집니다.&lt;/p&gt;
@@ -19,6 +153,7 @@
 /static/f0a55ee27d06a5f1fafeb5447dcb6b58/ff46a/console.png 325w,
 /static/f0a55ee27d06a5f1fafeb5447dcb6b58/9e32a/console.png 412w&quot; sizes=&quot;(max-width: 412px) 100vw, 412px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
     &lt;/span&gt;
+&lt;br/&gt;
 &lt;p&gt;위 코드에서 처럼 따로 JSON 객체를 사용하지 않아도 라이브러리가 자동으로 파싱 해주어 코드가 좀 더 간결해졌습니다.&lt;/p&gt;
 &lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;js&quot; data-index=&quot;1&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test2&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
@@ -31,6 +166,7 @@
 /static/b03cf8894a0c615db002752f12d6b909/ff46a/console3.png 325w,
 /static/b03cf8894a0c615db002752f12d6b909/e03bf/console3.png 442w&quot; sizes=&quot;(max-width: 442px) 100vw, 442px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
     &lt;/span&gt;
+&lt;br/&gt;
 &lt;p&gt;위 코드를 보시면 개발자는 분명히 숫자 123과 불리언 값 true를 저장하였지만 값을 가져와보니 문자 타입으로 변환되어 리턴되는 것을 볼 수 있습니다.&lt;/p&gt;
 &lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;js&quot; data-index=&quot;2&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-5 grvsc-t4tStz-9&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; { parserLocalStorage } &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-5 grvsc-t4tStz-9&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;parser-storages&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
@@ -45,6 +181,7 @@
 /static/ff84e1713dd82d0b3edec2afb16a9c5a/ff46a/console2.png 325w,
 /static/ff84e1713dd82d0b3edec2afb16a9c5a/0abdd/console2.png 510w&quot; sizes=&quot;(max-width: 510px) 100vw, 510px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
     &lt;/span&gt;
+&lt;br/&gt;
 &lt;p&gt;parser-storages 라이브러리를 사용하여 값을 저장하고 값을 가져온 결과입니다.&lt;/p&gt;
 &lt;p&gt;이처럼 어떤 타입으로 값을 저장하였는지를 판단하여 값을 가져올 때 자동으로 타입을 변환하여 리턴해줍니다.&lt;/p&gt;
 &lt;h3&gt;Next.js에서의 localStorage 문제점&lt;/h3&gt;
@@ -55,6 +192,7 @@
 /static/52c8a25b4a835a1bf1e4cd46501e12b9/ff46a/next_console.png 325w,
 /static/52c8a25b4a835a1bf1e4cd46501e12b9/37e0d/next_console.png 482w&quot; sizes=&quot;(max-width: 482px) 100vw, 482px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
     &lt;/span&gt;
+&lt;br/&gt;
 &lt;p&gt;Next.js 환경에서 localStorage 객체에 접근할시에 위와 같은 에러가 발생되게 됩니다.&lt;/p&gt;
 &lt;p&gt;위 에러가 발생하는 이유는 Next.js가 서버 사이드에서 미리 렌더링 되기 때문입니다.&lt;/p&gt;
 &lt;p&gt;localStorage는 브라우저 환경에서만 실행이 가능하기 때문에 서버 사이드에서 저 코드를 실행하면 정의되지 않다고 에러를 발생시키게 됩니다.&lt;/p&gt;
