@@ -1,10 +1,433 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev's RSS Feed]]></title><description><![CDATA[MinGyeom's Blog]]></description><link>https://gatsby-starter-apple.netlify.app</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 04 Jul 2024 09:03:41 GMT</lastBuildDate><item><title><![CDATA[Data Driven UI]]></title><description><![CDATA[Data Driven UI란? 데이터를 기반으로 한 UI라는 뜻이다.
-프론트엔드 개발자는 UI를 보고 객체 형태로 데이터를 추상화 한다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev's RSS Feed]]></title><description><![CDATA[MinGyeom's Blog]]></description><link>https://gatsby-starter-apple.netlify.app</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 17 Oct 2024 08:31:56 GMT</lastBuildDate><item><title><![CDATA[React.js의 렌더링 방식]]></title><description><![CDATA[React.js의 렌더링 프로세스는 어떠한 방식으로 작동하는지? 또한 이러한 특징으로 인해 얻게 되는 장점이 무엇인지 살펴보겠습니다. React.js…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/react-render/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/react-render/</guid><pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;React.js의 렌더링 프로세스는 어떠한 방식으로 작동하는지? 또한 이러한 특징으로 인해 얻게 되는 장점이 무엇인지 살펴보겠습니다.&lt;/p&gt;
+&lt;p&gt;React.js의 렌더링 방식에 대해서 살펴보기 전에 브라우저의 렌더링 과정에 대해서 살펴볼 필요가 있습니다.&lt;/p&gt;
+&lt;h2&gt;브라우저의 렌더링 방식&lt;/h2&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.852760736196316%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABFElEQVR42rWSS0oDQRCG5/1+72Yxd5r13EBndOMBshEvIOQCQtx6AImLEQmRJGRnILOUZCF4AeU3VTLQTkYYBBt+qK6q/upvuiVJktBKlmWI+64URelVp0/CUNFhXdehqSpLVbV+ICU9z0MQBLBt+0dT69p1HExub7BcrTBbr/H4PMfTbI7r8fgYqB6mxXGMLMsYrGkaFy3L4hrFYRiiaRrQ+nzd4WP/xnFd193h38Aoihjq+z6DyKnrunAOzkzTRJIk2LxsGHJ5NcLibsTxdPrQD6TrpmnKoNaheGWqb5stQ+53S+zfF787pIAgBBZhogzDQFEUKMsSF+UZTk/OUVUV8jz/+ysP1PBm+jLkVBTl/tXhF3BMDwBFX5LGAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 1 &quot; title=&quot;&quot; src=&quot;/static/bcbcea2b68311b4c3464162c1434e9f4/a6d36/react-render(1).png&quot; srcset=&quot;/static/bcbcea2b68311b4c3464162c1434e9f4/222b7/react-render(1).png 163w,
+/static/bcbcea2b68311b4c3464162c1434e9f4/ff46a/react-render(1).png 325w,
+/static/bcbcea2b68311b4c3464162c1434e9f4/a6d36/react-render(1).png 650w,
+/static/bcbcea2b68311b4c3464162c1434e9f4/394f7/react-render(1).png 707w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;우리가 흔히 사용하는 웹 브라우저(사파리, 크롬, Edge ...등) 종류에 상관없이 모든 브라우저들은 HTML, CSS로 작성한 웹 문서들을
+사용자가 보는 화면에 렌더링 시켜줍니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.852760736196316%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAAA1klEQVR42p2S2wqEMAxEq+L9riiKbyKI//+BWU7YLq0Py7oPQ8akmSZTTRiGYhEEgcejKBJjzDMURSHjOEpZlgLP81yqqpK+7yXLMkmS5JkgQuu6Stu2Cr67rpNt2yRNU8U3ATbxcu6qJIhMhbCt3ev3nMuNewtJpjuOQ87zlGmadOphGBT7vqsVTdOoTdSu65JlWdSmt44/PivaBjyM41gj/tZ1rR6zAefg1qaPNRAO0gRHgAMIwh+/NKPyKEzFuojP86zreTf/CtdgN1pPH/+HfzR8xQv03NM8u0O58wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 2 &quot; title=&quot;&quot; src=&quot;/static/2214370aacc8548b2b1614a0a94740d3/a6d36/react-render(2).png&quot; srcset=&quot;/static/2214370aacc8548b2b1614a0a94740d3/222b7/react-render(2).png 163w,
+/static/2214370aacc8548b2b1614a0a94740d3/ff46a/react-render(2).png 325w,
+/static/2214370aacc8548b2b1614a0a94740d3/a6d36/react-render(2).png 650w,
+/static/2214370aacc8548b2b1614a0a94740d3/57dc1/react-render(2).png 718w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;HTML, CSS는 크게 위 사진과 같은 절차들을 거쳐서 브라우저 화면에 렌더링(Painting) 되게 됩니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.852760736196316%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABTklEQVR42q2SW2+CQBCFEURRhMhFEEm4RIVSSGNKaps2af//rzrlTLtEa9OnPhx2WGa+PTOLpmkaJpPJt3Touj6+q1jlGIYxit8uY+aImLherxEnKcLAh+95CIJwUADf9zGbzSTRsiwsl0tZbduG67pYLBayR10BwzBE1Z3QPL6hajrkWYY8z5EkiRQxkRDlhHs0odwTOLr8AgYoywJd/4Ln13dUdYOiKAToOA6m06kAqTRNxSWLoyjCarXCfD6/BrK9Y32H9vyBqj2JOwLjOMZut0PbtgI3TVPGwLmxmDC6vQUOSUVZ4v50Rt/3OFS1QLfbrcyKzginU0JUqwr2K3B/rFE/POEwrFmeIRvmSKBqj8UEbjabsZhzvGmZD9d1kKQZojgZWvJkBLwob7hxtskcFtEpZ0o4DyKMe+rQEaha+EuX/yXXy/hHvYb/1CdireDrH1NC8wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 3 &quot; title=&quot;&quot; src=&quot;/static/e02694919b12bb0dd6d0558d1d3008f0/a6d36/react-render(3).png&quot; srcset=&quot;/static/e02694919b12bb0dd6d0558d1d3008f0/222b7/react-render(3).png 163w,
+/static/e02694919b12bb0dd6d0558d1d3008f0/ff46a/react-render(3).png 325w,
+/static/e02694919b12bb0dd6d0558d1d3008f0/a6d36/react-render(3).png 650w,
+/static/e02694919b12bb0dd6d0558d1d3008f0/0ad97/react-render(3).png 717w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;브라우저는 자기가 해석하기 편한 방식으로 HTML 코드들을 DOM Tree 형태로 변환하게 되고 CSS는 CSSOM 이라는 형태로 변환됩니다.
+그렇게 생성된 DOM Tree를 바탕으로 브라우저 화면에 Layout을 잡고 Painting을 시작하게 되는 것입니다.&lt;/p&gt;
+&lt;p&gt;그렇다면 여기서 UI 업데이트는 어떻게 이루어 질까요?&lt;/p&gt;
+&lt;p&gt;예를 들어서 (사용자가 버튼을 클릭하면 모달 창이 뜸, 좋아요 버튼을 누르면 버튼 색깔이 바뀜) 이러한 상황들이 있습니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 43.558282208588956%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAAA/ElEQVR42p1Ry07EMAys7TyatiltYIVgJQ7AgZXg/z9vGC8Frbiw5TDyOHGdmWlnZgghIaeIkg1LDhgtYIkRUwjoed913fVQftyWCYc2os0RR6LFjNdp+lm6a6GZYB4Vwkakg4kgqWLgQ86V8Du7qOqzv8+I88L71fDxnPD2FLFOioX2X6aK9/kGxzJgTQmH3OMuu+qKW9bGs4e+oJGf6oxH8jXlr4VDFtRCDIocBYXqKq0uHB6ZXzZFYR1pvRLOPVevAzFvsRTbohFReI6iRpATxoHc9+devq1cnyFVUE2ijcTXHNFfpb3Axbb3L7sC3ZQ5v+z1Pwp3Dv+JTw4ku3cgCoD8AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 4 &quot; title=&quot;&quot; src=&quot;/static/a3494dc25c95b52a9db10f1ed93b3e71/a6d36/react-render(4).png&quot; srcset=&quot;/static/a3494dc25c95b52a9db10f1ed93b3e71/222b7/react-render(4).png 163w,
+/static/a3494dc25c95b52a9db10f1ed93b3e71/ff46a/react-render(4).png 325w,
+/static/a3494dc25c95b52a9db10f1ed93b3e71/a6d36/react-render(4).png 650w,
+/static/a3494dc25c95b52a9db10f1ed93b3e71/6bbf7/react-render(4).png 716w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;위에서 말했던 UI 업데이트들은 JavaScript가 DOM을 수정하게 되면서 발생하게 됩니다.&lt;/p&gt;
+&lt;p&gt;JavaScript의 innerHTML, appendChild, removeChild와 같은 API를 사용하여 DOM을 수정하게 되면
+브라우저가 DOM의 변경을 감지하게 되어 Render Tree를 다시 만들고 Layout과 Painting 과정을 다시 반복하게 됩니다.&lt;/p&gt;
+&lt;p&gt;여기에서 중요한 것은 Layout을 잡고 Painting을 하는 과정은 브라우저에게 매우 부담이 되고 비싼 과정입니다.
+그만큼 연산이 많이 필요하고 시간이 오래 걸리는 과정이죠.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 46.62576687116564%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABCUlEQVR42q1Sa0/DMAxM4iR9hKasa7VHB2hC+/8/8TinnRioICHx4XRJZJ/PdowxBsZaVMFhyIIgFt45iF3Yk0sMYX+AeYRjQtM2uBx7XOca1yliHyvcug6nusYuxi9iZgPf3g2iF+TkeVFXFpHOuhAKB+IenLzHuWlwZKGZrDjVDZz57MKIMziPgssk2HVLi3u60uCR/EQRRUdMVYWBbz2L6V3jVFxZi2m3RfDt4HGbAw4DZ2hdEXvPGS9ti2cm36H3kaIqmAkVem1TcZ0pKMu8H2dgy1kricgyt3UpdmNem2dNqFg1pYSgc2NVRU+HuizxfnMRv4CO9JvQkbJd3XltYX37s+B/4gNrDbyAGZJ57AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 5 &quot; title=&quot;&quot; src=&quot;/static/e169b609851587035c18433a33c3bfb0/a6d36/react-render(5).png&quot; srcset=&quot;/static/e169b609851587035c18433a33c3bfb0/222b7/react-render(5).png 163w,
+/static/e169b609851587035c18433a33c3bfb0/ff46a/react-render(5).png 325w,
+/static/e169b609851587035c18433a33c3bfb0/a6d36/react-render(5).png 650w,
+/static/e169b609851587035c18433a33c3bfb0/a8e5b/react-render(5).png 711w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;결국 JavaScript로 DOM의 조작 횟수를 최소화 하는 것이 브라우저 성능을 끌어올리는데에 매우 중요한 부분이라고 볼 수 있습니다.
+예를 들어서 UI 업데이트가 300개가 필요하다면 300번의 DOM을 수정하고 Layout과 Painting 과정이 300번 일어나게 되므로
+심각한 웹 페이지의 성능 저하를 일으키게 되면서 홈페이지가 느려지는 원인이 될 수 있습니다.&lt;/p&gt;
+&lt;h2&gt;예제코드&lt;/h2&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 602px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 70.5521472392638%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABJ0AAASdAHeZh94AAACiklEQVR42oWT646bMBCF8ya71ebCPWAwxoDBECAJCdlLut2qldr3f4rTMbtSt1Kk/jiawXg+j4/thR0LuFKDnV/B9Al5/YxcvyDiBbrLC47fvqN/vIIPFeSlhpz0u441ilrhcKkwnCsIWcJmGRY2E3AMcHpDVI+IxYCyOaB/+oqnn79QjWcUTy3BNMUG2VQj72qUZoGyRCAkvFTAcDZRSsA4g8Nz+JmaV7ASDk9Q11kOlyY7lHtZBpcLBCaaYip0CWC0CVOstukMm4EWDSZ1i9PbD+xfXtFc9yivGorE+wLpWFEskWQCzaEArwtsuUSaSrBEYksLrMNPQIcGVyGHagby4xHV6Rlx30CNCqnS2FDXTkQQssJmtJM4h0fdrql4Hf0F/QM0P1KaWKoa6fGCfH9B001Q3QWRKKDqHtP1N8r9Ebu+xe5Qwk2y20DjoWU8Ia8iRaa3A1Q/QnYjIvLVJ3/CQoA3CeK2BqtypBV5S8DNLaBLB2K2LHcd1DAi1QM8ArA+nz2MCollQMaTlkFC4rPWVHMTaNOWfbqLomyQ6A686uDnOba6QEidhFKSjwJWbJR9RBK7rYWblqhzDpEwrN0AK9uFE0Rw/BB+GOPBcnC/XON+9SHK7x5W+PKR3y/f87uH5ayFaTNvCgx0sk1LF5g6ahoNTbluWrCYwXZsBEEA3/dnMcbgeR622y3CMJxzMy+KIgMk/wqF43FES5CqoldAL6AdLtD9RIs0GIYBfd/P/3e7Hc7nMy1qxvdUd4DWGtM04XQaCUjm8kxCKYWEXglj8dyBzCUEnXxOfnZdN3fOOacLndK8ZI7m+/OYyeeXsrLsuXUzYLZmJsRxPANNdBwHm80GlmX9V38AUXDKuRQWHHQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render code 1 &quot; title=&quot;&quot; src=&quot;/static/8864755748297f5b8345b55758b7fb2d/32056/react-render-code(1).png&quot; srcset=&quot;/static/8864755748297f5b8345b55758b7fb2d/222b7/react-render-code(1).png 163w,
+/static/8864755748297f5b8345b55758b7fb2d/ff46a/react-render-code(1).png 325w,
+/static/8864755748297f5b8345b55758b7fb2d/32056/react-render-code(1).png 602w&quot; sizes=&quot;(max-width: 602px) 100vw, 602px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;위 코드는 버튼을 눌렀을 때 ul 태그 안에 3000개의 li 태그들을 렌더링 하는 코드입니다.
+3000번의 innerHTML을 실행하여 3000번의 Layout, Painting 과정이 일어납니다.&lt;/p&gt;
+&lt;p&gt;총 4.5초가 걸렸습니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 616px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 85.2760736196319%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAAC3ElEQVR42o1U23LiRhTkT7LZNTACJMFIM7pfRhfEgsF24di7SSr//xedHslLOeVNKg+nupkZerp1jjQTUmMdlwjPr5DNCYV5RmYeEJcdDtffcPz2Hd3jI5JzjfyJ9WiQXWok+wpVU+JwKVD3BaTOsNhpzJwghtA5vO4MN+8hVQudGTSXJ3SXK+K2RzgUUF956YE1lAiKHFmdQ0YZljQkdgpLitmaCQq63AgKAz8psEkj+HlC1zHWSQyvTOBnKVwVQxUJXM11GcENbNGM1DexSZCbflpi//SM4/UV5cMB+bNB/cJodBXsC+i2QJhmqAa6yjPsogSBShDqBKtAj1FvgqswwZ0rsa0HmKcXnF//hDY14r7Cls6/rEPMPYW5r/DZndAKzLdqrPfu3gRpm0REJZ8lndQtvDDFwp3+uBwjWa5u8RZb/UHoH4JzHowpEjOCb/ZsTosgKrBLOvh0GSY9TPcHfxsUeQmZxowa/VR4jGzJhtg/XNGcHxGqqYvNPQUeBhQckfbQwo9zClEs1B+acRPccH4s2bKjgrcueeudF0wRAz4jOUUVUt3i/mfktUpHYqNbt07A2ElFxxxUX8Pj0NtZ/TeBjw75jOZeiLg78M14xeX3v3B4eeHbcUTWGZy/f+MFJV2p/yfo0JWd9KhqkR/ukXYnuBzggDOn9jl2bMDU7Wgs8VbLd/iez2RWo4oVdjuJu5WLL2IF4e4gNlN9mgv8uhD4tJjwl/lyrB983Htbszizr1vTxWg4zEVZQkcRqrpCWZVIswyO40AIgdV6PaLruliTO6vVyAX3N0TX3Yw4W9FmbRrs9wOqqkLTNMiLEt3xirLu0fcd2rbFMAzjRaf7E8/uYXju/nTiWo0j8XQ84nQ+U5CjUhQF8jxHEATQWkPKgOKG86hhjBkFVcjG0b1WajwTsRR5FOlxzXKLM8fOGG3bBSnlGMfyhF8bi57nYbFY3KL/wJ+V4wj8Df2oKLKYbTuaAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render code 2 &quot; title=&quot;&quot; src=&quot;/static/040fbba83bc819cc983962682462c8d5/40040/react-render-code(2).png&quot; srcset=&quot;/static/040fbba83bc819cc983962682462c8d5/222b7/react-render-code(2).png 163w,
+/static/040fbba83bc819cc983962682462c8d5/ff46a/react-render-code(2).png 325w,
+/static/040fbba83bc819cc983962682462c8d5/40040/react-render-code(2).png 616w&quot; sizes=&quot;(max-width: 616px) 100vw, 616px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;위 코드는 3000개의 li 태그들을 html String 형태로 만들어 준 후 마지막 1번의 innerHTML을 실행하여
+1번의 Layout, Painting 과정이 일어납니다.&lt;/p&gt;
+&lt;p&gt;총 0.013초가 걸렸습니다.&lt;/p&gt;
+&lt;p&gt;이처럼 개발자는 JavaScript로 DOM을 업데이트를 해야 될때에는 업데이트 될 것들을 다 모아서 DOM 수정 횟수를
+최소한으로 가져가는 방식으로 개발을 해야합니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.239263803680984%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABSElEQVR42oVSu27CQBC8s/Gd3+cXsejSIBFIS+fGVIggBIU/KJ+R3+Ij+AQKmsmubYiRAhRjn/Zm52ZHK4QQeIRgNEJEMNpB7DgwBEtKPOsR/GFS2jdcGxkJYRbHmLkxPiKDN1ffcfifKQVlWfeCDhX4ks+yh23bsMmdS/V6WSI3GkLaUMqBTXw5mMIn7rX3JsijDYp/IJGf7yU+3zW6acQdj8W8XvDmUHFWNI7srWutMZ1OcTgcsNl8wQ9CGGOw3W6x2+1QFEXnLgyRUyQZwfN9yC5fgTTLMJlM2qYsz+HTZdM0OJ1OOB6PmM/nqOsa5/MZl8sF+/0eOfGSJEFZlu05iiKKQ3WCQ1jk0qHcFotF67CqKriui5DcrFYrrNdrxOSI3Xie1z7OYM7N4X9I0xTj8RhBEHSZEZmFeIqXa/MMcrB38vUO4hdv99RwgIUv9QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 7 &quot; title=&quot;&quot; src=&quot;/static/5b040f9f67f455a17bb3889d271a795b/a6d36/react-render(7).png&quot; srcset=&quot;/static/5b040f9f67f455a17bb3889d271a795b/222b7/react-render(7).png 163w,
+/static/5b040f9f67f455a17bb3889d271a795b/ff46a/react-render(7).png 325w,
+/static/5b040f9f67f455a17bb3889d271a795b/a6d36/react-render(7).png 650w,
+/static/5b040f9f67f455a17bb3889d271a795b/a8e5b/react-render(7).png 711w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;하지만 서비스의 규모가 커질 수록 코드는 점점 더 복잡해지기 때문에 이러한 부분들을 하나하나 개발자가 신경써서 개발을 해야되는 것은
+매우 힘들 수밖에 없습니다.&lt;/p&gt;
+&lt;p&gt;순수한 자바스크립트의 힘만으로는 복잡하고 규모가 큰 서비스의 모든 업데이트들을 좋은 성능으로 처리하는 것은
+굉장히 어려운 일입니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 48.46625766871166%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABXUlEQVR42q2SuW7CQBCGd/bg8gnG2MQRIQVJYx4ibV4mSCCl4DEoKWipqENPzyP92VkbIbBIleLXaHdmvjl2hRACDyUlBBGEUpX+ir1KgNo9kB+DeiEky2MbQCVPMNMS5nUOnb2Aur71Rc4n61jOcUVvgH4fotUFSQ1SxnZjKisVdDJ2YIbxmVTL+ZwlCRkMQNrcAqUFktK3rddV1fsc5uOzMRqJys8dk27ddWgvRQ0kC9JaQ9r9EQNHY8jpWxPIcdIqHEC3u1CyHtvzPKRZjrjfR6fTQRRFmEwm2G63+Dke8b1aucD1eo3z+Yz9fo88z5GmKcIgQF4829yByyN+RIaEYQgGG2Pg+z6KosBms8HhcMDXYuGAy+USp9MJu90Ow+EQSZIgsMAsGyGOI8egak3Np+fgsiwxm81cEb7jwnxm2P1qlP1S6vqtmkCGcMcsujyOTbhMcQE+/If/qV8cHOoL4oqAkgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 8 &quot; title=&quot;&quot; src=&quot;/static/c8acf6b97e7506bb83cdcc0ab28b9324/a6d36/react-render(8).png&quot; srcset=&quot;/static/c8acf6b97e7506bb83cdcc0ab28b9324/222b7/react-render(8).png 163w,
+/static/c8acf6b97e7506bb83cdcc0ab28b9324/ff46a/react-render(8).png 325w,
+/static/c8acf6b97e7506bb83cdcc0ab28b9324/a6d36/react-render(8).png 650w,
+/static/c8acf6b97e7506bb83cdcc0ab28b9324/d2cbc/react-render(8).png 705w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;하지만 리액트는 별도의 렌더링 프로세스를 사용하기 떄문에 내부적으로 개발자가 딱히 신경쓰지 않아도 동시에 발생된 업데이트들을 모두 모아서
+최소한의 횟수로 DOM을 수정할 수 있도록 해줍니다.&lt;/p&gt;
+&lt;h2&gt;React.js의 렌더링 프로세스&lt;/h2&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 46.012269938650306%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABR0lEQVR42p2SWWvDMBCEfcTxEUgIvi/Zku+6OeyWXND//7OmkkpKoKQPeVjWLNpPMyMriqLAtB0sea1WDhzHxHJpQMxFqar6+32vMPBQdT0YLUHyDHGSIE1TmKYJReMLdTvgcLximibsxxoFyaBq2h/QvQRgun6h381gVYWiKEAphW3bUHRdR5HnaPsR0+mG08wPUQbLsrDdbrHZbOB5HtbrNWzHkbMoirD7vGD3fkDFKAgHlmX5A9S4EkFvu4Er7UAZQ5blWCx0iMsMw5Bw0cVZMQuDAMP+iPl8wziO3NEDUFjLs4RDUkRxJLMIw1AuP7Mc+D4anuHbfEbDnQnLQqUEPlv6r3weAatqjB8XNIMAElCu0LJeBHqezy0S1F0L1vYS1vAsXwa6roeipEiSWD5QHMfy5eVv85JC1wUhRGYuYKInvAvgN3KO01vle4Z/AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 9 &quot; title=&quot;&quot; src=&quot;/static/f7d58d6ff4b91d7789d533a8add8be4f/a6d36/react-render(9).png&quot; srcset=&quot;/static/f7d58d6ff4b91d7789d533a8add8be4f/222b7/react-render(9).png 163w,
+/static/f7d58d6ff4b91d7789d533a8add8be4f/ff46a/react-render(9).png 325w,
+/static/f7d58d6ff4b91d7789d533a8add8be4f/a6d36/react-render(9).png 650w,
+/static/f7d58d6ff4b91d7789d533a8add8be4f/3d4b6/react-render(9).png 712w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;만약 개발자가 위와 같은 컴포넌트를 작성하게 되면 리액트는 해당 컴포넌트가 렌더링 하고자 하는 UI의 모든 정보들을
+객체의 형태로 추상화 합니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.239263803680984%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABE0lEQVR42o2S60rEMBBGU3q/l6R1sfe0olGRFVTE93+wz0ygxbpZ9McwZWjPnH4JY4yBynEcxHGMNE3h+z62+bWKogh5ntveZUiSGEJwdG2Lvu9RFIVZYANt8yzLUNc1PM+7BN52Hc4fX5jnGcMwYBxH08uyvGoYhqExtCxmuDmdcH7/hFKPBialxLquuwF9HATB3jnn+q8SA6Nnmh2AtRB4en2Den7BNA6YpknbSh2D0FmFJlcCUCern2Y0vwBSfvdK4e5BYZknrNpwkdLMbRlWVbUDaQmZH4BN05j82k4fis6T8lvkDMHtQDLagK7rmjoAiyLXkN6cMMGo97qTyV/Xx1Js30TqlEkSJ+ZO/uc+/q5vScTHUCwDXOoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 10 &quot; title=&quot;&quot; src=&quot;/static/61ff4c23565c28294f025b96bb755720/a6d36/react-render(10).png&quot; srcset=&quot;/static/61ff4c23565c28294f025b96bb755720/222b7/react-render(10).png 163w,
+/static/61ff4c23565c28294f025b96bb755720/ff46a/react-render(10).png 325w,
+/static/61ff4c23565c28294f025b96bb755720/a6d36/react-render(10).png 650w,
+/static/61ff4c23565c28294f025b96bb755720/d6331/react-render(10).png 702w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;이렇게 개발자가 작성한 모든 컴포넌트들의 UI 정보가 담긴 객체들을 모아서 가상돔(Virtural DOM)이라는
+트리 형태로 구조화를 시킵니다.&lt;/p&gt;
+&lt;p&gt;여기에서 가상돔(Virtural DOM)은 실제 돔이 아닌 리액트가 내부적으로 만든 객체들의 모임이라고 생각하면 됩니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 47.239263803680984%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABgElEQVR42q1SyXbjIBAktjZbQgtCElqtDdlWHMf//3M1DXkvM3PLIYd60N10UV3A0jRFzDmiKMLhcABj7BtHnsFXE9yiA3t7+69mcA4c8CgEp/4gCL7ypVKomgZFpRCnGc4RR2guiGNCgrDqEQr5N7a1BJ7vg4cnNO1Xb16UCE4nsDTPMWqNbppQth222x2aoPoBahihH58YtxuEaqCoPm9XrNcbkXIiDew5kxsXDZ6kYEIW2O4PLOsKSTfp+zvmZYGsG0gimVcN1Q0QVYOc6pdlRT/NOIcRfBqzbFrsH09042SVM5FL3IhEk8qqbbHtH0Ru9h00NdddZ0mMwmGeiby3cUL2uJ6P988XalL5eL2QihwsyYT10KgT5EN/uaAfjCKF5TLSIYGWVlm36ElFXlVE0COjvOt52J9PJGTbtu8QUoLF9MqGKKPRs6KwexsT8lJZiKpGVlbfNTO6HZk8NEJMr1l5QiM7rksF38L7Kci74/Fov9m/ecdxzNdh+E38AbWH2KixAWwSAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 11 &quot; title=&quot;&quot; src=&quot;/static/dd7df8d1c131ab343b51f20ef75fe0c7/a6d36/react-render(11).png&quot; srcset=&quot;/static/dd7df8d1c131ab343b51f20ef75fe0c7/222b7/react-render(11).png 163w,
+/static/dd7df8d1c131ab343b51f20ef75fe0c7/ff46a/react-render(11).png 325w,
+/static/dd7df8d1c131ab343b51f20ef75fe0c7/a6d36/react-render(11).png 650w,
+/static/dd7df8d1c131ab343b51f20ef75fe0c7/394f7/react-render(11).png 707w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;사용자의 이벤트에 의해서 업데이트가 발생하게 되면 리액트는 내부적으로 다시 컴포넌트들을 모아서 또 다른 가상돔(Virtural DOM)을 만들게 되고
+전에 만들었던 가상돔과 비교하여 어떠한 부분들이 바뀌었는지 찾아냅니다.&lt;/p&gt;
+&lt;p&gt;그 후에 실제 돔에 접근하여 바뀐 부분들을 업데이트하게 됩니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 50.920245398773%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABPUlEQVR42q2SuVLDQBBEJa32klY+ZMAqQxUuTMoVEFFFyAcQ8gWk/H/QdK9PDEQQdM1qjrczsyqKosCxyrKEMSarqir8lCMp9i1Pxc451HWdZa1FCAGpbbPKyuH5cY6XpwULSnjvMkB1MXo0TYOWeaqRLwP1Iaj3PltBa1oXPCEG768DPt7OeeZlTUTNuKDKPZR8O2BKCd1oBEdoZHDRdbjsEoYY0BuL3nqeI+a8ZMGu4uZidRfp/wKMAhIwIjAoyEBnHaazAd3kFDPaaX/G+AzjfsCYIMf1CKSRJTWV97jtUEHJO46bJjDzJerVPez1A2rKXt3CLm9o71CdXOScliBNpHp1ugNqd2p/qzx2m9YXaK/0eaf9+nWuCzDybXa+3f9u5PwIm1fey+zPh3Ge1Yl0XJNf+bd/7A/6X+AnTy7XTUaEdN8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;react render 12 &quot; title=&quot;&quot; src=&quot;/static/ea62b74f7ecc5bd9a6150adca80415a9/a6d36/react-render(12).png&quot; srcset=&quot;/static/ea62b74f7ecc5bd9a6150adca80415a9/222b7/react-render(12).png 163w,
+/static/ea62b74f7ecc5bd9a6150adca80415a9/ff46a/react-render(12).png 325w,
+/static/ea62b74f7ecc5bd9a6150adca80415a9/a6d36/react-render(12).png 650w,
+/static/ea62b74f7ecc5bd9a6150adca80415a9/242e2/react-render(12).png 703w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;리액트는 왜 이렇게 복잡한 렌더링 프로세스를 선택했던 걸까? 를 생각해보면&lt;/p&gt;
+&lt;p&gt;결국 DOM 수정 횟수를 최소화하여 대부분의 상황에서 빠른 화면 업데이트와 브라우저 성능을 좋게 가져가기 위함이라고 볼 수 있습니다.&lt;/p&gt;
+&lt;h2&gt;총 정리&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;바닐라 자바스크립트를 이용해서 DOM을 조작할 때에는 DOM 수정을 최소화 해야함.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DOM 수정으로 인한 Layout, Painting 과정을 최소한으로 발생시키기 위함.&lt;/li&gt;
+&lt;li&gt;동시에 발생하는 업데이트를 최대한 모아 한번만 DOM을 수정해야 함.&lt;/li&gt;
+&lt;li&gt;작은 규모의 서비스는 가능하겠지만 서비스의 규모가 커질수록 쉽지 않음.
+&lt;/br&gt;
+&lt;/br&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;리액트는 자체적인 렌더링 프로세스를 사용하므로 위와 같은 걱정에서 자유롭다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;가상돔(Virtural DOM) 개념을 도입하여 동시에 발생하는 업데이트를 모음.&lt;/li&gt;
+&lt;li&gt;가상돔(Virtural DOM)에 반영된 모든 업데이트를 실제 돔에 한번만 반영함.
+&lt;/br&gt;
+&lt;/br&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;레퍼런스&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/N7qlk_GQRJU&quot; target=&quot;_blank&quot;&gt;👉🏻 [React.js의 렌더링 방식 살펴보기 - 이정환 | 2023 NE(O)RDINARY CONFERENCE]&lt;/a&gt;&lt;/p&gt;
+&lt;style class=&quot;grvsc-styles&quot;&gt;
+  .grvsc-container {
+    overflow: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 1rem;
+    padding-top: var(--grvsc-padding-top, var(--grvsc-padding-v, 1rem));
+    padding-bottom: 1rem;
+    padding-bottom: var(--grvsc-padding-bottom, var(--grvsc-padding-v, 1rem));
+    border-radius: 8px;
+    border-radius: var(--grvsc-border-radius, 8px);
+    font-feature-settings: normal;
+    line-height: 1.4;
+  }
+  
+  .grvsc-code {
+    display: table;
+  }
+  
+  .grvsc-line {
+    display: table-row;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+  }
+  
+  .grvsc-line &gt; * {
+    position: relative;
+  }
+  
+  .grvsc-gutter-pad {
+    display: table-cell;
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  .grvsc-gutter {
+    display: table-cell;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter::before {
+    content: attr(data-content);
+  }
+  
+  .grvsc-source {
+    display: table-cell;
+    padding-left: 1.5rem;
+    padding-left: var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem));
+    padding-right: 1.5rem;
+    padding-right: var(--grvsc-padding-right, var(--grvsc-padding-h, 1.5rem));
+  }
+  
+  .grvsc-source:empty::after {
+    content: &apos; &apos;;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter + .grvsc-source {
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  /* Line transformer styles */
+  
+  .grvsc-has-line-highlighting &gt; .grvsc-code &gt; .grvsc-line::before {
+    content: &apos; &apos;;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .grvsc-line-diff-add::before {
+    background-color: var(--grvsc-line-diff-add-background-color, rgba(0, 255, 60, 0.2));
+  }
+  
+  .grvsc-line-diff-del::before {
+    background-color: var(--grvsc-line-diff-del-background-color, rgba(255, 0, 20, 0.2));
+  }
+  
+  .grvsc-line-number {
+    padding: 0 2px;
+    text-align: right;
+    opacity: 0.7;
+  }
+  
+&lt;/style&gt;</content:encoded></item><item><title><![CDATA[바닐라 자바스크립트로 나만의 상태관리 모듈 만들어보기]]></title><description><![CDATA[customElements 개인적으로 뮤직 플레이어 토이 프로젝트를 진행하면서 바닐라 자바스크립트로 CSR 구현과 자바스크립트 내장 함수인 customElements API를 활용하여 HTML…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/state-store/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/state-store/</guid><pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;customElements&lt;/h2&gt;
+&lt;p&gt;개인적으로 뮤직 플레이어 토이 프로젝트를 진행하면서 바닐라 자바스크립트로 CSR 구현과 자바스크립트 내장 함수인 customElements API를 활용하여 HTML 템플릿 조각들을 컴포넌트 단위로 개발해 보았습니다. 여기에서 customElements가 무엇인지 살펴보겠습니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 622px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 82.20858895705521%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABJ0AAASdAHeZh94AAACLElEQVR42pVU23baMBDMvxRswMY3WZJly3fHEAKBpk3ak9P//43pSkBCmrRJH+asZK9GOxqtrlSrEeU1gqLFQmoshIZPYy9vMJclkjRDlWsIXYINK7C2R9KN8FUFL5FwYgH3AlcufZwRluUAdvuAcDyAHX5BHJ6g+hElbdCKEinB77YI2huEwx3C8hoBy94SGrIFVeFEHEG9QrV/RHG7BWuoEiExZwJf6J8TE0JGSOEEp/gH2TPhnHZaMImAS8RFA1bk8IhoEh2TZie4sTwikW+IXhOmikgpJlTNMsEk4JiGlBCdQInOXwjc9yUr2lWAXZdQ2wbZbQ11V0NSlJsKqswRc/kp0pNkZSdhoaFvNkj7GsV9A72tIBptKzdw/4fQI8k+LZosj3Kd6CXpcvxpySb6SsHPMyw5VRSnmJCrU3LTGvPZCg2ZPUOa8FWN5vsa9dBDdwNku0aiW7hkkjFqEprq+b8J7ZUxhJG5GhmSoqOz7NDvdzj82GP7bY1h1Og3GqrLkdX5B4QXFRqnnSjFjC7yLGaIFEeU0d2kY+ClAtOEQn0s2ZKSKSHP7MU1nWOiMeeMs+TJR5KtISQ7NtKpwqlps8gsOi18x2HjumMjf4Yb8demmLP0eI4lvTgeL+zYdM9CHNtyYf9LeCk9JMKokDbHwKz3Kc7OhIZZ0pM03j9gPBDuHzF+fYDoqWt2NbKhIjMKjLsS3abEal+ReQqiXWH38wkrWlcPa/uc/QaFYQHjlLY5rwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;js&quot; title=&quot;&quot; src=&quot;/static/0daaaf2588e734fa410fd0f168208f1e/604ec/js.png&quot; srcset=&quot;/static/0daaaf2588e734fa410fd0f168208f1e/222b7/js.png 163w,
+/static/0daaaf2588e734fa410fd0f168208f1e/ff46a/js.png 325w,
+/static/0daaaf2588e734fa410fd0f168208f1e/604ec/js.png 622w&quot; sizes=&quot;(max-width: 622px) 100vw, 622px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;위 코드는 customElements API를 활용하여 이름을 &lt;code&gt;custom-html&lt;/code&gt;이라고 정의한 컴포넌트입니다.
+&lt;/br&gt;
+innerHTML 안에 &lt;code&gt;&amp;#x3C;h1&gt;안녕하세요&amp;#x3C;/h1&gt;&lt;/code&gt; 라는 HTML 코드조각이 렌더링 되는 구조입니다.&lt;/p&gt;
+&lt;p&gt;js 파일 내부에 class 객체를 만들어 HTMLElement를 extends 해줍니다.
+여기에서 connectedCallback 함수는 해당 컴포넌트가 처음 렌더링 될때 실행됩니다.
+리액트의 useEffect 함수와 흡사합니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 35.58282208588957%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAABEElEQVR42pWR606EMBCFeZm1y20BS+mNSwF10SWoie//KscpYRdj1h/++DKZTHPOmWnAigqRMJhsD9eeIacLTsrgkAk85BX83HP8BbtTPcH6gCtUwkKbHqE0CEuDRCgklQLLvTCRVWSy4832fjcPjo9yFUy4xkU7yNcv2PkD57lFM7RImxektYPqDfRgoJyBpSoaDTNYiNbA0IzXFIR0boJxqbFQwqdpQff+ibdlxDR2yMcZp7pHrS0qZRGVktLLtcZbvfa3hIwEtWzwTAmvt+BWIdNqXd87x4VESPjV/mIVDLeEKeFUC0235ETBaZXSQtKHsULgsN2S/fiAewTe3Qs2xqHXHXziiHpPTKyG/+Abigng/HCHVz4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;html&quot; title=&quot;&quot; src=&quot;/static/946867a36f86c5d92b2c7850c8d5f8e7/a6d36/html.png&quot; srcset=&quot;/static/946867a36f86c5d92b2c7850c8d5f8e7/222b7/html.png 163w,
+/static/946867a36f86c5d92b2c7850c8d5f8e7/ff46a/html.png 325w,
+/static/946867a36f86c5d92b2c7850c8d5f8e7/a6d36/html.png 650w,
+/static/946867a36f86c5d92b2c7850c8d5f8e7/40601/html.png 945w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;이제 HTML 파일 내부에 방금 만든 컴포넌트를 &lt;code&gt;&amp;#x3C;custom-html&gt;&amp;#x3C;/custom-html&gt;&lt;/code&gt; 형태로 넣어줍니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 36.809815950920246%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAAAy0lEQVR42q3OTWqDQBjG8bmKLlNIYmbMxlMJ4rhwxEM0V6hZxV4gPUVLjpGQGevCj3+jpbsWSsgDP97Ny8MjwjBkopQiiiK22xApJcvlCqkkG7m5XcVqvSYIAp4WCzzPw/f9X4nCFBhjMIWhLEvyPJ+lqUZnmlRrsiz7pjOSJCGO4z8J5xzWWuz1irOOtv2cDcPAPRFvxyP14UBV7dm/VNSvNbvdM+8fp/mh73vGcfw3Ma27XM4419B13W1dS9O4+xdOrY+M+Jn6qMIvQMfUjc+QBpcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;render&quot; title=&quot;&quot; src=&quot;/static/6d7449dbfacf38f254d41be51e381909/f058b/render.png&quot; srcset=&quot;/static/6d7449dbfacf38f254d41be51e381909/222b7/render.png 163w,
+/static/6d7449dbfacf38f254d41be51e381909/ff46a/render.png 325w,
+/static/6d7449dbfacf38f254d41be51e381909/f058b/render.png 630w&quot; sizes=&quot;(max-width: 630px) 100vw, 630px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;위 사진처럼 &lt;code&gt;안녕하세요&lt;/code&gt;가 렌더링 되는 것을 볼수 있습니다.&lt;/p&gt;
+&lt;h2&gt;상태관리&lt;/h2&gt;
+&lt;p&gt;SPA를 만드는 과정에서 상태에 따라 변화되는 UI부분들을 재렌더링 해야하는 로직들이 많아질수록 코드가 복잡해지며 가독성이 매우 낮아집니다. 그래서 저는 상태관리 라이브러리들을 모방하여 저만의 상태관리 모듈을 만들어 보았습니다.&lt;/p&gt;
+&lt;p&gt;제가 만든 상태관리 모듈로 Count를 증가/감소 시키는 기능을 만들어보겠습니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 85.2760736196319%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAACQUlEQVR42qWU6W7bMBCE8ygFmtrybd2USEoiRUm2fMbpEbSogaLo+z/CdCk7geE2TZD+WIi6Pg5nh7xx3AhjruAtDvDMCsmyhPlC14XGojEwdYWEp6hLiUwKeH6CHv3Tf6ZuBj7rBvNqA7P/iLuvR5j1AeMgxTzN4UqN97Pwqf4FewI6XoyxrMGrNdRqhxmB3o093BLgduqjNw/Rt3X+yd73Lu6vgAkGHoNbcERtgVmSggsBXQi6cgRMwE04xhHvvusmp/EoTLvxs0v2uIRqV6j2Byx290gzCT9iCDMDZhYQzRpTJjElWNFukZQNpnFCyq+Aw4AUUg3phV5u8OnnL2zJR9kaRLWAn2dQGUFUBj+xQIG+F3Xl+DGsoMeyijugHVizJyyDp5Zgeguu91DLzyjbB4RMg5c11HqPUGv4lUBQSbgqRaxrFKstRNWSDZyA5IX1xs44JKMz02L78B27b0fcH39Q5/eIGoIwDsc9e3ZW+LhMK8jxLpZ8ehFjFMvOcPvMmn7yN8QgpKyevX6pSOEJOCGDJ+TRZSxOcYm66r0CdgbaJceYhgwfpsEJ5L4e8CfQdpmWM8s5XC06pbOAJgioc94bgF1Aqf1xJlDlOXiuoClnFXU0a9q/hvdlhTb91vSrkDrumxSegDySSEltokqUmwNlsUasaujNHaJMYeTHr/K1Uzi2e/Q/VF0BGUYsx9ys4YsGabEDk2vMKMhRkyOmAyOigyItDMSSvkk15jGHNHQ+1pK2a46iyRAmotvCvwFsrCfYwljDcwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;store&quot; title=&quot;&quot; src=&quot;/static/6662b1c3395378bfa4de1881d8739bb6/a6d36/store.png&quot; srcset=&quot;/static/6662b1c3395378bfa4de1881d8739bb6/222b7/store.png 163w,
+/static/6662b1c3395378bfa4de1881d8739bb6/ff46a/store.png 325w,
+/static/6662b1c3395378bfa4de1881d8739bb6/a6d36/store.png 650w,
+/static/6662b1c3395378bfa4de1881d8739bb6/baaa6/store.png 813w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;createStore 함수로 첫번째 인자에는 상태값을 두번째 인자로는 상태가 변경 될때 재렌더링 될 컴포넌트의 이름을 배열의 형태로 넣어주면 객체 형태로 getState 함수와 setState 함수가 리턴됩니다.&lt;/p&gt;
+&lt;p&gt;getState 함수는 현재의 상태를 리턴해주고 setState 함수는 현재의 상태를 변경시킨 후 배열 안에 있는 컴포넌트들을 재렌더링합니다.&lt;/p&gt;
+&lt;p&gt;createStore 모듈을 사용하여 countStore를 정의해줍니다.&lt;/p&gt;
+&lt;p&gt;여기서 컴포넌트의 이름은 customElements.define으로 정의내린 String 값입니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 12.883435582822086%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABJ0AAASdAHeZh94AAAArklEQVR42kWO626CQBSEfRiFGpQFLbvLZYHEC0LVpt54/yf5erY1+uNLJnNmJmeyMCVJUaOKRqhZlS2RLomsZZFbosyyFBLRsTEo8dNCbtowX4vve7biI9WEwsQdjnSXO/1tpLuODI+RYtdjvhz5ucW2NfXG0Z0dblvRfzcMPw3lpkLlDfvrg91wYinjgR8MVMZMfb6YxmuCJMP7f3idaGaxz3m0ZP51mL674fPDX0b1YtH8kiyoAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;define&quot; title=&quot;&quot; src=&quot;/static/26ceaa41cde5f03d19258a85976ac145/a6d36/define.png&quot; srcset=&quot;/static/26ceaa41cde5f03d19258a85976ac145/222b7/define.png 163w,
+/static/26ceaa41cde5f03d19258a85976ac145/ff46a/define.png 325w,
+/static/26ceaa41cde5f03d19258a85976ac145/a6d36/define.png 650w,
+/static/26ceaa41cde5f03d19258a85976ac145/1ac66/define.png 651w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 103.06748466257669%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAABJ0AAASdAHeZh94AAACzElEQVR42pVV2bKaUBD0W5Kr4sImcBZ2EFwi3j1Vecj//0anDxBjqlIleZjyiNJ0T/cMs9VOws5auE0H9/AKwfNZZ1BpDae9wju8wC+O2PgCS/7XelCzTRTDChTk+Q3l+3eEdQMnUvxRYOFFWPrR+Ckm1WwVaqx585pfVuaiG+KrE2FOkMVEkL8A14HGKpQImgy7fdZ/hgdWHsMO5H+D9gxXZBiWNaJ9DXnJoQ85XDlcv+/PNIZGMplYlDh3wr5nc3eHJ0qfewJPTjBWOB3QCgSiS01mFXYihiMqODLngwR2aUn5NTydTwdckp1fHSGPHarTGw7dT6js0JsVFQ1kfSRw3Tv/EHDL2Bhpukrw8lnh/OOE+nOP+JQibk8oz3vsTwpBItmKx/GZbchw7grENQE/CuSHGIdrhrbLkDYpRJGgey/QXjKsmYaF9wgw0v3BZphdqbDlTa7gWSk4LPObIyV7qHrzFpN6yMNWprB1CieL4cbDtfnIxrAyKh6xGwDZQ9N8RyQETW6AqzsDrJ2YZMg4KaqfFCfXvayNL3s2yxsbOZy9MeT+INsY9C/Gw3LYRRDnb9Asle2R1K8I0gZB3CLJX+hwhSBLkV8uqJ/5PS+wjQQ2Zomwr6s7BT2g2Sa2zBBfG+TfCXg9on7vEDPo+9cS6XOJomN8PjqoYwl9bJkKzn2isVVUJoZ9YFT8MUXT3ZjyIzO37KXgpDABFp3f0PW1a1wvYDlmTGOOosAXO+ql95tpXHGz9Rgbl6PlJVwK3DJeyfHLFVkr6EIzQqyKZhUKHnPplZqTo6HKBDajZZOhHTJiu5Ghaa6tUuhLBU15om1RXjuIPaW+FkhOOSVWqN6u8FOutqqBFyd8kKQKKiCYCf2th+Y14DEqGyHHNU/pge4bvjSbyDSe7prd2TvrqTGbg9N93fYhY+PyCZYv7uIy9GQxxmX5+6YJr4Jf0+Ci4sRYgmUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;count component&quot; title=&quot;&quot; src=&quot;/static/9c19837404ba53c316d248e99bd14455/a6d36/count-component.png&quot; srcset=&quot;/static/9c19837404ba53c316d248e99bd14455/222b7/count-component.png 163w,
+/static/9c19837404ba53c316d248e99bd14455/ff46a/count-component.png 325w,
+/static/9c19837404ba53c316d248e99bd14455/a6d36/count-component.png 650w,
+/static/9c19837404ba53c316d248e99bd14455/5205c/count-component.png 833w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;이제 Count 컴포넌트 안에서 위에서 정의한 countStore를 활용하여 상태관리를 했습니다.
+각각의 버튼을 클릭할 때마다 setState 함수로 count 상태를 현재의 count 상태에 +1 / -1 해줍니다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 606px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 61.34969325153374%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABJ0AAASdAHeZh94AAABzElEQVR42p1S23KiUBD0X6KoCAhyOVfuwm5h1GTjvuX/f6O3D6Yqm+QllYeuMwUzPdMzvdimEqtDgUo3eNQtGttDdhPU9QWJreHFOTb8v06+h4WfKngsULLExbTISBa0J4hSIJYCq31G5DPmooO4g7Fr9BkLN+GGCSsmVLLCWdUIM4Wt7uCbHgG/ZVYitQq7TMJjAy9K5wYPYY5ldH8fonu88FnsCD0SBrnGzXRQ5YDk6RXpeEE7tbjeKvRTiajsEPcTwnpEYko0o4XtDezRQNQaBfGBMM4NnkjYlEd0t1d05ytOf8/oxxZHXaHg1EE1ILQDIqmhOoWiUTC9ngllo98lu50EmcZAyY+E+XWBOb9wwhGX5xbnUw3bNNiPz4jqAXuqMalFlZeUL+6yw/8kr0lsSPSHe0uY7B14rEQgkdwtpQl293MJXzXYUonP/Ji1idt3Kt6P4gjd1dy1T5Q70D5LTrt9s4EXF1iGb1dmvInde7/4KslnfLBNUBhs3ZWZFHKyE73YiQpHTntlg5JvrkpMnKwsLH7zv9tzIexMtvnsw12h52BHspGJF8Lt1Uu+b+avhJwwZcde1ry0nj25/imhkzzbJv66j58Q/gNHhYT5UfwbhgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;count html&quot; title=&quot;&quot; src=&quot;/static/11384ffd5b09a35de770ddeeb6f3c8f0/4d4a2/count-html.png&quot; srcset=&quot;/static/11384ffd5b09a35de770ddeeb6f3c8f0/222b7/count-html.png 163w,
+/static/11384ffd5b09a35de770ddeeb6f3c8f0/ff46a/count-html.png 325w,
+/static/11384ffd5b09a35de770ddeeb6f3c8f0/4d4a2/count-html.png 606w&quot; sizes=&quot;(max-width: 606px) 100vw, 606px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
+&lt;br&gt;
+&lt;p&gt;마지막으로 우리가 정의내린 &lt;code&gt;count-element&lt;/code&gt; 컴포넌트를 HTML 코드에 삽입합니다.&lt;/p&gt;
+&lt;h2&gt;최종화면&lt;/h2&gt;
+&lt;img src=&quot;/28b53c7ee9a830fe6f23de82e7f6b6b4/result.gif&quot; height=&quot;450px&quot;&gt;
+&lt;br&gt;
+&lt;p&gt;count 상태가 변경될 때마다 &lt;code&gt;count-element&lt;/code&gt; 컴포넌트는 재렌더링 되는 모습입니다.&lt;/p&gt;
+&lt;style class=&quot;grvsc-styles&quot;&gt;
+  .grvsc-container {
+    overflow: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 1rem;
+    padding-top: var(--grvsc-padding-top, var(--grvsc-padding-v, 1rem));
+    padding-bottom: 1rem;
+    padding-bottom: var(--grvsc-padding-bottom, var(--grvsc-padding-v, 1rem));
+    border-radius: 8px;
+    border-radius: var(--grvsc-border-radius, 8px);
+    font-feature-settings: normal;
+    line-height: 1.4;
+  }
+  
+  .grvsc-code {
+    display: table;
+  }
+  
+  .grvsc-line {
+    display: table-row;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+  }
+  
+  .grvsc-line &gt; * {
+    position: relative;
+  }
+  
+  .grvsc-gutter-pad {
+    display: table-cell;
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  .grvsc-gutter {
+    display: table-cell;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter::before {
+    content: attr(data-content);
+  }
+  
+  .grvsc-source {
+    display: table-cell;
+    padding-left: 1.5rem;
+    padding-left: var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem));
+    padding-right: 1.5rem;
+    padding-right: var(--grvsc-padding-right, var(--grvsc-padding-h, 1.5rem));
+  }
+  
+  .grvsc-source:empty::after {
+    content: &apos; &apos;;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter + .grvsc-source {
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  /* Line transformer styles */
+  
+  .grvsc-has-line-highlighting &gt; .grvsc-code &gt; .grvsc-line::before {
+    content: &apos; &apos;;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .grvsc-line-diff-add::before {
+    background-color: var(--grvsc-line-diff-add-background-color, rgba(0, 255, 60, 0.2));
+  }
+  
+  .grvsc-line-diff-del::before {
+    background-color: var(--grvsc-line-diff-del-background-color, rgba(255, 0, 20, 0.2));
+  }
+  
+  .grvsc-line-number {
+    padding: 0 2px;
+    text-align: right;
+    opacity: 0.7;
+  }
+  
+&lt;/style&gt;</content:encoded></item><item><title><![CDATA[데이터 중심의 UI]]></title><description><![CDATA[프론트엔드 개발자는 UI를 보고 객체 형태로 데이터를 추상화 한다.
 객체 형태로 된 데이터 조각들이 UI를 제어하는 설계기법이다.
-나는 이러한 설계기법에 Data Driven UI…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/data-driven-ui/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/data-driven-ui/</guid><pubDate>Sat, 06 Jul 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Data Driven UI란? 데이터를 기반으로 한 UI라는 뜻이다.
-프론트엔드 개발자는 UI를 보고 객체 형태로 데이터를 추상화 한다.
+나는 이러한 설계기법에 데이터 중심의 UI…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/data-driven-ui/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/data-driven-ui/</guid><pubDate>Sat, 06 Jul 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;프론트엔드 개발자는 UI를 보고 객체 형태로 데이터를 추상화 한다.
 객체 형태로 된 데이터 조각들이 UI를 제어하는 설계기법이다.
-나는 이러한 설계기법에 Data Driven UI라는 이름을 붙였다.&lt;/p&gt;
+나는 이러한 설계기법에 데이터 중심의 UI라는 이름을 붙였다.&lt;/p&gt;
 &lt;p&gt;이 설계가 필요한 이유는 장기적인 유지보수에 적합하며 작은 노력으로도 UI를 편하게 제어할 수 있다는 장점이있다.
 단점으로는 개발 시간이 오래걸리고 복잡하다. 이러한 설계를 내 개인 프로젝트에 도입해보았다.&lt;/p&gt;
 &lt;img src=&quot;/ceff3965ffcb84dc9f9d622f246967c7/selectors.gif&quot;&gt;
@@ -12,36 +435,42 @@
 &lt;br/&gt;
 &lt;p&gt;위 모달창들을 보면 각각의 모달들은 하나씩만 열려야하는 독립적인 관계이다.
 그리고 모달창을 열었을 때 체크 박스들도 하나만 체크 되어야하는 독립적 관계이다.&lt;/p&gt;
-&lt;p&gt;약간의 기능 설명을 해보자면 채용사이트를 선택하고 완료를 누르면 URI에 path부분이 바뀌고
-개발, 경력을 선택하고 완료를 누르면 URI에 쿼리 스트링 부분이 바뀐다.&lt;/p&gt;
-&lt;p&gt;ex) saramin?job=frontend&amp;#x26;career=junior&lt;/p&gt;
-&lt;p&gt;이러한 UI를 보았을 때 우리는 어떠한 형태로 데이터를 추상화 해야할지 생각해보자.&lt;/p&gt;
-&lt;p&gt;일단 각각의 모달들은 독립적인 관계이므로 ID가 필요할 것이다. 그리고 title(채용사이트, 개발, 경력)도 필요하다.
-모달창 확인 버튼을 눌렀을 때 URI가 바뀌어야 하므로 path인지 query인지도 알아야한다.
-그리고 모달창 안의 체크박스 Text 부분과 체크했을 때의 value값 초기 default 값도 있어야한다.&lt;/p&gt;
+&lt;p&gt;이러한 UI를 보았을 때 어떠한 형태로 데이터를 추상화 해야할지 생각해보자.&lt;/p&gt;
 &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
-      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 107.36196319018406%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC5klEQVR42p1Uy04UQRTlP1wYYXjMqx/TXdPVj+rpeTHDY2KI3yBbjCbqQndgREkQBQ0EkYXEuELX+m/He6vmQTtECYvb1XW769S559yqmYufv7F79AXb+8d4dXCCnXfHt4q3H8/x9ccvzOyffUcvipB0bNxxbcyWHNwrO5gtm/F/MVtxcbdooSJiHHz+hpm9T+dwoxSVIISbZCj5IZZqEouuRNG7WSy6dcLI8OboDDP8qNYTAgkgsg5KIkKlLilHPzp1LFDwgn/FvO3DkilefzglwEMClAoF20OZwFrrGwibKQYPmpBZAiuQU6ALjsgDOkPA96dDhkGid9GAgw34aRu+IqZCauajhUs1M+oya6NcQGs92GPAQwPIu/JHBou7q6jFEbprKewwgeqt06jQ7CliHaNO0qT9dXhJGyLpk+7RBHCXAJkuA/LOJS/U87II4IY8D7RZlXpMwksIYl72JWqqRf8pVEWqAfk9B8j0eRGzLHpC61awaWSNLE9vOG9TzhL6vUA5lmnBFfmSDaDSH7l01R9oU9KOGuvHo4mJjuOcG+gN/mKocqa4cYNAY90+2lX6Ns8MHW4RMQxfAxnm/jRD0woBwnZPsxyZ4qsYotGFbC1DpDEaywpBRht2VhBTuCFpGWR5QDtkDY0pzNKNm/RTaAyguWh0aNNYO1yLQ3hkCOds2YArW7qKqZI5yYt1+7i+nl81wIyTck3O13FtycYUYtHqExOFrJcORa9fMSdviH4nmXIn5VpTIoW4naBI/VawfN0WzKwwNITZ6bZxhm3j+Nc39hJp2FgdIFu7T6cgRkia+SnplXXJkAQROe/GCunKgPIdOLJNWqfTbWNMMaXw9cWisylsghNG8MkAh1pJKPqWRPqUcDdY2pS2XjdlijkhMmfCnDUxwIymbJ7PVT0jxdCU6ghwj65uSybja+mmsTgadTd4mpS+YE8uLvH4xTY2t57h4dbTW8Xmo+d48nIHxxeX+AN6fPDlefDzqAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;modalData&quot; title=&quot;&quot; src=&quot;/static/090c894bc09565c8f105c82fc6f7c925/a6d36/modalData.png&quot; srcset=&quot;/static/090c894bc09565c8f105c82fc6f7c925/222b7/modalData.png 163w,
-/static/090c894bc09565c8f105c82fc6f7c925/ff46a/modalData.png 325w,
-/static/090c894bc09565c8f105c82fc6f7c925/a6d36/modalData.png 650w,
-/static/090c894bc09565c8f105c82fc6f7c925/e548f/modalData.png 975w,
-/static/090c894bc09565c8f105c82fc6f7c925/3c492/modalData.png 1300w,
-/static/090c894bc09565c8f105c82fc6f7c925/61946/modalData.png 1546w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 84.04907975460122%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAACV0lEQVR42p1U2XLiMBDMx0AwEGODD8my5QODubOQVGX//0t6W5IJCUlqq/KgkjSSe6a7NX6YLARCUSAql5hEAo9hasdo/rvxMJoL+KlCWi8xJuA0SbmX9vA3wA/jKMMwiLEoarTPr9DrCodziaxSCKU5S97BXYLE3rcxrh/D5DOgF7lqfKHRnC4QzQazTEIS0E8zBKrCOOYspR1mbZI/pTmeYk1GhU3yoUIJz2x4MarXaA5/EBBwcywRFwrN8QK13qNY5Ti/VRC1xvL0gvX5lecd8uYFvqw/AxoznpjdlD8MDJUbBRPzaNyQdE1ib+Eom9i1Mm8u7gBjQToKXmSoCef2ndje4vv1F1OmibIZzbPZXN6Qr2qUXcnKhK3WXLImhKndD3qTTMxU70Z8A5xQO7OYpgUq6pe1O2oioZY5Eq1gzuOyhUkc5RkEzZomGZ/ZGnNjTqJpaP0V0DPu8cNqe0RIU9q95pxDb47IVls+J43VQVsG9eEZ1f5E8AOTHui4/qqhL6SlMZjF9u0NP3TM9d0Ne9r/pTyOUoSqIJUccyXtczEuelcDFuKDIVwvbvPPpuglti9/odoK7a7kB65iVwnNmCV2vsU4h9E3rddrOGF1endC3lETkdlOmecVxe/40JU1KWArpk0H2TImK2q8Yueoz4CTxAU8OhcUDYpujxn1LAiQlgXUakfnN5C1QtXxr6QbdsqFsS1d3yAqdtbQUd/TtpensXw3ZTiLHEVjDMeAe2dW4mI0beBHPXXeDeI7DYnux1fRRd9SzgyvF9+N+72wLefdafgPEPkhgFPb91AAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;modal data&quot; title=&quot;&quot; src=&quot;/static/50f800a81aee5e3fb6d2051299397e8d/a6d36/modal-data.png&quot; srcset=&quot;/static/50f800a81aee5e3fb6d2051299397e8d/222b7/modal-data.png 163w,
+/static/50f800a81aee5e3fb6d2051299397e8d/ff46a/modal-data.png 325w,
+/static/50f800a81aee5e3fb6d2051299397e8d/a6d36/modal-data.png 650w,
+/static/50f800a81aee5e3fb6d2051299397e8d/8b69f/modal-data.png 912w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
     &lt;/span&gt;
 &lt;br/&gt;
-&lt;p&gt;3개의 모달창들의 UI를 객체 형태로 추상화를 한 모습이다. 추상화한 데이터로 컴포넌트 설계 및 상태관리 로직을 개발하면 된다.&lt;/p&gt;
-&lt;p&gt;만약 개발 부분에 모바일을 추가해달라는 요청이 들어온다면?&lt;/p&gt;
-&lt;img src=&quot;/f936475980ee074232fb07a89e0a664a/checkbox-add.gif&quot;&gt;
+&lt;p&gt;3개의 모달창들의 UI를 객체 형태로 추상화를 한 모습이다.&lt;/p&gt;
+&lt;p&gt;일단 각각의 모달들은 독립적인 관계이므로 id가 필요할 것이다. 그리고 각각의 title(채용사이트, 개발, 경력)값도 필요하다.
+그리고 모달창 안의 체크박스 Text 부분과 체크했을 때의 value값 또는 초기 default 값도 있어야한다.&lt;/p&gt;
+&lt;p&gt;해당 데이터를 import 하여 Selectors 컴포넌트에 props로 전달하면 각각의 모달창들이 렌더링 되고 id값을 기반으로 각각의 모달 상태를 생성하게끔
+설계하였다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 46.012269938650306%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABO0lEQVR42o2S2W6DMBBF8y9ZyErA2BhjGxsCZGkSpVKr9v9/5HagVSp15eFqhsVHZwZGodJwqYFSBcz+DNuc4E5XaO0hhEasFVxrYGsNT1XvNLjJMYtSBPH3jDZCYU5NnyTDgrKkzCOBoD8ksOTynpWQ9I78EdYDV1yhkBZKGniqKdmG5QFxfUZSO8hdgSiWmG5Fb/Wb2R3YmYW2AWvOyG0L7W/IXYvyeEV1ueHh+QVFeyI79SfoE0j6a1kgNhVC2lkoa6oei4iDmRLC10jLBmFmyE78DwyYxJZl8CnBKFGuwawjmKe9cozXDOMNo5H5MMNulCk1Rjkc/R6tq1FenmAfX5HsL2DVgcY/IqsqzNmQkclwxTPE3bjUT8hkEvK+BvQxuufdWobA3g3pF9mS5YwuZh83e8hAwFfgG1ZyISP/+i1ZAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;search component&quot; title=&quot;&quot; src=&quot;/static/3936097f8deeb22e177113d7b47fec6d/a6d36/search-component.png&quot; srcset=&quot;/static/3936097f8deeb22e177113d7b47fec6d/222b7/search-component.png 163w,
+/static/3936097f8deeb22e177113d7b47fec6d/ff46a/search-component.png 325w,
+/static/3936097f8deeb22e177113d7b47fec6d/a6d36/search-component.png 650w,
+/static/3936097f8deeb22e177113d7b47fec6d/ae694/search-component.png 850w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
 &lt;br/&gt;
-&lt;p&gt;options 배열에 간단히 데이터를 추가해준다.&lt;/p&gt;
+&lt;p&gt;데이터를 각각 성별과 음식으로 바꿔주면 데이터를 기반으로 UI가 바뀐다.&lt;/p&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 55.828220858895705%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABmElEQVR42p1T23KbMBTkXxpzcWzAQugK2BCM6zRJp+3/f8t2pSST2OPJQx40IB2xZy+HJBcalfIw04J7obCqWqzqFtlOfWsl963FWmrsfI/K9FCDhewc0lohF98ArJRFzpeSYNPzH5hDBz95FjXuyoaMJZ9kXZF92JeSCiQbSmT1DcCSgAVlF9JhfP4Ld3xE01kI52AefqLpJ/gHB9l36E5PPFsg7BGVnZDdUJBsKLloAqDG1g4Q3YjaWJTaQI0LrTjAjg7tQND9DDufaM2IHUELaQly6Xeylq8e1tbGQHIho39hXUpu4/4HV5C7qpvbknfGU7KihAH78wv966EHHz0LF9K3xN+bhH1o8lG7YlhqF9PccHTm3/8o88ikHRofmFO6GVgz9NBiqzQ2uoPoD6w5bNs98sZeAtZkuKaHmeBHhyUGEQDDsvOZIZ1hJ4fpPGA4neCXR/j5F2o3Ry9DmJ9ZJsHYEEpgkTHtMOgpL6QsrqPpmg1VPCuacNe8zaiJXqZXPwEH26FqTZSdXhn82b949v7xFwP/H1YWX1HYNJAzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;data json example&quot; title=&quot;&quot; src=&quot;/static/cd508dd78357287c600b5347b674b585/a6d36/data-json-example.png&quot; srcset=&quot;/static/cd508dd78357287c600b5347b674b585/222b7/data-json-example.png 163w,
+/static/cd508dd78357287c600b5347b674b585/ff46a/data-json-example.png 325w,
+/static/cd508dd78357287c600b5347b674b585/a6d36/data-json-example.png 650w,
+/static/cd508dd78357287c600b5347b674b585/e548f/data-json-example.png 975w,
+/static/cd508dd78357287c600b5347b674b585/0a867/data-json-example.png 986w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+    &lt;/span&gt;
 &lt;br/&gt;
-&lt;p&gt;만약 성별이라는 모달을 추가해달라는 요청이 들어온다면?&lt;/p&gt;
-&lt;img src=&quot;/fbee7c955870e70424113427cc777fd6/modal-add.gif&quot;&gt;
+&lt;img src=&quot;/20a5a472c169a303f2ffcdf2c912fd2e/data-example-result.gif&quot;&gt;
 &lt;br/&gt;
-&lt;p&gt;id는 gender이고 성별은 쿼리스트링 데이터이므로 route는 query로 지정해준다.
-그리고 checkbox는 남자인지 여자인지를 체크해야 하므로 options 배열에 데이터를 추가해준다.&lt;/p&gt;
-&lt;p&gt;여기서 default 값은 여자가 true이므로 초기값은 여자로 체크되어있다.&lt;/p&gt;
-&lt;p&gt;이처럼 데이터를 기반으로한 Data Driven UI 방식이다.
+&lt;h2&gt;마치며&lt;/h2&gt;
+&lt;p&gt;이처럼 데이터 중심의 UI 방식이다.
 데이터로 UI를 조작/제어하며 유지보수나 추가사항 등에 대처가 빠르다고 볼 수 있는 설계라고 생각이 든다.&lt;/p&gt;
 &lt;style class=&quot;grvsc-styles&quot;&gt;
   .grvsc-container {
@@ -132,60 +561,41 @@
     opacity: 0.7;
   }
   
-&lt;/style&gt;</content:encoded></item><item><title><![CDATA[parser-storages 구현]]></title><description><![CDATA[기존 localStorage의 문제점 및 불편한 점 프론트 개발을 하다보면 클라이언트의 데이터 값을 저장하기 위해서 브라우저 저장소인 localStorage를 사용합니다. localStorage…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/parser-storages/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/parser-storages/</guid><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;기존 localStorage의 문제점 및 불편한 점&lt;/h3&gt;
+&lt;/style&gt;</content:encoded></item><item><title><![CDATA[parser-storages]]></title><description><![CDATA[기존 localStorage의 문제점 및 불편한 점 프론트 개발을 하다보면 클라이언트의 데이터 값을 저장하기 위해서 브라우저 저장소인 localStorage를 사용합니다. localStorage…]]></description><link>https://gatsby-starter-apple.netlify.app/blog/parser-storages/</link><guid isPermaLink="false">https://gatsby-starter-apple.netlify.app/blog/parser-storages/</guid><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;기존 localStorage의 문제점 및 불편한 점&lt;/h3&gt;
 &lt;p&gt;프론트 개발을 하다보면 클라이언트의 데이터 값을 저장하기 위해서 브라우저 저장소인 localStorage를 사용합니다.&lt;/p&gt;
 &lt;p&gt;localStorage의 특징중 하나는 항상 문자 형태로 값을 저장해야 한다는 점과 값을 가져올 때마다 항상 문자 형태로 리턴이 된다는 점입니다.&lt;/p&gt;
 &lt;p&gt;이러한 점 때문에 Object(객체,배열) 타입의 경우 JSON.stringify 매서드를 사용하여 타입을 변환해준 후 값을 저장해야 하는 불편한 점이 생깁니다. 또한 number, boolean 형태로 값을 저장할 경우 값을 가져올 때마다 문자 타입의 형태로 리턴되어 한번더 타입을 체크 해야하는 불편한 점이 생기기 마련이고, 이는 결국 개발자의 실수로 이어져 에러가 발생될 확률이 높아집니다.&lt;/p&gt;
 &lt;p&gt;이러한 문제점들을 해결하고자 parser-storages 라는 라이브러리를 개발하게 되었습니다.&lt;/p&gt;
 &lt;h3&gt;기존 localStorage와 parser-storages의 차이점&lt;/h3&gt;
-&lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;jsx&quot; data-index=&quot;0&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-5 grvsc-t4tStz-9&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; { parserLocalStorage } &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-5 grvsc-t4tStz-9&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;parser-storages&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-6 grvsc-t4tStz-2&quot;&gt;// localStorage를 이용하여 [1,2,3,4,5] 라는 배열을 저장하는 코드&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-1&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;]))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-1&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-1&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-6 grvsc-t4tStz-2&quot;&gt;// parserLocalStorage 라이브러리를 사용하여 [1,2,3,4,5] 라는 배열을 저장하는 코드&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;parserLocalStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, [&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;])&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-1&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(parserLocalStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 412px; &quot;&gt;
-      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 24.539877300613497%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABJ0AAASdAHeZh94AAAA40lEQVR42oWO3WqFMBCEfRvjb46J0USMHlGOClKLUq8Kff+nmCbbHmh704shO8PstwnWdcWyLLiuC23bYt93TNOE+/jAy9sHhnEm73td1+E8TxzHgW3bqO/nYRgwzzMxgnEcqeiXpJRUqqoK9v7A+vqOxk6UGdNAKUXzlzfk+75HXdfQWsNai8DTVVmidpA0TWAagyxLIQoO2xrEMaNinudujn8pSRJEUUTvMwt8UBTCXdTuZxo3XiJLC/BcIk8VSukPZLT4F/iE/vQBY67oQiEFgTkvHOD2Le68oKUwDMEY+1efO6yi1AEj0aUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;console&quot; title=&quot;&quot; src=&quot;/static/f0a55ee27d06a5f1fafeb5447dcb6b58/9e32a/console.png&quot; srcset=&quot;/static/f0a55ee27d06a5f1fafeb5447dcb6b58/222b7/console.png 163w,
-/static/f0a55ee27d06a5f1fafeb5447dcb6b58/ff46a/console.png 325w,
-/static/f0a55ee27d06a5f1fafeb5447dcb6b58/9e32a/console.png 412w&quot; sizes=&quot;(max-width: 412px) 100vw, 412px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 45.39877300613497%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABrUlEQVR42mWS63KbMBCFeZUmgEQakwCSEAhJSGDX8aV12k76/k9yuuA240x+fLO7R+zRzqKE1y2k6NHUGvUwoo17KELvjhS/QYgOlaRz26ObLNpgIL1BP1vSDJZ+Vql3koIErh2KsF9JxwmZHcGMR9YvbJEPgfBgdsJdt8W9npDqiIfOfzBbDZcb3MsZh19/ML+eEY8XmHPEfAqYjwfElzdMlx+wvx3CyWOcR2jjUKoBterAnyXYDUnRaDBlaJKAdLnRzEjf83Cdjur7PiInregdRYdUGtLC2pfRd5m2yElLchpTbw/w558wp++Ir29wF8r3O4TDDiJMqN1Ee5sg7A4lmWa0U067ZRSZuKVD0g4D4hxgXIB2HaZ5hlAaZVWjlgpPskJRcjxXX8F5gbuMrXzJ8mueX/lfJ03XYY5kplv0vYX1W8o1rLUYBoMwBng/0pkhjfYYlrwnfYQxPWnD2jt6jxgCksdKrAZN06CqGwiaqqXa0weLqXNuRSlJT0hASknPTF7jP5bejgZTiv5y/rDBU1miqhpsHiuUmxq8KJDlOfIbOOcfYIx9qhf+AtxJJbRmeb5BAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;local storage example&quot; title=&quot;&quot; src=&quot;/static/670a42f893116347e2faa7e64793e4da/a6d36/local-storage-example.png&quot; srcset=&quot;/static/670a42f893116347e2faa7e64793e4da/222b7/local-storage-example.png 163w,
+/static/670a42f893116347e2faa7e64793e4da/ff46a/local-storage-example.png 325w,
+/static/670a42f893116347e2faa7e64793e4da/a6d36/local-storage-example.png 650w,
+/static/670a42f893116347e2faa7e64793e4da/e4374/local-storage-example.png 927w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
     &lt;/span&gt;
 &lt;br/&gt;
 &lt;p&gt;위 코드에서 처럼 따로 JSON 객체를 사용하지 않아도 라이브러리가 자동으로 파싱 해주어 코드가 좀 더 간결해졌습니다.&lt;/p&gt;
-&lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;js&quot; data-index=&quot;1&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test2&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-1&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-1&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test2&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 442px; &quot;&gt;
-      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 25.766871165644172%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABJ0AAASdAHeZh94AAAA0klEQVR42pWP62rEIBSEfZdA1Wy35qZk464NTcmSWxNCAn3/F5nqAfu39MdwZj6Pg7K+7zFNE9Z1xf3xwDzPeHcOz/nAuH7DeT+OI81lWXCeJ4ZhQNu2OI6D+LZt2PedGOu6jqC1FlVVoWkaPw0+n19wHwPs3Xl2Q5ZlKMuSVBQF8jyn/TBDDjx4prWGMYaAUm8EheB+KcP19UJFSimkaQopJSn4mKOPYkmSoK5r6KoE5xxSCDrgXNAF4XNQLPtL7MWXaG1g/VfDy4SQvwWx7D/6AajTn6Oo6+PnAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;console3&quot; title=&quot;&quot; src=&quot;/static/b03cf8894a0c615db002752f12d6b909/e03bf/console3.png&quot; srcset=&quot;/static/b03cf8894a0c615db002752f12d6b909/222b7/console3.png 163w,
-/static/b03cf8894a0c615db002752f12d6b909/ff46a/console3.png 325w,
-/static/b03cf8894a0c615db002752f12d6b909/e03bf/console3.png 442w&quot; sizes=&quot;(max-width: 442px) 100vw, 442px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 620px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 52.760736196319016%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACB0lEQVR42nWR23aaUBCGeZIeoogoImdBkKMRUGITm3NWktWLXvT9H+DrYGNXV1Z68a09M8z8+9+DMvGW+FlFWNUE+fp4zpcJVh7jCHYUE8lphhGGn+OGJWPbZ2QHaB+gmFHO/uGJw/MPuttHnn7+It3XrG4Kyrs1+XnO9zuJ2xX2ckNR3RJFxf8FdTfCSXKhwI5zwrLBXMZMowVmHGJ4Ac5yIU5DNCvA9EssP0Od+6jWB4LGIibZbFnVe+w0wysjkqqVWkdaX5C1e5J6i71OCNoUr4qJC5mRPJR16E74TjCIaa5v2d+/Em3OyQ8Z9f5Ad//E7uaBy8cXDq/PJNcF6U1F+q2g2WXspK/IV7gy/+/zlWCxIJCfMLMd/CgSAparFN2YMdA0VH2CNp1yNlb5OhpKbcSZOmSoqQxUqQ2GfDob8Fn4MlRRiiIlThJ835dlh4QiHicrLGvO1JhimiaGYWDNLekJpGbgOC62GDDNOUEQECwCPM9lJiaUpmkoioI8L0hE+Hx7IJMdVus1m82G7qKjbRt2uy1XV5fUdU3XddTyrZ/r47Ztj71ZlqGEYShuLLnVObqJouXRQSirKMuSRgTKqqSqKspC8jcDnucd6edc1z3Sv1Lpg9lsxng8ZjLR0WRvuq4f6Wt9fjq1scZoNHrrnXyI0rvrBU+DJ6E/8fiv+HtOPe/5DVW0aTABgz3/AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;local storage example2&quot; title=&quot;&quot; src=&quot;/static/dd7b87338df07b22302977c2e8b2af26/2a195/local-storage-example2.png&quot; srcset=&quot;/static/dd7b87338df07b22302977c2e8b2af26/222b7/local-storage-example2.png 163w,
+/static/dd7b87338df07b22302977c2e8b2af26/ff46a/local-storage-example2.png 325w,
+/static/dd7b87338df07b22302977c2e8b2af26/2a195/local-storage-example2.png 620w&quot; sizes=&quot;(max-width: 620px) 100vw, 620px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
     &lt;/span&gt;
 &lt;br/&gt;
 &lt;p&gt;위 코드를 보시면 개발자는 분명히 숫자 123과 불리언 값 true를 저장하였지만 값을 가져와보니 문자 타입으로 변환되어 리턴되는 것을 볼 수 있습니다.&lt;/p&gt;
-&lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;js&quot; data-index=&quot;2&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-5 grvsc-t4tStz-9&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; { parserLocalStorage } &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-5 grvsc-t4tStz-9&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;parser-storages&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;parserLocalStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;parserLocalStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test2&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-1&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(parserLocalStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-3&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-1&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(parserLocalStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;test2&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 510px; &quot;&gt;
-      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 22.699386503067483%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABJ0AAASdAHeZh94AAAAxklEQVR42qWNzW6DMBCE/TTlxwRcAw6/hoKUSMUuInDN+z/G1N6KS29RDp9mPLueZdb+YFkMtNZOF3S9hnk88TXfMU0TMc8zjuOAMQZd12FdV4zjCGsttm1D3/fY951getBomgZKKdR1DVW1uH0/ULUDHSmKAnme07wsS0gpyfvMz87Mq4cVuUKaCgghnKbgcQz5KZAknD5xzhG7zOP9+f7vzx0mshaXRCIIA0RRRGEYhuSD4C97BZalNbLL1RV+uKKIyt7hF3aAn10+seM1AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;console2&quot; title=&quot;&quot; src=&quot;/static/ff84e1713dd82d0b3edec2afb16a9c5a/0abdd/console2.png&quot; srcset=&quot;/static/ff84e1713dd82d0b3edec2afb16a9c5a/222b7/console2.png 163w,
-/static/ff84e1713dd82d0b3edec2afb16a9c5a/ff46a/console2.png 325w,
-/static/ff84e1713dd82d0b3edec2afb16a9c5a/0abdd/console2.png 510w&quot; sizes=&quot;(max-width: 510px) 100vw, 510px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; &quot;&gt;
+      &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 48.46625766871166%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABl0lEQVR42q2Q7VLbMBBF/SiUhJAEGCdWLMmSLEuWv0gMAfo9bafv/xS3a6UdMtOf8OPMXu+sj3edZKxAnWtsmITp9pB1D03V9g+oDk/YyRJmp7DJC5hGox4Mqs6g8IpyiXBfQjqNFb1/veVIttpBtSeRHUaSHiBDi60poL3BrtRIRYM0N7ja5FhsOBYpp3xikiz+1ijMXQO3f4zb1Q/PCOMz/OMRzBawtJHyBVIeUKgB11GSU53Er/WcJFU2npj7ABE8VBhow5427qCaAQVl5isI5+g0i6wocSv0Cf4/CbM1jt9+wo4HtJ9ajC9f0T19xvjlO/EDL79+w39s4//aHys4a7FmAquMYGdkPNZEa4k0Y0i3GXIhsKF8cTnDh9n8jBku53PiCrP5a/+C+hPns8nQd7D01dIY+HCPytWwpYHzDq6q0Pc9PJ3bhBDnmqaJvZJmpl7bBBijESgrVSBRSoMxFuFSgwuJikRd16GuayLEXJGUcw4pBYQ4IaWM/HueSO5uM6zXN1itVlgul28muVnfvZtsEv4BU9dF/fKLX3cAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;local storage example3&quot; title=&quot;&quot; src=&quot;/static/fa41fd6b886f95694d29e5df3d250cbd/a6d36/local-storage-example3.png&quot; srcset=&quot;/static/fa41fd6b886f95694d29e5df3d250cbd/222b7/local-storage-example3.png 163w,
+/static/fa41fd6b886f95694d29e5df3d250cbd/ff46a/local-storage-example3.png 325w,
+/static/fa41fd6b886f95694d29e5df3d250cbd/a6d36/local-storage-example3.png 650w,
+/static/fa41fd6b886f95694d29e5df3d250cbd/5a190/local-storage-example3.png 800w&quot; sizes=&quot;(max-width: 650px) 100vw, 650px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
     &lt;/span&gt;
 &lt;br/&gt;
 &lt;p&gt;parser-storages 라이브러리를 사용하여 값을 저장하고 값을 가져온 결과입니다.&lt;/p&gt;
 &lt;p&gt;이처럼 어떤 타입으로 값을 저장하였는지를 판단하여 값을 가져올 때 자동으로 타입을 변환하여 리턴해줍니다.&lt;/p&gt;
 &lt;h3&gt;Next.js에서의 localStorage 문제점&lt;/h3&gt;
-&lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;js&quot; data-index=&quot;3&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;js&quot; data-index=&quot;0&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 482px; &quot;&gt;
       &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 39.877300613496935%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABJ0AAASdAHeZh94AAAByElEQVR42mWS25KaQBRF/Z6kkhFQvMQZ75ajES8IgiAiKjgyOjETH6Yq/75yoJKnPJza3ftUr+7d3YVBv8/UMBiNRrRaLUbPz7TaXYxlkGvW/+dblkW/16Pb7TKZTHLfFm8wGNATz3EcCs12h8dmk2q9hlYqoVcqlGsNOsMp5WqDeqPBg6JQVFVU6RcVNR8rmiZ+MVclm6sapbJOoS+gvixq6DrNWpVv5TI1VeGpqvNY1njSS1RlYV28ulqUXpFK8SHXWu4p6F+/oH7+lFfBr1WIuh3S+Yw3c8G7s+KHZXKZTznNLaK5SyJ6tn1enQ2paDgcc1rYUivevB37mYXd7uH2RhQGmspYdvHabV6mBnfP4WZbArZJlzaxteFg79iZAlp47KyI7cIncmMO/pm9l3LwRNcvHP2UwlCARknD73RIvo/55a64LObcRV9nM1LT5sVac3V9zpZLaCw5rhMiJyayQo5uIpvsOGTA9el/YBb5fWXz4a85yevHWTQzqxXhzCVaHQjNgL17yiF750gS3oj97KR/gRMBBvIdzjODj2DDfe3wO9zk0X/aS25Lk6vtkDpbgsmSSK5gO/ckekAcXAUcS9wLyfbKH5vTMsv1mKg/AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
   &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;next console&quot; title=&quot;&quot; src=&quot;/static/52c8a25b4a835a1bf1e4cd46501e12b9/37e0d/next_console.png&quot; srcset=&quot;/static/52c8a25b4a835a1bf1e4cd46501e12b9/222b7/next_console.png 163w,
@@ -196,7 +606,7 @@
 &lt;p&gt;Next.js 환경에서 localStorage 객체에 접근할시에 위와 같은 에러가 발생되게 됩니다.&lt;/p&gt;
 &lt;p&gt;위 에러가 발생하는 이유는 Next.js가 서버 사이드에서 미리 렌더링 되기 때문입니다.&lt;/p&gt;
 &lt;p&gt;localStorage는 브라우저 환경에서만 실행이 가능하기 때문에 서버 사이드에서 저 코드를 실행하면 정의되지 않다고 에러를 발생시키게 됩니다.&lt;/p&gt;
-&lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;js&quot; data-index=&quot;4&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-5 grvsc-t4tStz-9&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-9&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; window &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-9&quot;&gt;!==&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;undefined&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;) {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;pre class=&quot;grvsc-container github-light-theme grvsc-ps-t4tStz&quot; data-language=&quot;js&quot; data-index=&quot;1&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-5 grvsc-t4tStz-9&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-9&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; window &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-9&quot;&gt;!==&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;undefined&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;) {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;  localStorage.&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-7 grvsc-t4tStz-5&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-8 grvsc-t4tStz-10&quot;&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;grvsc-tiszgT-1 grvsc-t4tStz-1&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;그래서 위와 같이 window 객체가 존재할 때, 즉 브라우저 환경에서만 실행하는 조건문을 걸어줘야 정상적으로 동작이 되는 것을 볼 수 있습니다.&lt;/p&gt;
@@ -294,22 +704,19 @@
     background-color: #ffffff;
     color: #000000;
   }
-  .github-light-theme .grvsc-tiszgT-5 { color: #D73A49; }
   .github-light-theme .grvsc-tiszgT-1 { color: #000000; }
-  .github-light-theme .grvsc-tiszgT-8 { color: #032F62; }
-  .github-light-theme .grvsc-tiszgT-6 { color: #6A737D; }
   .github-light-theme .grvsc-tiszgT-7 { color: #005CC5; }
+  .github-light-theme .grvsc-tiszgT-8 { color: #032F62; }
+  .github-light-theme .grvsc-tiszgT-5 { color: #D73A49; }
   .github-light-theme .grvsc-line-highlighted::before {
     background-color: var(--grvsc-line-highlighted-background-color, rgba(0, 0, 0, 0.05));
     box-shadow: inset var(--grvsc-line-highlighted-border-width, 4px) 0 0 0 var(--grvsc-line-highlighted-border-color, rgba(0, 0, 0, 0.2));
   }
   body[data-theme=dark] .grvsc-ps-t4tStz { color: #ffffff; }
-  body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-t4tStz-9 { color: #EB7E81; }
   body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-t4tStz-1 { color: #FFFFFF; }
-  body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-t4tStz-10 { color: #9DCDF5; }
-  body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-t4tStz-2 { color: #A19B8F; }
   body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-t4tStz-5 { color: #BB97E7; }
-  body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-t4tStz-3 { color: #66B5F6; }
+  body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-t4tStz-10 { color: #9DCDF5; }
+  body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-t4tStz-9 { color: #EB7E81; }
   body[data-theme=dark] .grvsc-ps-t4tStz .grvsc-line-highlighted::before {
     background-color: var(--grvsc-line-highlighted-background-color, rgba(0, 0, 0, 0.05));
     box-shadow: inset var(--grvsc-line-highlighted-border-width, 4px) 0 0 0 var(--grvsc-line-highlighted-border-color, rgba(0, 0, 0, 0.2));
